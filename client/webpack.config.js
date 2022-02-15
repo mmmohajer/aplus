@@ -89,7 +89,7 @@ if (currentTask == "dev") {
     hot: true,
     host: "0.0.0.0",
     historyApiFallback: true,
-    allowedHosts: ["makeclient.ngrok.io"],
+    allowedHosts: "all",
   };
   config.mode = "development";
 }
