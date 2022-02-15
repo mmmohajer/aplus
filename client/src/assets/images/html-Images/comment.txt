@@ -1,0 +1,1 @@
+Images that are going to be imported in the html files must to be added here

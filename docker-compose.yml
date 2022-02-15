@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - client
+      - api
+
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /client/node_modules
+      - ./client:/usr/src/app
+    command: ./docker-entrypoint-dev.sh
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  server:
+    build: ./server
+    environment:
+      - DB_HOST=db
+      - DB_NAME=pgdata
+      - DB_USER=postgres
+      - DB_PASS=mysecretpassword
+    volumes:
+      - ./server:/usr/src/app
+    command: ./docker-entrypoint.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:9.6.24-alpine3.15
+    environment:
+      - POSTGRES_DB=pgdata
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+    ports:
+      - 5000:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
