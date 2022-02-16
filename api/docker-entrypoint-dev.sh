@@ -3,6 +3,9 @@
 echo "Waiting for database to start"
 ./wait-for db:5432
 
+echo "Make migrations"
+python manage.py makemigrations
+
 echo "Migrating database"
 python manage.py migrate
 
