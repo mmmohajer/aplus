@@ -32,6 +32,8 @@ services:
       dockerfile: Dockerfile.dev
       context: ./api
     environment:
+      - SECRET_KEY=devsecretkey
+      - DEBUG=1
       - DB_HOST=db
       - DB_NAME=devdb
       - DB_USER=devuser
