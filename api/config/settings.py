@@ -1,20 +1,20 @@
 from pathlib import Path
 import os
-import environ
-
-env = environ.Env(
-    DEBUG=(bool, False)
-)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-environ.Env.read_env(BASE_DIR / ".env")
 
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = os.environ.get('SECRET_KEY', 'SomeRandomString')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
+DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
 ALLOWED_HOSTS = []
+ALLOWED_HOSTS.extend(
+    filter(
+        None,
+        os.environ.get('ALLOWED_HOSTS', '').split(','),
+    )
+)
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -35,7 +35,9 @@ THIRD_PARTY_APPS = [
     'phonenumber_field'
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'core'
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
