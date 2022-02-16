@@ -8,6 +8,8 @@ services:
       context: ./nginx
     ports:
       - "80:80"
+    volumes:
+      - ./api/vol:/vol/static
     depends_on:
       - client
       - api
@@ -60,3 +62,4 @@ services:
 
 volumes:
   pgdata:
+  static-data:
