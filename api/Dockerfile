@@ -34,7 +34,7 @@ RUN apk del .tmp-build-deps
 COPY . .
 
 # Making the file docker-entrypoint.sh, wait-for executable
-RUN chmod +x /usr/src/app/docker-entrypoint-dev.sh
+RUN chmod +x /usr/src/app/docker-entrypoint.sh
 RUN chmod +x /usr/src/app/wait-for
 
 # Open port 8000, default port for django:

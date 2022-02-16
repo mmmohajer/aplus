@@ -16,7 +16,7 @@ services:
 
   client:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./client
     volumes:
       - /client/node_modules
@@ -31,7 +31,7 @@ services:
 
   api:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./api
     environment:
       - SECRET_KEY=devsecretkey
@@ -43,7 +43,7 @@ services:
       - DB_PORT=5432
     volumes:
       - ./api:/usr/src/app
-    command: ./docker-entrypoint-dev.sh
+    command: ./docker-entrypoint.sh
     ports:
       - "8000:8000"
     depends_on:
