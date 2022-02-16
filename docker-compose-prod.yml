@@ -9,7 +9,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./api/vol:/vol/static
+      - static-data:/vol/static
       - ./client/dist:/usr/share/nginx/html
     depends_on:
       - api
@@ -27,6 +27,8 @@ services:
       - DB_PASS=changeme
       - DB_PORT=5432
     command: ./docker-entrypoint.sh
+    volumes:
+      - static-data:/usr/src/app/vol
     ports:
       - "8000:8000"
     depends_on:
