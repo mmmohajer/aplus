@@ -26,7 +26,7 @@ services:
       - DB_USER=devuser
       - DB_PASS=changeme
       - DB_PORT=5432
-    command: ./docker-entrypoint.sh
+    command: ./docker-entrypoint-prod.sh
     volumes:
       - static-data:/usr/src/app/vol
     ports:
