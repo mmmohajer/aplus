@@ -1,18 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
+import "basedesign-iswad/dist/style.js";
 
-import "./assets/styles/main.scss";
-import AppRoutes from "./AppRoutes";
-import { store } from "Store";
+import "Styles/main.scss";
+import App from "./App";
 
-ReactDOM.render(
-  // <BrowserRouter basename="/dist/">
-  <Provider store={store}>
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
-  </Provider>,
-  document.querySelector("#app")
-);
+ReactDOM.render(<App />, document.querySelector("#app"));

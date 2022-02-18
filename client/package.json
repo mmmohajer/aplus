@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
+    "update-design": "npm uninstall basedesign-iswad && npm install --save basedesign-iswad",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mohammad Mahdi Mohajer",
@@ -37,6 +38,7 @@
     "@babel/runtime": "^7.16.5",
     "@reduxjs/toolkit": "^1.7.2",
     "axios": "^0.26.0",
+    "basedesign-iswad": "^0.0.1",
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
