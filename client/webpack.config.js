@@ -28,8 +28,11 @@ let config = {
     alias: {
       Pages: path.resolve(__dirname, "src/pages/"),
       Components: path.resolve(__dirname, "src/components/"),
-      Styles: path.resolve(__dirname, "src/assets/styles"),
-      Images: path.resolve(__dirname, "src/assets/images"),
+      Styles: path.resolve(__dirname, "src/assets/styles/"),
+      Images: path.resolve(__dirname, "src/assets/images/"),
+      Reducers: path.resolve(__dirname, "src/reducers/"),
+      Services: path.resolve(__dirname, "src/services/"),
+      Store: path.resolve(__dirname, "src/store/"),
     },
   },
   plugins: [
@@ -49,6 +52,7 @@ let config = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-react", "@babel/preset-env"],
+            plugins: ["@babel/transform-runtime"],
           },
         },
       },
