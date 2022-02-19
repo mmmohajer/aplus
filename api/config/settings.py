@@ -117,3 +117,5 @@ MEDIA_ROOT = './vol/media'
 STATIC_ROOT = './vol/static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'core.User'
