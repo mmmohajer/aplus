@@ -1,12 +1,15 @@
 {
   "name": "react-webpack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
     "update-design": "npm uninstall basedesign-iswad && npm install --save basedesign-iswad",
+    "build-patch": "grunt bump-only:patch && npm run build",
+    "build-minor": "grunt bump-only:minor && npm run build",
+    "build-major": "grunt bump-only:major && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mohammad Mahdi Mohajer",
