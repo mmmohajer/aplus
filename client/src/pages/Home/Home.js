@@ -12,6 +12,7 @@ function Home() {
     <>
       <div>
         <p>This is the homepage for your new app!</p>
+        <p>Test env var {process.env.TEST}</p>
         <button onClick={() => getBugs(dispatch)}>Get Bugs</button>
       </div>
       <div className="footer">Footer</div>
