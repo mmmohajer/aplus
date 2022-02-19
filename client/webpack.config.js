@@ -34,6 +34,7 @@ let config = {
       Reducers: path.resolve(__dirname, "src/reducers/"),
       Services: path.resolve(__dirname, "src/services/"),
       Store: path.resolve(__dirname, "src/store/"),
+      Hooks: path.resolve(__dirname, "src/hooks/"),
     },
   },
   plugins: [

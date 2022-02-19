@@ -1,17 +1,17 @@
 import React from "react";
-import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import AppRoutes from "./AppRoutes";
-import { store } from "Store";
+import Loading from "Components/Loading";
 
 function App() {
+  const loading = useSelector((state) => state.loading);
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      {loading && <Loading />}
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
 
