@@ -1,12 +1,14 @@
 import { combineReducers } from "redux";
 
-import loadingReducer from "./loading";
+import loading from "./general/loading";
+import notifications from "./general/notifications";
 
-import bugReducer from "./bug";
+import bugs from "./apiCalls/bugs";
 
 const reducer = combineReducers({
-  bug: bugReducer,
-  loading: loadingReducer,
+  loading,
+  notifications,
+  bugs,
 });
 
 export default reducer;

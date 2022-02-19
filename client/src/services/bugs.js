@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { getBugs as getBugsReducer } from "Reducers/bug";
-import { isLoading, isLoaded } from "Reducers/loading";
+import { getBugs as getBugsReducer } from "Reducers/apiCalls/bugs";
+import { isLoading, isLoaded } from "Reducers/general/loading";
 
 export const getBugs = async (dispatch) => {
   try {
