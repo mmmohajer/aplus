@@ -1,0 +1,65 @@
+version: "3.9"
+
+services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.createSSL
+      context: ./nginx
+      args:
+        APP_URL: ${APP_URL}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - static-data:/vol/static
+      - ./client/dist:/usr/share/nginx/html
+      - ./nginx/certbot/conf:/etc/letsencrypt
+      - ./nginx/certbot/www:/var/www/certbot
+    depends_on:
+      - api
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./nginx/certbot/conf:/etc/letsencrypt
+      - ./nginx/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+  api:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    environment:
+      - SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DEBUG=0
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_PORT=${DB_PORT}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+    command: ./docker-entrypoint-prod.sh
+    volumes:
+      - static-data:/usr/src/app/vol
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    restart: always
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+    ports:
+      - ${SERVER_PORT}:${DB_PORT}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+  static-data:
