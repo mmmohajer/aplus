@@ -8,4 +8,4 @@ RUN mkdir -p /vol/static && \
 
 RUN chmod +x /docker-entrypoint.sh
 
-CMD ["/docker-entrypoint.sh"]
+CMD ["/docker-entrypoint-ssl.sh"]
