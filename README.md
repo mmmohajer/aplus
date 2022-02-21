@@ -10,7 +10,9 @@
 <hr>
 
 2. Test production environment on your local PC: <br>
-   Run `docker-compose -f docker-compose-prod.yml up -build -d` <hr>
+   Run `docker-compose -f docker-compose-prod.yml up -build -d`
+
+<hr>
 
 3. Setup Production environment: <br>
    Create the following subfolders: <br>
@@ -28,7 +30,7 @@
    Then run `./init-letsencrypt.sh` <br>
 
    Now your app is ready to be run on server:
-   To do so, first clear all volumes, images, and containersof docker, useing the following 3 commands:
+   To do so, first clear all volumes, images, and containersof docker, useing the following 3 commands: <br>
    Run `docker container rm -f $(docker container ls -a -q)` <br>
    Run `docker image rm -f $(docker image ls -a -q)` <br>
    Run `docker volume prune` <br>
