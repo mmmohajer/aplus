@@ -1,6 +1,6 @@
-Inside api folder create the following subfolders:
-vol/static/
-vol/media/
+Create the following subfolders:
+./api/vol/static/
+./api/vol/media/
 
 Notes:
 For development:
@@ -12,6 +12,9 @@ docker-compose -f docker-compose-prod.yml up -build -d
 In prod env:
 cp .env.sample .env --> Change the env variables
 For ssl config:
+Create following subfolders:
+./nginx/certbot/conf/
+./nginx/certbot/www/
 docker-compose -f docker-compose-createSSl.yml up --build -d
 And then change domains and email in init-letsencrypt.sh
 Run:
