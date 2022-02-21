@@ -6,9 +6,9 @@ Notes:
 For development:
 Run:
 python manage.py collectstatic
-docker-compose -f docker-compose-dev up --build -d
+docker-compose -f docker-compose-dev.yml up --build -d
 For testing prod config on your local machine:
-docker-compose -f docker-compose-prod up -build -d
+docker-compose -f docker-compose-prod.yml up -build -d
 In prod env:
 cp .env.sample .env --> Change the env variables
 For ssl config:
