@@ -1,11 +1,16 @@
 **Setup**:
 
 1. Setup Development environment: <br>
+   Create a python virtual env: `python3 -m venv venv` <br>
+   Activate the environment: `source venv/bin/activate` <br>
+   Install all python packages: <br>
+   `pip install --upgrade pip` <br>
+   `pip install -r api/requirements.txt` <br>
    Create the following subfolders: <br>
    `./api/vol/static/` <br>
    `./api/vol/media/` <br>
-   Run `python manage.py collectstatic` <br>
-   Run `docker-compose -f docker-compose-dev.yml up --build -d` <br>
+   Go to api folder and run `python manage.py collectstatic` <br>
+   Go to the root folder and run `docker-compose -f docker-compose-dev.yml up --build -d` <br>
 
 <hr>
 
