@@ -10,6 +10,7 @@
    `./api/vol/static/` <br>
    `./api/vol/media/` <br>
    Go to api folder and run `python manage.py collectstatic` <br>
+   Go to client folder and run `npm run update-design` <br>
    Go to the root folder and run `docker-compose -f docker-compose-dev.yml up --build -d` <br>
 
 <hr>
