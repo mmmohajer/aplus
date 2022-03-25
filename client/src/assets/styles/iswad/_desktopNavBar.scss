@@ -1,18 +1,5 @@
-@import "Styles/base/_variables";
-
-.iswad_mobNav {
-  transform: translateX(100%);
-  transition: all 0.3s ease-in-out;
-
-  &_active {
-    transform: translateX(0);
-  }
-}
-
 .iswad_navItem,
-.iswad_subNavItem,
-.iswad_mobNavItem,
-.iswad_mobSubNavItem {
+.iswad_subNavItem {
   &:hover {
     border-color: $primaryColor;
     background: rgba($primaryColor, 0.1);
@@ -25,14 +12,6 @@
       rgba($primaryColor, 0.3)
     );
     color: $primaryColor !important;
-  }
-}
-
-.iswad_mobSubNavContainer {
-  display: none;
-
-  &_active {
-    display: flex;
   }
 }
 
