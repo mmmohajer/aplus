@@ -4,36 +4,16 @@ import cx from "classnames";
 
 import styles from "./Home.module.scss";
 import { getBugs } from "Services/bugs";
-import {
-  addNotification,
-  removeNotification,
-  clearNotifications,
-} from "Reducers/general/notifications";
-import { generateKey } from "Utils/helpers";
+import { addAlertItem } from "Utils/notifications";
 
 function Home() {
   const bugs = useSelector((state) => state.bugs);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const key1 = generateKey();
-    dispatch(
-      addNotification({ key: key1, message: "This is first notification" })
-    );
-    dispatch(
-      addNotification({
-        key: generateKey(),
-        message: "This is second notification",
-      })
-    );
-    dispatch(
-      addNotification({
-        key: generateKey(),
-        message: "This is third notification",
-      })
-    );
-    dispatch(removeNotification({ key: key1 }));
-    dispatch(clearNotifications());
+    addAlertItem(dispatch, "This is first notification", "success");
+    addAlertItem(dispatch, "This is second notification", "error");
+    addAlertItem(dispatch, "This is third notification", "danger");
   }, []);
   return (
     <>

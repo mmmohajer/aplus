@@ -2,11 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const reducerObject = {};
 reducerObject["addNotification"] = (state, action) => {
-  state.push(action.payload);
+  const newItem = { ...action.payload };
+  newItem["isActive"] = true;
+  state.push(newItem);
 };
 reducerObject["removeNotification"] = (state, action) => {
   const newState = state.filter((notif) => notif.key !== action.payload.key);
   return newState;
+};
+reducerObject["deactivateNotification"] = (state, action) => {
+  state.forEach((item) => {
+    if (item.key === action.payload.key) {
+      item.isActive = false;
+    }
+  });
+  return state;
 };
 reducerObject["clearNotifications"] = (state, action) => [];
 
@@ -16,6 +26,10 @@ const slice = createSlice({
   reducers: reducerObject,
 });
 
-export const { addNotification, removeNotification, clearNotifications } =
-  slice.actions;
+export const {
+  addNotification,
+  removeNotification,
+  deactivateNotification,
+  clearNotifications,
+} = slice.actions;
 export default slice.reducer;
