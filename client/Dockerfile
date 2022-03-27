@@ -3,6 +3,8 @@ LABEL Developer = "Moahammad Mahdi Mohajer"
 
 WORKDIR /usr/src/app
 
+RUN apk add --no-cache git
+
 COPY ./package.json .
 RUN npm install
 
