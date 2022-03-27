@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
-    "update-design": "npm uninstall basedesign-iswad && npm install --save basedesign-iswad",
+    "update-design": "npm uninstall basedesign-iswad && npm install --save git+https://github.com/mmmohajer/baseDesign.git",
     "build-patch": "grunt bump-only:patch && npm run build",
     "build-minor": "grunt bump-only:minor && npm run build",
     "build-major": "grunt bump-only:major && npm run build",
@@ -44,7 +44,7 @@
     "@babel/runtime": "^7.16.5",
     "@reduxjs/toolkit": "^1.7.2",
     "axios": "^0.26.0",
-    "basedesign-iswad": "^3.1.0",
+    "basedesign-iswad": "git+https://github.com/mmmohajer/baseDesign.git",
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
