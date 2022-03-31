@@ -7,10 +7,10 @@ from django.conf import settings
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
     path(settings.ADMIN_URL, admin.site.urls),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
-    path('', include('core.urls')),
-    path('', include('app.urls'))
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.jwt')),
+    path('api/', include('core.urls')),
+    path('api/', include('app.urls'))
 ]
 
 if settings.DEBUG:

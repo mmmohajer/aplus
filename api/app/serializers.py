@@ -3,6 +3,7 @@ from . import models
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    user_id = serializers.IntegerField(read_only=True)
     user_uuid = serializers.SerializerMethodField('get_user_uuid')
 
     def get_user_uuid(self, obj):

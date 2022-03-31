@@ -135,7 +135,7 @@ if (DEBUG):
         'SHOW_TOOLBAR_CALLBACK': show_toolbar,
     }
 
-ADMIN_URL = f"{os.environ.get('ADMIN_URL', 'supersecreturl')}/"
+ADMIN_URL = f"api/{os.environ.get('ADMIN_URL', 'supersecreturl')}/"
 
 SITE_HEADER_NAME = os.environ.get('SITE_HEADER_NAME', 'Rest Api')
 
@@ -155,6 +155,9 @@ SIMPLE_JWT = {
 DJOSER = {
     'SERIALIZERS': {
         'user_create': 'core.serializers.UserCreateSerializer',
-        'current_user': 'core.serializers.UserSerializer'
+        'current_user': 'core.serializers.UserSerializer',
+        'user': 'core.serializers.UserSerializer'
     }
 }
+
+SEND_ACTIVATION_EMAIL = False
