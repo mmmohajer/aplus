@@ -6,8 +6,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
-    path('admin/', admin.site.urls),
-    path('', include('core.urls'))
+    path(settings.ADMIN_URL, admin.site.urls),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('', include('core.urls')),
+    path('', include('app.urls'))
 ]
 
 if settings.DEBUG:

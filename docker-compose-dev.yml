@@ -33,14 +33,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./api
-    environment:
-      - SECRET_KEY=devsecretkey
-      - DEBUG=1
-      - DB_HOST=db
-      - DB_NAME=devdb
-      - DB_USER=devuser
-      - DB_PASS=changeme
-      - DB_PORT=5432
+    env_file:
+      - ./config/env/django/develop/.env
     volumes:
       - ./api:/usr/src/app
     command: ./docker-entrypoint-dev.sh
@@ -51,10 +45,8 @@ services:
 
   db:
     image: postgres:13-alpine
-    environment:
-      - POSTGRES_DB=devdb
-      - POSTGRES_USER=devuser
-      - POSTGRES_PASSWORD=changeme
+    env_file:
+      - ./config/env/postgres/develop/.env
     ports:
       - 5001:5432
     volumes:

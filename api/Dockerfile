@@ -16,7 +16,8 @@ WORKDIR /usr/src/app
 RUN apk add --update --no-cache postgresql-client
 RUN apk add --update --no-cache --virtual .tmp-build-deps \
     gcc libc-dev python3-dev musl-dev jpeg-dev \
-    zlib-dev libjpeg linux-headers postgresql-dev
+    zlib-dev libjpeg linux-headers postgresql-dev \
+    libffi-dev build-base
 
 # Update the pip package manager
 RUN pip install --upgrade pip

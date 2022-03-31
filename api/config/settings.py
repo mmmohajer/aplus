@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import environ
+from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(BASE_DIR / ".env")
@@ -36,10 +37,12 @@ THIRD_PARTY_APPS = [
     'django_countries',
     'phonenumber_field',
     'debug_toolbar',
+    'djoser',
 ]
 
 LOCAL_APPS = [
-    'core'
+    'core',
+    'app',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -105,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Toronto'
+TIME_ZONE = os.environ.get('API_TIME_ZONE', 'America/Toronto')
 
 USE_I18N = True
 
@@ -131,3 +134,27 @@ if (DEBUG):
     DEBUG_TOOLBAR_CONFIG = {
         'SHOW_TOOLBAR_CALLBACK': show_toolbar,
     }
+
+ADMIN_URL = f"{os.environ.get('ADMIN_URL', 'supersecreturl')}/"
+
+SITE_HEADER_NAME = os.environ.get('SITE_HEADER_NAME', 'Rest Api')
+
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING': False,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'core.serializers.UserCreateSerializer',
+        'current_user': 'core.serializers.UserSerializer'
+    }
+}
