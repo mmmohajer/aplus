@@ -4,16 +4,6 @@ from django.contrib.auth.models import AbstractUser
 import uuid
 
 
-class TimeStampedUUIDModel(models.Model):
-    id = models.BigAutoField(primary_key=True, editable=False)
-    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True
-
-
 class UserManager(BaseUserManager):
     """ User Manager that knows how to create users via email instead of username """
 

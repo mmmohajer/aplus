@@ -1,11 +1,7 @@
-from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext, gettext_lazy as _
 
-from . import models
 
-
-@admin.register(models.User)
 class UserAdmin(BaseUserAdmin):
     add_form_template = 'admin/auth/user/add_form.html'
     change_user_password_template = None

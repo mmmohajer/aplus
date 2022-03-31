@@ -10,7 +10,6 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.jwt')),
     path('api/', include('core.urls')),
-    path('api/', include('app.urls'))
 ]
 
 if settings.DEBUG:

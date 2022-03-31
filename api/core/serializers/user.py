@@ -1,4 +1,3 @@
-from tokenize import group
 from djoser.serializers import (UserSerializer as BaseUserSerializer,
                                 UserCreateSerializer as BaseUserCreateSerializer
                                 )
@@ -7,7 +6,7 @@ from django.contrib.auth.models import Group
 from django.db import IntegrityError, transaction
 from django.conf import settings
 
-from app.models import Profile
+from core.models import ProfileModel
 
 User = get_user_model()
 
@@ -19,11 +18,12 @@ class UserCreateSerializer(BaseUserCreateSerializer):
     def create(self, validated_data):
         try:
             user = self.perform_create(validated_data)
-            profile = Profile()
+            profile = ProfileModel()
             profile.user = user
             profile.save()
-            group = Group.objects.filter(name="Subscriber").first()
-            group.user_set.add(user)
+            subscriber_group = Group.objects.filter(name="Subscriber").first()
+            if subscriber_group:
+                subscriber_group.user_set.add(user)
         except IntegrityError:
             self.fail("cannot_create_user")
 
@@ -36,17 +36,6 @@ class UserCreateSerializer(BaseUserCreateSerializer):
                 user.is_active = False
                 user.save(update_fields=["is_active"])
         return user
-
-    # def create(self, validated_data):
-    #     user, created = User.objects.update_or_create(
-    #         email=validated_data["email"], defaults={**validated_data})
-    #     if created:
-    #         profile = Profile()
-    #         profile.user = user
-    #         profile.save()
-    #         group = Group.objects.filter(name="Subscriber").first()
-    #         group.user_set.add(user)
-    #     return user
 
 
 class UserSerializer(BaseUserSerializer):
