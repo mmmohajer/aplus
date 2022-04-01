@@ -3,6 +3,7 @@
 source ./utils/shellScripting/constants/colours.sh
 source ./utils/shellScripting/constants/constants.sh
 source ./utils/shellScripting/funcs/helpers.sh
+source ./utils/shellScripting/funcs/contexts.sh
 source ./utils/shellScripting/funcs/client.sh
 source ./utils/shellScripting/funcs/api.sh
 
@@ -22,9 +23,9 @@ run() {
         if [[ ${OPTIONS[*]} =~ $selected ]]
         then
             [ $selected == 0 ] && showMenuBar
-            [ $selected == 1 ] && echo "1"
-            [ $selected == 2 ] && echo "2"
-            [ $selected == 3 ] && echo "3"
+            [ $selected == 1 ] && createReactComponent
+            [ $selected == 2 ] && createReactPage
+            [ $selected == 3 ] && addDjangoApp
         else
             run
         fi

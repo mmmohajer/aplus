@@ -1,27 +1,5 @@
-getJsContext() {
-    local compName=$1
-    compName="$(tr '[:lower:]' '[:upper:]' <<< ${compName:0:1})${compName:1}"
-
-    local jsContext="""import React from \"react\";
-import cx from \"classnames\";
-
-import styles from \"./$compName.module.scss\";
-
-const $compName = () => {
-  return (
-    <>
-      <div>$compName</div>
-    </>
-  );
-};
-
-export default $compName;
-"""
-    echo "$jsContext"
-}
-
 createReactComponent() {
-    compName=$(readData "What is your name?")
+    local compName=$(readData "What is the component name?")
     
     compName="$(tr '[:lower:]' '[:upper:]' <<< ${compName:0:1})${compName:1}"
     local addr="client/src/components/$compName"
@@ -44,7 +22,8 @@ createReactComponent() {
 }
 
 createReactPage() {
-    local pageName=$1
+    local pageName=$(readData "What is the page name?")
+    local pageUrl=$(readData "What is the page url?")
     
     pageName="$(tr '[:lower:]' '[:upper:]' <<< ${pageName:0:1})${pageName:1}"
     local addr="client/src/pages/$pageName"
@@ -60,10 +39,11 @@ createReactPage() {
     echo "$jsContext" >> $innerJsFileAddr
     echo "$indexContext" >> "$innerIndexFileAddr"
     touch "$innersassFileAddr"
-    
-    echo """Do not forget to add the follwoings to the AppRoutes.js file:
-<Route path=\"/PAGE_URL\" element={<$pageName />}></Route>
-"""
+    echo -en "${I_YELLOW}"
+    echo "Do not forget to add the follwoings to the AppRoutes.js file:"
+    echo -en "${I_GREEN}"
+    echo "<Route path=\"/$pageUrl\" element={<$pageName />}></Route>"
+    echo -en "${DEFAULT_COLOR}"
     
     return 0
 }
