@@ -34,7 +34,7 @@ addDjangoApp() {
     touch "$viewsFolder/__init__.py"
 
     echo -en "${I_YELLOW}"
-    echo -e "Do not forget to add ${I_GREEN}$appName${I_YELLOW} to the list of INSTALLED_APPS in settings.py"
+    echo -e "Do not forget to add ${I_GREEN}$appName${I_YELLOW} to the list of INSTALLED_APPS in config.settings folder"
     echo -en "${DEFAULT_COLOR}"
     
 }
