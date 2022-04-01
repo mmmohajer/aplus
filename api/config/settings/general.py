@@ -1,7 +1,6 @@
 from pathlib import Path
 import os
 import environ
-from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(BASE_DIR / ".env")
@@ -19,33 +18,8 @@ ALLOWED_HOSTS.extend(
     )
 )
 
-DJANGO_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
-]
-
 SITE_ID = 1
 
-THIRD_PARTY_APPS = [
-    'rest_framework',
-    'django_filters',
-    'django_countries',
-    'phonenumber_field',
-    'debug_toolbar',
-    'djoser',
-]
-
-LOCAL_APPS = [
-    'core',
-    'app',
-]
-
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -105,28 +79,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = os.environ.get('API_TIME_ZONE', 'America/Toronto')
-
-USE_I18N = True
-
-USE_TZ = True
-
-
-STATIC_URL = '/static/static/'
-MEDIA_URL = '/static/media/'
-
-MEDIA_ROOT = './vol/media'
-STATIC_ROOT = './vol/static'
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-AUTH_USER_MODEL = 'core.User'
-
-INTERNAL_IPS = ['127.0.0.1', 'localhost']
-
 if (DEBUG):
     def show_toolbar(request):
         return True
@@ -134,30 +86,3 @@ if (DEBUG):
     DEBUG_TOOLBAR_CONFIG = {
         'SHOW_TOOLBAR_CALLBACK': show_toolbar,
     }
-
-ADMIN_URL = f"api/{os.environ.get('ADMIN_URL', 'supersecreturl')}/"
-
-SITE_HEADER_NAME = os.environ.get('SITE_HEADER_NAME', 'Rest Api')
-
-REST_FRAMEWORK = {
-    'COERCE_DECIMAL_TO_STRING': False,
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}
-
-SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('JWT',),
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-}
-
-DJOSER = {
-    'SERIALIZERS': {
-        'user_create': 'core.serializers.UserCreateSerializer',
-        'current_user': 'core.serializers.UserSerializer',
-        'user': 'core.serializers.UserSerializer'
-    }
-}
-
-SEND_ACTIVATION_EMAIL = False
