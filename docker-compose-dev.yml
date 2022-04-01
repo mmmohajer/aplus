@@ -18,8 +18,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./client
-    env_file:
-      - ./config/env/nginx/develop/.env
     volumes:
       - /client/node_modules
       - ./client:/usr/src/app
