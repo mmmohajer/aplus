@@ -8,9 +8,9 @@ from core.serializers import UserSerializer
 User = get_user_model()
 
 
-class LikedUserSerializer(serializers.ModelSerializer):
+class UserLikeSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
-    object_id = serializers.IntegerField(write_only=True)
+    object_id = serializers.IntegerField()
     liked_user = serializers.SerializerMethodField(method_name="get_liked_user")
 
     def get_liked_user(self, obj):

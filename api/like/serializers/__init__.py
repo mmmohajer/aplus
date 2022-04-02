@@ -1,3 +1,3 @@
-from . import like
+from . import user_like_serializer
 
-LikedUserSerializer = like.LikedUserSerializer
+UserLikeSerializer = user_like_serializer.UserLikeSerializer

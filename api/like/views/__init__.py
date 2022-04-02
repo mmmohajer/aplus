@@ -1,3 +1,3 @@
-from . import like
+from . import user_like_view
 
-LikedUserViewSet = like.LikedUserViewSet
+UserLikeViewSet = user_like_view.UserLikeViewSet

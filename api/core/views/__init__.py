@@ -1,3 +1,3 @@
-from . import profile
+from . import profile_view
 
-ProfileViewSet = profile.ProfileViewSet
+ProfileViewSet = profile_view.ProfileViewSet
