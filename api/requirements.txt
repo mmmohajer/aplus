@@ -19,3 +19,4 @@ Pillow==8.3.2
 djoser>=1.0.0,<=2.1.0
 djangorestframework_simplejwt>=4.0.0,<=5.1.0
 Fabric3>=1.14.post1
+django-rest-swagger>=2.0.1,<=2.2.0
