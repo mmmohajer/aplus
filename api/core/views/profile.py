@@ -12,7 +12,7 @@ User = get_user_model()
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
-    queryset = ProfileModel.objects.all()
+    queryset = ProfileModel.objects.select_related('user').all()
     serializer_class = ProfileSerializer
     permission_classes = [IsAdminOrReadOnly]
 
@@ -25,7 +25,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         user_groups_queryset = self.request.user.groups.all()
         cur_user_groups = [group.name for group in list(user_groups_queryset)]
         if "Admin" in cur_user_groups or "Subscriber" in cur_user_groups:
-            return ProfileModel.objects.all()
+            return ProfileModel.objects.select_related('user').all()
         else:
             return []
 
@@ -43,6 +43,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
     @decorators.action(detail=False, methods=["GET"], permission_classes=[permissions.IsAuthenticated])
     def all(self, request):
-        profile_queryset = ProfileModel.objects.all()
+        profile_queryset = ProfileModel.objects.select_related('user').all()
         serializer = ProfileSerializer(profile_queryset, many=True)
         return response.Response(status=status.HTTP_200_OK, data=serializer.data)
