@@ -10,7 +10,7 @@ User = get_user_model()
 
 class UserLikeSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
-    object_id = serializers.IntegerField()
+    object_id = serializers.IntegerField(write_only=True)
     liked_user = serializers.SerializerMethodField(method_name="get_liked_user")
 
     def get_liked_user(self, obj):
