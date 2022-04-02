@@ -1,8 +1,17 @@
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext, gettext_lazy as _
+from django.contrib.contenttypes.admin import GenericTabularInline
+
+from like.models import LikedItemModel
+
+
+class UserInline(GenericTabularInline):
+    autocomplete_fields = ['user']
+    model = LikedItemModel
 
 
 class UserAdmin(BaseUserAdmin):
+    inlines = [UserInline]
     add_form_template = 'admin/auth/user/add_form.html'
     change_user_password_template = None
     fieldsets = (

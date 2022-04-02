@@ -25,3 +25,9 @@ class LikedItem(TimeStampedUUIDModel):
         contentModel.ContentType, on_delete=models.CASCADE, related_name='liked_item')
     object_id = models.PositiveIntegerField()
     content_object = contentFields.GenericForeignKey()
+
+    def __str__(self):
+        return f"{self.user} liked for {self.content_type} with id {self.object_id}"
+
+    class Meta:
+        ordering = ('object_id',)
