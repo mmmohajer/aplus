@@ -1,6 +1,7 @@
 from rest_framework import viewsets, permissions, status, views, response, decorators, response
 from django.contrib.auth import get_user_model
 
+from core.permissions import *
 from like.models import *
 from like.serializers import *
 
@@ -10,7 +11,34 @@ User = get_user_model()
 class LikedUserViewSet(viewsets.ModelViewSet):
     queryset = LikedItemModel.objects.get_likes_for_type(User)
     serializer_class = LikedUserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAdminOrReadOnly]
 
-    # def create(self, request):
-    #     content_type = contentModel.ContentType.objects.get_for_model(obj_type)
+    @decorators.action(detail=False, methods=["GET"])
+    def likedme(self, request):
+        like_queryset = LikedItemModel.objects.select_related(
+            'user').filter(object_id=request.user.id)
+        serializer = LikedUserSerializer(like_queryset, many=True)
+        return response.Response(status=status.HTTP_200_OK, data=serializer.data)
+
+    @decorators.action(detail=False, methods=["GET"])
+    def iliked(self, request):
+        like_queryset = LikedItemModel.objects.select_related(
+            'user').filter(user_id=request.user.id)
+        serializer = LikedUserSerializer(like_queryset, many=True)
+        return response.Response(status=status.HTTP_200_OK, data=serializer.data)
+
+    @decorators.action(detail=True, methods=["GET", "DELETE"], permission_classes=[permissions.IsAuthenticated])
+    def mylike(self, request, pk=None):
+        queryset = self.get_object()
+        is_user_like = False
+        if request.user.id == queryset.user.id:
+            is_user_like = True
+        if is_user_like:
+            if request.method == "GET":
+                serializer = LikedUserSerializer(queryset)
+                return response.Response(status=status.HTTP_200_OK, data=serializer.data)
+            elif request.method == "DELETE":
+                queryset.delete()
+                return response.Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            return response.Response(status=status.HTTP_401_UNAUTHORIZED, data={"Error": "Unauthorized"})

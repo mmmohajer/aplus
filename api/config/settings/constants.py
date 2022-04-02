@@ -28,6 +28,7 @@ SITE_HEADER_NAME = os.environ.get('SITE_HEADER_NAME', 'Rest Api')
 
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
+    'PAGE_SIZE': 10,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
