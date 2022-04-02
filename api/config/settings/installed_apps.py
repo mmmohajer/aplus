@@ -15,6 +15,7 @@ THIRD_PARTY_APPS = [
     'phonenumber_field',
     'debug_toolbar',
     'djoser',
+    'rest_framework_swagger',
 ]
 
 LOCAL_APPS = [

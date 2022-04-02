@@ -20,12 +20,18 @@ class LikedUserViewSet(viewsets.ModelViewSet):
         serializer = LikedUserSerializer(like_queryset, many=True)
         return response.Response(status=status.HTTP_200_OK, data=serializer.data)
 
-    @decorators.action(detail=False, methods=["GET"])
-    def iliked(self, request):
-        like_queryset = LikedItemModel.objects.select_related(
-            'user').filter(user_id=request.user.id)
-        serializer = LikedUserSerializer(like_queryset, many=True)
-        return response.Response(status=status.HTTP_200_OK, data=serializer.data)
+    @decorators.action(detail=False, methods=["GET", "POST"], permission_classes=[permissions.IsAuthenticated])
+    def iliked(self, request, *args, **kwargs):
+        if request.method == "GET":
+            like_queryset = LikedItemModel.objects.select_related(
+                'user').filter(user_id=request.user.id)
+            serializer = LikedUserSerializer(like_queryset, many=True)
+            return response.Response(status=status.HTTP_200_OK, data=serializer.data)
+        elif request.method == "POST":
+            serializer = LikedUserSerializer(data=request.data, context={'request': request})
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return response.Response(status=status.HTTP_201_CREATED, data=serializer.data)
 
     @decorators.action(detail=True, methods=["GET", "DELETE"], permission_classes=[permissions.IsAuthenticated])
     def mylike(self, request, pk=None):
