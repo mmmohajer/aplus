@@ -36,6 +36,7 @@ let config = {
       Store: path.resolve(__dirname, "src/store/"),
       Hooks: path.resolve(__dirname, "src/hooks/"),
       Utils: path.resolve(__dirname, "src/utils/"),
+      Constants: path.resolve(__dirname, "src/constants/"),
     },
   },
   plugins: [

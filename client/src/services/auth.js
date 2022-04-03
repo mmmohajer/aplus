@@ -1,5 +1,12 @@
-import { login as loginReducer } from "Reducers/apiCalls/auth";
+import {
+  authenticated as authenticatedReducer,
+  notAuthenticated as notAuthenticatedReducer,
+} from "Reducers/apiCalls/isAuthenticated";
 
-export const login = (dispatch, data) => {
-  dispatch(loginReducer(data));
+export const authenticated = (dispatch) => {
+  dispatch(authenticatedReducer());
+};
+
+export const notAuthenticated = (dispatch) => {
+  dispatch(notAuthenticatedReducer());
 };

@@ -3,7 +3,7 @@ import cx from "classnames";
 import { Form, Label, Input } from "basedesign-iswad";
 
 import useApiCalls from "Hooks/useApiCalls";
-import { login } from "Services/auth";
+import { REGISTER_API_ROUTE } from "Constants/apiRoutes";
 
 import styles from "./Register.module.scss";
 
@@ -69,7 +69,7 @@ const Register = () => {
   const { data, error } = useApiCalls(
     sendRegisterReq,
     "POST",
-    "/api/auth/users/",
+    REGISTER_API_ROUTE,
     bodyData,
     ""
   );
