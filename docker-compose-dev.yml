@@ -34,7 +34,7 @@ services:
       dockerfile: Dockerfile
       context: ./api
     env_file:
-      - ./config/env/django/develop/.env
+      - ./config/envFiles/django/develop/.env
     volumes:
       - ./api:/usr/src/app
     command: ./docker-entrypoint-dev.sh
@@ -46,7 +46,7 @@ services:
   db:
     image: postgres:13-alpine
     env_file:
-      - ./config/env/postgres/develop/.env
+      - ./config/envFiles/postgres/develop/.env
     ports:
       - 5001:5432
     volumes:

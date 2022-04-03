@@ -32,7 +32,7 @@ services:
       dockerfile: Dockerfile
       context: ./api
     env_file:
-      - ./config/env/django/prod/.env
+      - ./config/envFiles/django/prod/.env
     command: ./docker-entrypoint-prod.sh
     volumes:
       - static-data:/usr/src/app/vol
@@ -45,7 +45,7 @@ services:
     restart: always
     image: postgres:13-alpine
     env_file:
-      - ./config/env/postgres/prod/.env
+      - ./config/envFiles/postgres/prod/.env
     ports:
       - ${SERVER_PORT}:${DB_PORT}
     volumes:
