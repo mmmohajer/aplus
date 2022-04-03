@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const reducerObject = {};
-reducerObject["getBugs"] = (state, action) => action.payload;
+reducerObject["login"] = (state, action) => action.payload;
 
 const slice = createSlice({
-  name: "bugs",
+  name: "auth",
   initialState: [],
   reducers: reducerObject,
 });
 
-export const { getBugs } = slice.actions;
+export const { login } = slice.actions;
 export default slice.reducer;

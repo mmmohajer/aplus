@@ -3,12 +3,12 @@ import { combineReducers } from "redux";
 import loading from "./general/loading";
 import notifications from "./general/notifications";
 
-import bugs from "./apiCalls/bugs";
+import auth from "./apiCalls/auth";
 
 const reducer = combineReducers({
   loading,
   notifications,
-  bugs,
+  auth,
 });
 
 export default reducer;
