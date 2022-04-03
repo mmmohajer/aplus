@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.db import IntegrityError, transaction
 from django.conf import settings
+from rest_framework import serializers
 
 from core.models import ProfileModel
 
@@ -39,5 +40,13 @@ class UserCreateSerializer(BaseUserCreateSerializer):
 
 
 class UserSerializer(BaseUserSerializer):
+
+    groups = serializers.SerializerMethodField('get_groups')
+
+    def get_groups(self, obj):
+        user_groups_queryset = obj.groups.all()
+        cur_user_groups = [group.name for group in list(user_groups_queryset)]
+        return cur_user_groups
+
     class Meta(BaseUserSerializer.Meta):
-        fields = ['id', 'uuid', 'first_name', 'last_name', 'email']
+        fields = ['id', 'uuid', 'first_name', 'last_name', 'email', 'groups']

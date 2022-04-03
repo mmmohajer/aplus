@@ -5,7 +5,12 @@ class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
         if request.method in permissions.SAFE_METHODS:
             return True
-        return bool(request.user and request.user.is_staff)
+        if request.user:
+            user_groups_queryset = request.user.groups.all()
+            cur_user_groups = [group.name for group in list(user_groups_queryset)]
+            if "Admin" in cur_user_groups:
+                return True
+        return False
 
 
 class FullDjangoModelPermissions(permissions.DjangoModelPermissions):
