@@ -17,8 +17,8 @@ import styles from "./Login.module.scss";
 const Login = () => {
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("mmmohajer70@gmail.com");
-  const [password, setPassword] = useState("Mb3742870!?!");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [emailErrorIsActive, setEmailErrorIsActive] = useState(false);
