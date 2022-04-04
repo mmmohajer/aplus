@@ -11,7 +11,7 @@ import styles from \"./$compName.module.scss\";
 const $compName = () => {
   return (
     <>
-      <div>$compName</div>
+      <Div>$compName</Div>
     </>
   );
 };
@@ -36,7 +36,7 @@ import styles from \"./$compName.module.scss\";
 const $compName = () => {
   return (
     <PublicRoute>
-      <div>$compName</div>
+      <Div>$compName</Div>
     </PublicRoute>
   );
 };

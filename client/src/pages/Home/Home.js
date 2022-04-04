@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import cx from "classnames";
+import { Div, Paragraph } from "basedesign-iswad";
 
 import { addAlertItem } from "Utils/notifications";
 import PublicRoute from "Components/PublicRoute";
@@ -18,11 +19,11 @@ function Home() {
 
   return (
     <PublicRoute>
-      <div>
-        <p>This is the homepage for your new app!</p>
-        <p>Test env var {process.env.TEST}</p>
-      </div>
-      <div className="footer">Footer</div>
+      <Div>
+        <Paragraph>This is the homepage for your new app!</Paragraph>
+        <Paragraph>Test env var {process.env.TEST}</Paragraph>
+      </Div>
+      <Div className="footer">Footer</Div>
     </PublicRoute>
   );
 }
