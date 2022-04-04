@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   Div,
   Paragraph,
-  Alert as IswadAlert,
+  Alert as BaseAlert,
   AlertItem,
 } from "basedesign-iswad";
 
@@ -18,7 +18,7 @@ const Alert = () => {
 
   return (
     <>
-      <IswadAlert>
+      <BaseAlert>
         {notifications.map((notif) => (
           <AlertItem
             key={notif.key}
@@ -46,7 +46,7 @@ const Alert = () => {
             </Div>
           </AlertItem>
         ))}
-      </IswadAlert>
+      </BaseAlert>
     </>
   );
 };

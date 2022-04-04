@@ -10,6 +10,7 @@ import { emailValidators, passwordValidators } from "./utils";
 import { setLocalStorage } from "Utils/auth";
 import { authenticated } from "Services/auth";
 import { LOGIN_API_ROUTE } from "Constants/apiRoutes";
+import { addAlertItem } from "Utils/notifications";
 
 import styles from "./Login.module.scss";
 
@@ -59,9 +60,25 @@ const Login = () => {
       setLocalStorage("access_token", data["access"]);
       setLocalStorage("refresh_token", data["refresh"]);
       authenticated(dispatch);
-      let decoded = jwt_decode(data["access"]);
+      // let decoded = jwt_decode(data["access"]);
+      addAlertItem(
+        dispatch,
+        "Thanks! you have been successfully registered with us.",
+        "success"
+      );
     }
   }, [data]);
+
+  useEffect(() => {
+    if (error) {
+      addAlertItem(
+        dispatch,
+        "A user with this credentials does not exist!",
+        "error"
+      );
+    }
+  }, [error]);
+
   return (
     <>
       <Form

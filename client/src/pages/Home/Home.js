@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import cx from "classnames";
 import { Div, Paragraph } from "basedesign-iswad";
 
-import { addAlertItem } from "Utils/notifications";
 import PublicRoute from "Components/PublicRoute";
 
 import styles from "./Home.module.scss";
 
 function Home() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    addAlertItem(dispatch, "This is first notification", "success");
-    addAlertItem(dispatch, "This is second notification", "error");
-    addAlertItem(dispatch, "This is third notification", "danger");
-  }, []);
-
   return (
     <PublicRoute>
       <Div>
