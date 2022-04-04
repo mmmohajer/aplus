@@ -8,7 +8,6 @@ import PublicRoute from "Components/PublicRoute";
 import styles from "./Home.module.scss";
 
 function Home() {
-  const bugs = useSelector((state) => state.bugs);
   const dispatch = useDispatch();
 
   useEffect(() => {

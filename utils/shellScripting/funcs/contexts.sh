@@ -4,6 +4,7 @@ getJsContext() {
 
     local jsContext="""import React from \"react\";
 import cx from \"classnames\";
+import { Div } from \"basedesign-iswad\";
 
 import styles from \"./$compName.module.scss\";
 
@@ -12,6 +13,31 @@ const $compName = () => {
     <>
       <div>$compName</div>
     </>
+  );
+};
+
+export default $compName;
+"""
+    echo "$jsContext"
+}
+
+getJsPageContext() {
+    local compName=$1
+    compName="$(tr '[:lower:]' '[:upper:]' <<< ${compName:0:1})${compName:1}"
+
+    local jsContext="""import React from \"react\";
+import cx from \"classnames\";
+import { Div } from \"basedesign-iswad\";
+
+import PublicRoute from \"Components/PublicRoute\";
+
+import styles from \"./$compName.module.scss\";
+
+const $compName = () => {
+  return (
+    <PublicRoute>
+      <div>$compName</div>
+    </PublicRoute>
   );
 };
 

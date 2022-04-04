@@ -29,7 +29,7 @@ createReactPage() {
     local addr="client/src/pages/$pageName"
     mkdir -p "$addr"
     
-    local jsContext=$(getJsContext $pageName)
+    local jsContext=$(getJsPageContext $pageName)
     local indexContext="export { default } from \"./$pageName\";"
     
     local innerJsFileAddr="client/src/pages/$pageName/$pageName.js"
