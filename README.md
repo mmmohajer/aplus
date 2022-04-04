@@ -5,7 +5,7 @@
    Create a python virtual env: `python3 -m venv venv` <br>
    Activate the environment: <br>
    Mac/Linux: `source venv/bin/activate` <br>
-   Windows: `cd .\venv\Scripts\activate` <br>
+   Windows: `cd venv\Scripts\activate` <br>
    Install all python packages: <br>
    `pip install --upgrade pip` <br>
    `pip install -r api/requirements.txt` <br>
