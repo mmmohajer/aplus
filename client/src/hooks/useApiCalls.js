@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { isLoading, isLoaded } from "Reducers/general/loading";
 
-const useApiCalls = (sendReq, method, url, bodyData, headers) => {
+const useApiCalls = (sendReq, setSendReq, method, url, bodyData, headers) => {
   const dispatch = useDispatch();
 
   const [data, setData] = useState();
@@ -51,6 +51,7 @@ const useApiCalls = (sendReq, method, url, bodyData, headers) => {
         setError(err);
         dispatch(isLoaded());
       }
+      setSendReq(false);
     }
   }, [sendReq]);
   return { data, error };

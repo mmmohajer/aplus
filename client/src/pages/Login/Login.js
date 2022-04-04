@@ -47,6 +47,7 @@ const Login = () => {
   };
   const { data, error } = useApiCalls(
     sendLoginReq,
+    setSendLoginReq,
     "POST",
     LOGIN_API_ROUTE,
     bodyData,

@@ -68,6 +68,7 @@ const Register = () => {
   };
   const { data, error } = useApiCalls(
     sendRegisterReq,
+    setSendRegisterReq,
     "POST",
     REGISTER_API_ROUTE,
     bodyData,

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import cx from "classnames";
 
-import styles from "./Home.module.scss";
-
 import { addAlertItem } from "Utils/notifications";
+import PublicRoute from "Components/PublicRoute";
+
+import styles from "./Home.module.scss";
 
 function Home() {
   const bugs = useSelector((state) => state.bugs);
@@ -17,13 +18,13 @@ function Home() {
   }, []);
 
   return (
-    <>
+    <PublicRoute>
       <div>
         <p>This is the homepage for your new app!</p>
         <p>Test env var {process.env.TEST}</p>
       </div>
       <div className="footer">Footer</div>
-    </>
+    </PublicRoute>
   );
 }
 

@@ -33,6 +33,7 @@ function App() {
 
   const { data: refreshData, error: refreshError } = useApiCalls(
     sendrefreshTokenReq,
+    setSendRefreshTokenReq,
     "POST",
     REFRESH_TOKEN_API_ROUTE,
     { refresh: refreshToken }
@@ -40,6 +41,7 @@ function App() {
 
   const { data: profileData, error: profileError } = useApiCalls(
     sendGetCurUserReq,
+    setSendGetCurUserReq,
     "GET",
     MY_PROFILE_API_ROUTE,
     "",
@@ -53,6 +55,7 @@ function App() {
       notAuthenticated(dispatch);
     }
   }, []);
+
   useEffect(() => {
     if (isAuthenticated) {
       setAccessToken(getLocalStorage("access_token"));
