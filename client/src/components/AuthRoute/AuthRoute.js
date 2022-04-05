@@ -4,25 +4,17 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Div, Paragraph } from "basedesign-iswad";
 
-import styles from "./AdminRoute.module.scss";
+import styles from "./AuthRoute.module.scss";
 
-const AdminRoute = ({ children }) => {
+const AuthRoute = ({ children }) => {
   const navigate = useNavigate();
 
-  const profile = useSelector((state) => state.profile);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const isAuthenticated = useSelector((state) => state.isAuthenticated);
+
   const [time, setTime] = useState(5);
 
   useEffect(() => {
-    if (profile?.user?.groups?.includes("Admin")) {
-      setIsAdmin(true);
-    } else {
-      setIsAdmin(false);
-    }
-  }, [profile]);
-
-  useEffect(() => {
-    if (!isAdmin) {
+    if (!isAuthenticated) {
       let currentTime = time;
       if (time > 0) {
         setTimeout(() => {
@@ -34,11 +26,11 @@ const AdminRoute = ({ children }) => {
         navigate("/");
       }
     }
-  }, [isAdmin, time]);
+  }, [isAuthenticated, time]);
 
   return (
     <>
-      {isAdmin ? (
+      {isAuthenticated ? (
         children
       ) : (
         <Div>
@@ -50,4 +42,4 @@ const AdminRoute = ({ children }) => {
   );
 };
 
-export default AdminRoute;
+export default AuthRoute;

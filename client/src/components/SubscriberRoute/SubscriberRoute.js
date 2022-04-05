@@ -12,7 +12,6 @@ const SubscriberRoute = ({ children }) => {
   const profile = useSelector((state) => state.profile);
   const [isSubscriber, setIsSubscriber] = useState(true);
   const [time, setTime] = useState(5);
-  let interval;
 
   useEffect(() => {
     if (profile?.user?.groups?.includes("Subscriber")) {
