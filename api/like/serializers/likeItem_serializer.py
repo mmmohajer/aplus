@@ -15,11 +15,11 @@ class LikeItemSerializer(serializers.ModelSerializer):
 
     def get_liked_item(self, obj):
         queryset = self.object_type.objects.filter(id=obj.object_id).first()
-        serializer = UserSerializer(queryset)
+        serializer = self.object_type_serializer(queryset)
         return serializer.data
 
     def create(self, validated_data):
-        content_type = contentModel.ContentType.objects.get_for_model(User)
+        content_type = contentModel.ContentType.objects.get_for_model(self.object_type)
         content_type_id = content_type.id
         user_id = self.context["request"].user.id
         object_id = validated_data["object_id"]
