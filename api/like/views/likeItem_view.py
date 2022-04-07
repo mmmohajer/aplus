@@ -2,38 +2,27 @@ from rest_framework import viewsets, permissions, status, views, response, decor
 from django.contrib.auth import get_user_model
 
 from core.permissions import *
+from core.views import ProtectedCRUDViewSet
 from like.models import *
 from like.serializers import *
 
 User = get_user_model()
 
 
-class LikeItemViewSet(viewsets.ModelViewSet):
+class LikeItemViewSet(ProtectedCRUDViewSet):
 
     def get_queryset(self):
         return LikedItemModel.objects.get_likes_for_type(self.object_type)
 
     def destroy(self, request, pk=None):
         instance = self.get_object()
-        user_groups_queryset = request.user.groups.all()
-        cur_user_groups = [group.name for group in list(user_groups_queryset)]
-        if request.user.id == instance.user.id or "Admin" in cur_user_groups:
-            instance.delete()
-            return response.Response(status=status.HTTP_204_NO_CONTENT)
-        else:
-            return response.Response(status=status.HTTP_401_UNAUTHORIZED, data={"Error": "Unauthorized"})
+        instance_user_id = instance.user.id
+        return self.protected_delete(request, instance, instance_user_id, pk)
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
-        user_groups_queryset = request.user.groups.all()
-        cur_user_groups = [group.name for group in list(user_groups_queryset)]
-        if request.user.id == instance.user.id or "Admin" in cur_user_groups:
-            serializer = self.serializer_class(instance, data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return response.Response(status=status.HTTP_200_OK, data=serializer.data)
-        else:
-            return response.Response(status=status.HTTP_401_UNAUTHORIZED, data={"Error": "Unauthorized"})
+        instance_user_id = instance.user.id
+        return self.protected_update(request, instance, instance_user_id, *args, **kwargs)
 
     # CUSTOM ACTIONS:
 
