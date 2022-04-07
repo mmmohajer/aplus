@@ -32,6 +32,17 @@ class LikeItemSerializer(serializers.ModelSerializer):
                 content_type_id=content_type_id, user_id=user_id, object_id=object_id)
         return liked_item
 
+    def update(self, instance, validated_data):
+        like_queryset = LikedItemModel.objects.filter(
+            content_type_id=instance.content_type_id, user_id=instance.user.id, object_id=validated_data["object_id"])
+        if like_queryset.count() > 0:
+            liked_item = like_queryset.first()
+            liked_item.delete()
+        for attr, val in validated_data.items():
+            setattr(instance, attr, val)
+        instance.save()
+        return instance
+
     class Meta:
         model = LikedItemModel
         fields = ['id', 'uuid', 'user', 'object_id', 'liked_item']
