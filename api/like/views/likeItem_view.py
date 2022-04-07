@@ -22,7 +22,22 @@ class LikeItemViewSet(ProtectedCRUDViewSet):
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
         instance_user_id = instance.user.id
-        return self.protected_update(request, instance, instance_user_id, *args, **kwargs)
+        object_id = request.data["object_id"]
+        queryset = self.object_type.objects.filter(id=object_id)
+        if queryset.count() > 0:
+            return self.protected_update(request, instance, instance_user_id, *args, **kwargs)
+        return response.Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def create(self, request, *args, **kwargs):
+        object_id = request.data["object_id"]
+        queryset = self.object_type.objects.filter(id=object_id)
+        if queryset.count() > 0:
+            serializer = self.serializer_class(
+                data=request.data, context={'request': request})
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return response.Response(status=status.HTTP_201_CREATED, data=serializer.data)
+        return response.Response(status=status.HTTP_400_BAD_REQUEST)
 
     # CUSTOM ACTIONS:
 
