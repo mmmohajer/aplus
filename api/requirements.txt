@@ -20,3 +20,6 @@ djoser>=1.0.0,<=2.1.0
 djangorestframework_simplejwt>=4.0.0,<=5.1.0
 Fabric3>=1.14.post1
 django-rest-swagger>=2.0.1,<=2.2.0
+django-templated-email>=2.0.0,<=3.0.0
+celery>=4.4.0,<=5.2.6
+redis>=3.5.3,<=4.2.2

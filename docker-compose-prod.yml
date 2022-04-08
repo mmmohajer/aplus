@@ -35,7 +35,7 @@ services:
     env_file:
       - ./config/envFiles/postgres/prod/.env
     ports:
-      - ${SERVER_PORT}:${DB_PORT}
+      - "${SERVER_PORT}:${DB_PORT}"
     volumes:
       - pgdata:/var/lib/postgresql/data
 
