@@ -39,6 +39,7 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     username = None
     email = models.EmailField(unique=True)
+    register_token = models.CharField(max_length=256, blank=True, null=True)
 
     class Meta(AbstractUser.Meta):
         ordering = ('email',)

@@ -29,6 +29,7 @@ SITE_HEADER_NAME = os.environ.get('SITE_HEADER_NAME', 'Rest Api')
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
     'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -46,10 +47,10 @@ DJOSER = {
         'user_create': 'core.serializers.UserCreateSerializer',
         'current_user': 'core.serializers.UserSerializer',
         'user': 'core.serializers.UserSerializer'
-    }
+    },
 }
 
-SEND_ACTIVATION_EMAIL = False
+SEND_ACTIVATION_EMAIL = True
 
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_USE_TLS = os.environ.get('EMAIL_HOST', False)

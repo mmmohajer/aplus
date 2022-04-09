@@ -6,8 +6,12 @@ from django.contrib.auth.models import Group
 from django.db import IntegrityError, transaction
 from django.conf import settings
 from rest_framework import serializers
+from rest_framework_simplejwt.tokens import AccessToken
+from djoser.signals import user_registered, user_activated
 
 from core.models import ProfileModel
+from core.tasks import send_activation_email
+from core.utils import code_generator
 
 User = get_user_model()
 
@@ -35,7 +39,11 @@ class UserCreateSerializer(BaseUserCreateSerializer):
             user = User.objects.create_user(**validated_data)
             if settings.SEND_ACTIVATION_EMAIL:
                 user.is_active = False
-                user.save(update_fields=["is_active"])
+                user_token = str(AccessToken.for_user(user))
+                user.register_token = user_token
+                user.save(update_fields=["is_active", "register_token"])
+                send_activation_email.delay(
+                    validated_data["first_name"], validated_data["email"], user_token)
         return user
 
 

@@ -3,7 +3,6 @@ from rest_framework import viewsets, permissions, status, views, response, decor
 from django.shortcuts import render
 from django.conf import settings
 from templated_email import send_templated_mail
-from core.tasks import notify_customers
 
 
 class SayHello(views.APIView):
@@ -29,7 +28,3 @@ class SayHello(views.APIView):
         except BadHeaderError:
             pass
         return response.Response("Hello")
-
-    # def get(self, request):
-    #     notify_customers.delay("Hello Customer")
-    #     return response.Response("Hello")

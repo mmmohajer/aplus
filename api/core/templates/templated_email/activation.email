@@ -1,0 +1,15 @@
+{% block subject %}Activate your email {{ first_name }}{% endblock %}
+
+{% block plain %}
+Hi {{ first_name }},
+You have recently registered with us! In order to confirm your identity please
+open the link below:
+http:localhost/activate-your-email?token={{ code }}  
+{% endblock %}
+
+{% block html %}
+<h1>Hi {{ first_name }},</h1>
+<p>You have recently registered with us! In order to confirm your identity please
+open the link below:<p>
+<span color="red">http:localhost/activate-your-email?token={{ code }}</span>
+{% endblock %}
