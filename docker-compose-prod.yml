@@ -29,6 +29,50 @@ services:
     depends_on:
       - db
 
+  celery:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    env_file:
+      - ./config/envFiles/django/prod/.env
+    volumes:
+      - ./api:/usr/src/app
+    command: celery -A config worker -l info
+    depends_on:
+      - db
+      - smtp4dev
+      - redis
+
+  celery-beat:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    env_file:
+      - ./config/envFiles/django/prod/.env
+    volumes:
+      - ./api:/usr/src/app
+    command: celery -A config beat -l info
+    depends_on:
+      - db
+      - smtp4dev
+      - redis
+  
+  celery-flower:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    env_file:
+      - ./config/envFiles/django/prod/.env
+    volumes:
+      - ./api:/usr/src/app
+    command: celery -A config flower --basic_auth=${CELERY_FLOWER_USER}:${CELERY_FLOWER_PASSWORD}
+    ports:
+      - "5555:5555"
+    depends_on:
+      - db
+      - smtp4dev
+      - redis
+  
   db:
     restart: always
     image: postgres:13-alpine
@@ -39,6 +83,23 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  smtp4dev:
+    image: rnwood/smtp4dev:3.1.3-ci20211206101
+    restart: always
+    ports:
+      - "1025:80"
+      - "2525:25"
+      - "143:143"
+    volumes:
+      - smtp4dev-data:/smtp4dev
+  
+  redis:
+    image: redis:alpine3.15
+    restart: always
+    ports:
+      - "6379:6379"
+
 volumes:
   pgdata:
   static-data:
+  smtp4dev-data:

@@ -42,6 +42,52 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - smtp4dev
+      - redis
+  
+  celery:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    env_file:
+      - ./config/envFiles/django/develop/.env
+    volumes:
+      - ./api:/usr/src/app
+    command: celery -A config worker -l info
+    depends_on:
+      - db
+      - smtp4dev
+      - redis
+
+  celery-beat:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    env_file:
+      - ./config/envFiles/django/develop/.env
+    volumes:
+      - ./api:/usr/src/app
+    command: celery -A config beat -l info
+    depends_on:
+      - db
+      - smtp4dev
+      - redis
+  
+  celery-flower:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    env_file:
+      - ./config/envFiles/django/develop/.env
+    volumes:
+      - ./api:/usr/src/app
+    command: celery -A config flower --basic_auth=user:password
+    ports:
+      - "5555:5555"
+    depends_on:
+      - db
+      - smtp4dev
+      - redis
 
   db:
     image: postgres:13-alpine
