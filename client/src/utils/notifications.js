@@ -19,3 +19,11 @@ export const addAlertItem = (dispatch, message, type) => {
     removeAlertItem(dispatch, key);
   }, 10000);
 };
+
+export const showErrorAPIAlert = (error, dispatch) => {
+  if (error && error?.data) {
+    Object.keys(error.data).forEach((key) => {
+      addAlertItem(dispatch, error.data[key], "error");
+    });
+  }
+};

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
-import { Form, Label, Input } from "basedesign-iswad";
+import { useDispatch } from "react-redux";
+import { Form, Label, Input, Div, Button } from "basedesign-iswad";
 
 import useApiCalls from "Hooks/useApiCalls";
-import { REGISTER_API_ROUTE } from "Constants/apiRoutes";
+import {
+  REGISTER_API_ROUTE,
+  RESEND_ACTIVATE_EMAIL_API_ROUTE,
+} from "Constants/apiRoutes";
+import { addAlertItem, showErrorAPIAlert } from "Utils/notifications";
 
 import styles from "./Register.module.scss";
 
@@ -15,10 +20,13 @@ import {
 } from "./utils";
 
 const Register = () => {
+  const dispatch = useDispatch();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const [fistNameErrorMessage, setFirstNameErrorMessage] = useState("");
   const [fistNameErrorIsActive, setFirstNameErrorIsActive] = useState(false);
@@ -77,9 +85,45 @@ const Register = () => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
+      setSubmitted(true);
+      addAlertItem(
+        dispatch,
+        "Please check your inbox to validate your email address.",
+        "success"
+      );
     }
   }, [data]);
+
+  useEffect(() => {
+    showErrorAPIAlert(error, dispatch);
+  }, [error]);
+
+  const [sendResendEmailReq, setSendResendEmailReq] = useState(false);
+  const bodyResendData = {
+    email,
+  };
+  const { data: resendData, error: resendError } = useApiCalls(
+    sendResendEmailReq,
+    setSendResendEmailReq,
+    "POST",
+    RESEND_ACTIVATE_EMAIL_API_ROUTE,
+    bodyResendData,
+    ""
+  );
+
+  useEffect(() => {
+    if (resendData) {
+      addAlertItem(
+        dispatch,
+        "Please check your inbox to validate your email address.",
+        "success"
+      );
+    }
+  }, [resendData]);
+
+  useEffect(() => {
+    showErrorAPIAlert(resendError, dispatch);
+  }, [resendError]);
 
   return (
     <>
@@ -145,6 +189,13 @@ const Register = () => {
         />
         <Input type="submit" value="Submit" />
       </Form>
+      {submitted && (
+        <Div>
+          <Button onClick={() => setSendResendEmailReq(true)}>
+            Resend Email
+          </Button>
+        </Div>
+      )}
     </>
   );
 };

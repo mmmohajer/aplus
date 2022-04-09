@@ -8,5 +8,6 @@ api_router.register(r'profile', views.ProfileViewSet, basename='profile')
 
 urlpatterns = [
     path('', include(api_router.urls)),
-    path('say-hello/', views.SayHello),
+    path('activate-user/', views.ActivateUserViewSet),
+    path('resend-activation-email/', views.ResendActivationEmailViewSet),
 ]

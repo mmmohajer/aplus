@@ -48,7 +48,7 @@ const useApiCalls = (sendReq, setSendReq, method, url, bodyData, headers) => {
         dispatch(isLoaded());
       } catch (err) {
         console.log(err);
-        setError(err);
+        setError(err.response);
         dispatch(isLoaded());
       }
       setSendReq(false);

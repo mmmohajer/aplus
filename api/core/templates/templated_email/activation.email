@@ -11,5 +11,5 @@ http:localhost/activate-your-email?token={{ code }}
 <h1>Hi {{ first_name }},</h1>
 <p>You have recently registered with us! In order to confirm your identity please
 open the link below:<p>
-<span color="red">http:localhost/activate-your-email?token={{ code }}</span>
+<a href="http://localhost/activate-user?token={{ code }}"><span style="color:red">Click here!</span></a>
 {% endblock %}

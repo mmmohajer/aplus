@@ -1,7 +1,8 @@
-from . import profile_view, general_view, test_mail_view
+from . import profile_view, general_view, user_view
 
 ProtectedCRUDViewSet = general_view.ProtectedCRUDViewSet
 
 ProfileViewSet = profile_view.ProfileViewSet
 
-SayHello = test_mail_view.SayHello.as_view()
+ActivateUserViewSet = user_view.ActivateUserViewSet.as_view()
+ResendActivationEmailViewSet = user_view.ResendActivationEmailViewSet.as_view()

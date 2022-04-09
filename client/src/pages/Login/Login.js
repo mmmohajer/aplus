@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
-import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { Form, Label, Input } from "basedesign-iswad";
 
 import useApiCalls from "Hooks/useApiCalls";
-import { login } from "Services/auth";
 import { emailValidators, passwordValidators } from "./utils";
 import { setLocalStorage } from "Utils/auth";
 import { authenticated } from "Services/auth";
 import { LOGIN_API_ROUTE } from "Constants/apiRoutes";
-import { addAlertItem } from "Utils/notifications";
+import { addAlertItem, showErrorAPIAlert } from "Utils/notifications";
 
 import styles from "./Login.module.scss";
 
@@ -60,23 +58,12 @@ const Login = () => {
       setLocalStorage("access_token", data["access"]);
       setLocalStorage("refresh_token", data["refresh"]);
       authenticated(dispatch);
-      // let decoded = jwt_decode(data["access"]);
-      addAlertItem(
-        dispatch,
-        "Thanks! you have been successfully registered with us.",
-        "success"
-      );
+      addAlertItem(dispatch, "You have successfully logged in.", "success");
     }
   }, [data]);
 
   useEffect(() => {
-    if (error) {
-      addAlertItem(
-        dispatch,
-        "A user with this credentials does not exist!",
-        "error"
-      );
-    }
+    showErrorAPIAlert(error, dispatch);
   }, [error]);
 
   return (

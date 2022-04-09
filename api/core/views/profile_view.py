@@ -1,4 +1,3 @@
-from urllib import request
 from django.shortcuts import get_object_or_404, render
 from django.conf import settings
 from rest_framework import viewsets, permissions, status, views, response, decorators, response, pagination
