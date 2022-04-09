@@ -36,7 +36,7 @@ services:
     env_file:
       - ./config/envFiles/django/prod/.env
     volumes:
-      - ./api:/usr/src/app
+      - static-data:/usr/src/app/vol
     command: celery -A config worker -l info
     depends_on:
       - db
@@ -50,7 +50,7 @@ services:
     env_file:
       - ./config/envFiles/django/prod/.env
     volumes:
-      - ./api:/usr/src/app
+      - static-data:/usr/src/app/vol
     command: celery -A config beat -l info
     depends_on:
       - db
@@ -64,7 +64,7 @@ services:
     env_file:
       - ./config/envFiles/django/prod/.env
     volumes:
-      - ./api:/usr/src/app
+      - static-data:/usr/src/app/vol
     command: celery -A config flower --basic_auth=${CELERY_FLOWER_USER}:${CELERY_FLOWER_PASSWORD}
     ports:
       - "5555:5555"
