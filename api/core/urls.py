@@ -10,4 +10,6 @@ urlpatterns = [
     path('', include(api_router.urls)),
     path('activate-user/', views.ActivateUserViewSet),
     path('resend-activation-email/', views.ResendActivationEmailViewSet),
+    path('send-reset-password-email/', views.SendForgotPasswordViewSet),
+    path('reset-password/', views.ResetPasswordViewSet),
 ]

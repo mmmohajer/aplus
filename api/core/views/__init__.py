@@ -6,3 +6,5 @@ ProfileViewSet = profile_view.ProfileViewSet
 
 ActivateUserViewSet = user_view.ActivateUserViewSet.as_view()
 ResendActivationEmailViewSet = user_view.ResendActivationEmailViewSet.as_view()
+SendForgotPasswordViewSet = user_view.SendForgotPasswordViewSet.as_view()
+ResetPasswordViewSet = user_view.ResetPasswordViewSet.as_view()
