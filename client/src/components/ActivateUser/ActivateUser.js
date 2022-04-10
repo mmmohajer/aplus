@@ -19,7 +19,7 @@ const ActivateUser = () => {
 
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState("");
-  const [sendActivateReq, setSendActivateReq] = useState("");
+  const [sendActivateReq, setSendActivateReq] = useState(false);
   const bodyData = {
     userId,
     token,

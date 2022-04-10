@@ -196,6 +196,11 @@ const Register = () => {
           </Button>
         </Div>
       )}
+      <Div>
+        <Button onClick={() => setSendResendEmailReq(true)}>
+          Forgot Password
+        </Button>
+      </Div>
     </>
   );
 };
