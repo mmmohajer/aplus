@@ -55,11 +55,14 @@ class SendForgotPasswordViewSet(views.APIView):
 class ResetPasswordViewSet(views.APIView):
 
     def post(self, request, format=None):
-        user = get_object_or_404(User, email=request.data.get("email"))
+        user = get_object_or_404(User, id=request.data.get("userId"))
         if user:
             reset_password_token = request.data.get("token")
+            print(reset_password_token)
+            print(user.reset_password_token)
             if user.reset_password_token == reset_password_token:
                 password = request.data.get("password")
+                print(password)
                 try:
                     validators.validate_password(password=password, user=user)
                     user.set_password(password)
@@ -67,5 +70,5 @@ class ResetPasswordViewSet(views.APIView):
                     user.save(update_fields=["is_active", "password"])
                     return response.Response(status=status.HTTP_200_OK, data={"password_reset": True, "message": "Pasword has been reset successfully!"})
                 except Exception as e:
-                    return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"password_reset": False, "error": e})
+                    return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"password_reset": False, "error": str(e)})
         return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"password_reset": False, "message": "Unable to reset the password!"})
