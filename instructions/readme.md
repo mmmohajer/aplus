@@ -74,6 +74,8 @@ sudo cat fail2ban.log
 
 fail2ban-client set sshd unbanip IP_ADDRESS
 
+sudo git config --global user.email "mmmohajer70@gmail.com"
+
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
