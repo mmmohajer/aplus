@@ -7,6 +7,7 @@ git commit -m "$commitMsg"
 git push origin master
 local script=$( cat << EOF
 cd /var/www/app;
+git config --global user.email "$GIT_USER_EMAIL"
 echo $sudoPassword | sudo -S git pull origin master;
 echo $sudoPassword | sudo -S docker-compose -f docker-compose-prod-ssl.yml down;
 echo $sudoPassword | sudo -S docker-compose -f docker-compose-prod-ssl.yml up --build -d;
