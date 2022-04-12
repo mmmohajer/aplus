@@ -40,7 +40,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
-  
+
   celery:
     build:
       dockerfile: Dockerfile
@@ -52,7 +52,6 @@ services:
     command: celery -A config worker -l info
     depends_on:
       - db
-      - smtp4dev
       - redis
 
   celery-beat:
@@ -66,9 +65,8 @@ services:
     command: celery -A config beat -l info
     depends_on:
       - db
-      - smtp4dev
       - redis
-  
+
   celery-flower:
     build:
       dockerfile: Dockerfile
@@ -82,7 +80,6 @@ services:
       - "5555:5555"
     depends_on:
       - db
-      - smtp4dev
       - redis
 
   db:
@@ -94,7 +91,7 @@ services:
       - "${SERVER_PORT}:${DB_PORT}"
     volumes:
       - pgdata:/var/lib/postgresql/data
-  
+
   redis:
     image: redis:alpine3.15
     restart: always
