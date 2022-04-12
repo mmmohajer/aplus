@@ -6,6 +6,7 @@ source ./utils/shellScripting/funcs/helpers.sh
 source ./utils/shellScripting/funcs/contexts.sh
 source ./utils/shellScripting/funcs/client.sh
 source ./utils/shellScripting/funcs/api.sh
+source ./utils/shellScripting/funcs/deploy.sh
 
 cat << EOF
 This script runs to help you develop your application much faster.
@@ -26,6 +27,7 @@ run() {
             [ $selected == 1 ] && createReactComponent
             [ $selected == 2 ] && createReactPage
             [ $selected == 3 ] && addDjangoApp
+            [ $selected == 4 ] && deploy
         else
             run
         fi

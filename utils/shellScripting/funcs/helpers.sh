@@ -69,6 +69,7 @@ cat << EOF
 1. Create a new react component.
 2. Create a new react page.
 3. Create a new django app.
+4. Deploy to server
 $(echo -en "${I_CYAN}")0. Show MenuBar
 $(echo -en "${I_RED}")Q. Exit
 EOF

@@ -252,3 +252,5 @@ GitHub.sublime-settings
 api/vol
 
 .ssh
+nginx/certbot
+sudoPassword.txt
