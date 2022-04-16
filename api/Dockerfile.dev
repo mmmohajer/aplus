@@ -25,8 +25,9 @@ RUN pip install --upgrade pip
 # Copy requirements.txt and install all the required libraries
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
-RUN pip install pytest
-    # Remove the temporarily installed dependencies, --->
+RUN pip install pytest pytest-django isort flake8 autopep8
+
+# Remove the temporarily installed dependencies, --->
 # in order to prevent any security issue
 RUN apk del .tmp-build-deps
 

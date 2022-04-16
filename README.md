@@ -9,6 +9,7 @@
    Install all python packages: <br>
    `pip install --upgrade pip` <br>
    `pip install -r api/requirements.txt` <br>
+   `pip install pytest pytest-django isort flake8 autopep8`
    Create the following subfolders: <br>
    `./api/vol/static/` <br>
    `./api/vol/media/` <br>
