@@ -1,0 +1,51 @@
+# Pull official base image
+FROM python:3.10.1-alpine3.14
+
+# Assign the label for the developer (arbitrary)
+LABEL Developer="Mohammad Mahdi Mohajer"
+
+# Set environment variables. These are required for python images
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# In order to properly install psycopg2 --->
+# We need two temporary install the following dependencies
+RUN apk add --update --no-cache postgresql-client
+RUN apk add --update --no-cache --virtual .tmp-build-deps \
+    gcc libc-dev python3-dev musl-dev jpeg-dev \
+    zlib-dev libjpeg linux-headers postgresql-dev \
+    libffi-dev build-base
+
+# Update the pip package manager
+RUN pip install --upgrade pip
+
+# Copy requirements.txt and install all the required libraries
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+RUN pip install pytest
+    # Remove the temporarily installed dependencies, --->
+# in order to prevent any security issue
+RUN apk del .tmp-build-deps
+
+# Copy all the files from current folder to --->
+# the working directory of the image
+COPY . .
+
+# Making the file docker-entrypoint.sh, wait-for executable
+RUN chmod +x /usr/src/app/docker-entrypoint-dev.sh
+RUN chmod +x /usr/src/app/docker-entrypoint-prod.sh
+RUN chmod +x /usr/src/app/wait-for
+
+# Open port 8000, default port for django:
+EXPOSE 8000
+
+# Create a user app that belongs to the group app
+RUN addgroup app && adduser -SG app app
+
+# Change the owner of current folder to the user app --->
+# And set the user app as the current user
+RUN chown -R app:app .
+USER app

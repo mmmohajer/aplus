@@ -31,7 +31,7 @@ services:
 
   api:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./api
     env_file:
       - ./config/envFiles/django/develop/.env
@@ -44,10 +44,10 @@ services:
       - db
       - smtp4dev
       - redis
-  
+
   celery:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./api
     env_file:
       - ./config/envFiles/django/develop/.env
@@ -61,7 +61,7 @@ services:
 
   celery-beat:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./api
     env_file:
       - ./config/envFiles/django/develop/.env
@@ -72,10 +72,10 @@ services:
       - db
       - smtp4dev
       - redis
-  
+
   celery-flower:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./api
     env_file:
       - ./config/envFiles/django/develop/.env
@@ -107,7 +107,7 @@ services:
       - "143:143"
     volumes:
       - smtp4dev-data:/smtp4dev
-  
+
   redis:
     image: redis:alpine3.15
     restart: always
