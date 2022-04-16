@@ -45,15 +45,6 @@ let config = {
       filename: "index.html",
       template: "./src/index.html",
     }),
-    new Dotenv({
-      path: "./.env",
-      safe: true,
-      allowEmptyValues: true,
-      systemvars: true,
-      silent: true,
-      defaults: false,
-      prefix: "process.env.",
-    }),
   ],
   module: {
     rules: [
@@ -109,6 +100,17 @@ if (currentTask == "dev") {
     allowedHosts: "all",
   };
   config.mode = "development";
+  config.plugins.push(
+    new Dotenv({
+      path: "./config/develop/.env.",
+      safe: true,
+      allowEmptyValues: true,
+      systemvars: true,
+      silent: true,
+      defaults: false,
+      prefix: "process.env.",
+    })
+  );
 }
 
 if (currentTask == "build") {
@@ -121,6 +123,17 @@ if (currentTask == "build") {
     libraryTarget: "commonjs2",
   };
   config.mode = "production";
+  config.plugins.push(
+    new Dotenv({
+      path: "./config/prod/.env.",
+      safe: true,
+      allowEmptyValues: true,
+      systemvars: true,
+      silent: true,
+      defaults: false,
+      prefix: "process.env.",
+    })
+  );
   config.optimization = {
     splitChunks: { chunks: "all" },
     minimize: true,
