@@ -50,7 +50,7 @@ DJOSER = {
     },
 }
 
-SEND_ACTIVATION_EMAIL = bool(int(os.environ.get('SEND_ACTIVATION_EMAIL', 1)))
+SEND_ACTIVATION_EMAIL = bool(int(os.environ.get('SEND_ACTIVATION_EMAIL', 0)))
 
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', False)
@@ -60,4 +60,4 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_PORT = os.environ.get('EMAIL_PORT', 25)
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'mmmohajer70@gmail.com')
 
-USE_CELERY = bool(int(os.environ.get('USE_CELERY', 1)))
+USE_CELERY = bool(int(os.environ.get('USE_CELERY', 0)))
