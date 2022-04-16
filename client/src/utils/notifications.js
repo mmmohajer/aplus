@@ -31,9 +31,13 @@ export const showErrorAPIAlert = (error, dispatch) => {
   if (error && error?.data) {
     Object.keys(error.data).forEach((key) => {
       if (error.data[key]) {
-        error.data[key].forEach((err) => {
-          addAlertItem(dispatch, err, "error");
-        });
+        if (Array.isArray(error.data[key])) {
+          error.data[key].forEach((err) => {
+            addAlertItem(dispatch, err, "error");
+          });
+        } else {
+          addAlertItem(dispatch, error.data[key], "error");
+        }
       }
     });
   }
