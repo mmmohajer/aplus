@@ -102,7 +102,7 @@ if (currentTask == "dev") {
   config.mode = "development";
   config.plugins.push(
     new Dotenv({
-      path: "./config/develop/.env.",
+      path: "./config/develop/.env",
       safe: true,
       allowEmptyValues: true,
       systemvars: true,
@@ -125,7 +125,7 @@ if (currentTask == "build") {
   config.mode = "production";
   config.plugins.push(
     new Dotenv({
-      path: "./config/prod/.env.",
+      path: "./config/prod/.env",
       safe: true,
       allowEmptyValues: true,
       systemvars: true,

@@ -31,20 +31,9 @@ export const showErrorAPIAlert = (error, dispatch) => {
   if (error && error?.data) {
     Object.keys(error.data).forEach((key) => {
       if (error.data[key]) {
-        if (error.data[key].startsWith("[")) {
-          let curErrors = error.data[key].split(", ");
-          if (curErrors.length === 1) {
-            const err = cleaningError(error.data[key]);
-            addAlertItem(dispatch, err, "error");
-          } else {
-            curErrors.forEach((err) => {
-              err = cleaningError(err);
-              addAlertItem(dispatch, err, "error");
-            });
-          }
-        } else {
-          addAlertItem(dispatch, error.data[key], "error");
-        }
+        error.data[key].forEach((err) => {
+          addAlertItem(dispatch, err, "error");
+        });
       }
     });
   }

@@ -15,7 +15,7 @@ const useApiCalls = ({
   bodyData,
   headers,
   useDefaultHeaders = true,
-  showLoading = true,
+  showLoading = false,
   showErrorMessage = true,
 }) => {
   const dispatch = useDispatch();
@@ -25,6 +25,10 @@ const useApiCalls = ({
 
   useLayoutEffect(() => {
     const sendRequest = async () => {
+      if (Boolean(parseInt(process.env.WITHOUT_DOCKER))) {
+        url = `${process.env.API_BASE_URL_WITHOUT_DOCKER}${url}`;
+      }
+
       const accessToken = getLocalStorage("access_token");
       if (useDefaultHeaders && accessToken) {
         if (!headers) {
@@ -70,7 +74,6 @@ const useApiCalls = ({
         }
         dispatch(isLoaded());
       } catch (err) {
-        console.log(err);
         setError(err.response);
         dispatch(isLoaded());
         if (showErrorMessage) {
