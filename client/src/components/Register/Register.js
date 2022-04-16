@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import cx from "classnames";
 import { useDispatch } from "react-redux";
 import { Form, Label, Input, Div, Button } from "basedesign-iswad";
@@ -8,7 +8,7 @@ import {
   REGISTER_API_ROUTE,
   RESEND_ACTIVATE_EMAIL_API_ROUTE,
 } from "Constants/apiRoutes";
-import { addAlertItem, showErrorAPIAlert } from "Utils/notifications";
+import { addAlertItem } from "Utils/notifications";
 
 import styles from "./Register.module.scss";
 
@@ -74,16 +74,15 @@ const Register = () => {
     email,
     password,
   };
-  const { data, error } = useApiCalls(
-    sendRegisterReq,
-    setSendRegisterReq,
-    "POST",
-    REGISTER_API_ROUTE,
+  const { data, error } = useApiCalls({
+    sendReq: sendRegisterReq,
+    setSendReq: setSendRegisterReq,
+    method: "POST",
+    url: REGISTER_API_ROUTE,
     bodyData,
-    ""
-  );
+  });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (data) {
       setSubmitted(true);
       addAlertItem(
@@ -94,24 +93,19 @@ const Register = () => {
     }
   }, [data]);
 
-  useEffect(() => {
-    showErrorAPIAlert(error, dispatch);
-  }, [error]);
-
   const [sendResendEmailReq, setSendResendEmailReq] = useState(false);
   const bodyResendData = {
     email,
   };
-  const { data: resendData, error: resendError } = useApiCalls(
-    sendResendEmailReq,
-    setSendResendEmailReq,
-    "POST",
-    RESEND_ACTIVATE_EMAIL_API_ROUTE,
-    bodyResendData,
-    ""
-  );
+  const { data: resendData, error: resendError } = useApiCalls({
+    sendReq: sendResendEmailReq,
+    setSendReq: setSendResendEmailReq,
+    method: "POST",
+    url: RESEND_ACTIVATE_EMAIL_API_ROUTE,
+    bodyData: bodyResendData,
+  });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (resendData) {
       addAlertItem(
         dispatch,
@@ -120,10 +114,6 @@ const Register = () => {
       );
     }
   }, [resendData]);
-
-  useEffect(() => {
-    showErrorAPIAlert(resendError, dispatch);
-  }, [resendError]);
 
   return (
     <>
@@ -196,11 +186,6 @@ const Register = () => {
           </Button>
         </Div>
       )}
-      <Div>
-        <Button onClick={() => setSendResendEmailReq(true)}>
-          Forgot Password
-        </Button>
-      </Div>
     </>
   );
 };

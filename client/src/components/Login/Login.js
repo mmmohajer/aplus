@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import cx from "classnames";
 import { useDispatch } from "react-redux";
 import { Form, Label, Input } from "basedesign-iswad";
@@ -8,7 +8,7 @@ import { emailValidators, passwordValidators } from "./utils";
 import { setLocalStorage } from "Utils/auth";
 import { authenticated } from "Services/auth";
 import { LOGIN_API_ROUTE } from "Constants/apiRoutes";
-import { addAlertItem, showErrorAPIAlert } from "Utils/notifications";
+import { addAlertItem } from "Utils/notifications";
 
 import styles from "./Login.module.scss";
 
@@ -44,16 +44,15 @@ const Login = () => {
     email,
     password,
   };
-  const { data, error } = useApiCalls(
-    sendLoginReq,
-    setSendLoginReq,
-    "POST",
-    LOGIN_API_ROUTE,
+  const { data, error } = useApiCalls({
+    sendReq: sendLoginReq,
+    setSendReq: setSendLoginReq,
+    method: "POST",
+    url: LOGIN_API_ROUTE,
     bodyData,
-    ""
-  );
+  });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (data) {
       setLocalStorage("access_token", data["access"]);
       setLocalStorage("refresh_token", data["refresh"]);
@@ -61,10 +60,6 @@ const Login = () => {
       addAlertItem(dispatch, "You have successfully logged in.", "success");
     }
   }, [data]);
-
-  useEffect(() => {
-    showErrorAPIAlert(error, dispatch);
-  }, [error]);
 
   return (
     <>

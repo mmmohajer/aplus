@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import cx from "classnames";
 import { useSearchParams } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -7,15 +7,13 @@ import { Div } from "basedesign-iswad";
 
 import useApiCalls from "Hooks/useApiCalls";
 import { ACTIVATE_USER_API_ROUTE } from "Constants/apiRoutes";
-import { addAlertItem, showErrorAPIAlert } from "Utils/notifications";
+import { addAlertItem } from "Utils/notifications";
 
 import styles from "./ActivateUser.module.scss";
 
 const ActivateUser = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-
-  const [isActivated, setIsActivated] = useState(false);
 
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState("");
@@ -24,23 +22,23 @@ const ActivateUser = () => {
     userId,
     token,
   };
-  const { data, error } = useApiCalls(
-    sendActivateReq,
-    setSendActivateReq,
-    "POST",
-    ACTIVATE_USER_API_ROUTE,
-    bodyData,
-    ""
-  );
 
-  useEffect(() => {
+  const { data, error } = useApiCalls({
+    sendReq: sendActivateReq,
+    setSendReq: setSendActivateReq,
+    method: "POST",
+    url: ACTIVATE_USER_API_ROUTE,
+    bodyData,
+  });
+
+  useLayoutEffect(() => {
     if (searchParams?.get("token")) {
       const localToken = searchParams.get("token");
       setToken(localToken);
     }
   }, [searchParams]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (token) {
       let decoded;
       try {
@@ -64,13 +62,13 @@ const ActivateUser = () => {
     }
   }, [token]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (token && userId) {
       setSendActivateReq(true);
     }
   }, [token, userId]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (data) {
       if (data.is_activated) {
         addAlertItem(
@@ -81,10 +79,6 @@ const ActivateUser = () => {
       }
     }
   }, [data]);
-
-  useEffect(() => {
-    showErrorAPIAlert(error, dispatch);
-  }, [error]);
 
   return (
     <>

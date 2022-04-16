@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import cx from "classnames";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const SubscriberRoute = ({ children }) => {
   const [isSubscriber, setIsSubscriber] = useState(true);
   const [time, setTime] = useState(5);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (profile?.user?.groups?.includes("Subscriber")) {
       setIsSubscriber(true);
     } else {
@@ -21,7 +21,7 @@ const SubscriberRoute = ({ children }) => {
     }
   }, [profile]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isSubscriber) {
       let currentTime = time;
       if (time > 0) {

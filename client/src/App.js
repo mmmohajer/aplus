@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -6,7 +6,7 @@ import { getLocalStorage, setLocalStorage } from "Utils/auth";
 import { authenticated, notAuthenticated } from "Services/auth";
 import { getProfile } from "Services/profile";
 import useApiCalls from "Hooks/useApiCalls";
-import { ACCESS_TOKEN_CHEANGE_TIME, TOKEN_SPACE_WORD } from "Constants/vars";
+import { ACCESS_TOKEN_CHEANGE_TIME } from "Constants/vars";
 import {
   REFRESH_TOKEN_API_ROUTE,
   MY_PROFILE_API_ROUTE,
@@ -31,24 +31,24 @@ function App() {
   const [sendGetCurUserReq, setSendGetCurUserReq] = useState(false);
   const [sendrefreshTokenReq, setSendRefreshTokenReq] = useState(false);
 
-  const { data: refreshData, error: refreshError } = useApiCalls(
-    sendrefreshTokenReq,
-    setSendRefreshTokenReq,
-    "POST",
-    REFRESH_TOKEN_API_ROUTE,
-    { refresh: refreshToken }
-  );
+  const { data: refreshData, error: refreshError } = useApiCalls({
+    sendReq: sendrefreshTokenReq,
+    setSendReq: setSendRefreshTokenReq,
+    method: "POST",
+    url: REFRESH_TOKEN_API_ROUTE,
+    bodyData: { refresh: refreshToken },
+    showLoading: false,
+    showErrorMessage: false,
+  });
 
-  const { data: profileData, error: profileError } = useApiCalls(
-    sendGetCurUserReq,
-    setSendGetCurUserReq,
-    "GET",
-    MY_PROFILE_API_ROUTE,
-    "",
-    { Authorization: `${TOKEN_SPACE_WORD} ${accessToken}` }
-  );
+  const { data: profileData, error: profileError } = useApiCalls({
+    sendReq: sendGetCurUserReq,
+    setSendReq: setSendGetCurUserReq,
+    method: "GET",
+    url: MY_PROFILE_API_ROUTE,
+  });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (accessToken) {
       authenticated(dispatch);
     } else {
@@ -56,7 +56,7 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isAuthenticated) {
       setAccessToken(getLocalStorage("access_token"));
       setRefreshToken(getLocalStorage("refresh_token"));
@@ -68,13 +68,13 @@ function App() {
     }
   }, [isAuthenticated]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (profileData) {
       getProfile(dispatch, profileData);
     }
   }, [profileData]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (refreshData) {
       setLocalStorage("access_token", refreshData["access"]);
     }

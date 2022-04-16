@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import cx from "classnames";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const AdminRoute = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(true);
   const [time, setTime] = useState(5);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (profile?.user?.groups?.includes("Admin")) {
       setIsAdmin(true);
     } else {
@@ -21,7 +21,7 @@ const AdminRoute = ({ children }) => {
     }
   }, [profile]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isAdmin) {
       let currentTime = time;
       if (time > 0) {

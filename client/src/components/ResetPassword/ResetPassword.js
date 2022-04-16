@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import cx from "classnames";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
@@ -11,7 +11,7 @@ import {
   SEND_RESET_PASSWORD_EMAIL_API_ROUTE,
   PASSWORD_SET_API_ROUTE,
 } from "Constants/apiRoutes";
-import { addAlertItem, showErrorAPIAlert } from "Utils/notifications";
+import { addAlertItem } from "Utils/notifications";
 
 import styles from "./ResetPassword.module.scss";
 
@@ -51,16 +51,15 @@ const ResetPassword = () => {
 
   const [sendResetEmailReq, setSendResetEmailReq] = useState(false);
   const bodyData = { email };
-  const { data, error } = useApiCalls(
-    sendResetEmailReq,
-    setSendResetEmailReq,
-    "POST",
-    SEND_RESET_PASSWORD_EMAIL_API_ROUTE,
+  const { data, error } = useApiCalls({
+    sendReq: sendResetEmailReq,
+    setSendReq: setSendResetEmailReq,
+    method: "POST",
+    url: SEND_RESET_PASSWORD_EMAIL_API_ROUTE,
     bodyData,
-    ""
-  );
+  });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (data) {
       addAlertItem(
         dispatch,
@@ -70,18 +69,14 @@ const ResetPassword = () => {
     }
   }, [data]);
 
-  useEffect(() => {
-    showErrorAPIAlert(error, dispatch);
-  }, [error]);
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (searchParams?.get("token")) {
       const localToken = searchParams.get("token");
       setToken(localToken);
     }
   }, [searchParams]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (token) {
       let decoded;
       try {
@@ -107,16 +102,15 @@ const ResetPassword = () => {
 
   const [sendPasswordSetReq, setSendPasswordSetReq] = useState(false);
   const passwordSetbodyData = { userId, token, password };
-  const { data: passwordData, error: passwordError } = useApiCalls(
-    sendPasswordSetReq,
-    setSendPasswordSetReq,
-    "POST",
-    PASSWORD_SET_API_ROUTE,
-    passwordSetbodyData,
-    ""
-  );
+  const { data: passwordData, error: passwordError } = useApiCalls({
+    sendReq: sendPasswordSetReq,
+    setSendReq: setSendPasswordSetReq,
+    method: "POST",
+    url: PASSWORD_SET_API_ROUTE,
+    bodyData: passwordSetbodyData,
+  });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (passwordData) {
       addAlertItem(
         dispatch,
@@ -125,10 +119,6 @@ const ResetPassword = () => {
       );
     }
   }, [passwordData]);
-
-  useEffect(() => {
-    showErrorAPIAlert(passwordError, dispatch);
-  }, [passwordError]);
 
   return (
     <>
