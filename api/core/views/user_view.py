@@ -58,11 +58,8 @@ class ResetPasswordViewSet(views.APIView):
         user = get_object_or_404(User, id=request.data.get("userId"))
         if user:
             reset_password_token = request.data.get("token")
-            print(reset_password_token)
-            print(user.reset_password_token)
             if user.reset_password_token == reset_password_token:
                 password = request.data.get("password")
-                print(password)
                 try:
                     validators.validate_password(password=password, user=user)
                     user.set_password(password)

@@ -19,3 +19,19 @@ def createNewGroup():
 
 def code_generator(size=16, chars=string.ascii_uppercase + string.ascii_lowercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
+
+
+def isAdmin(user):
+    user_groups_queryset = user.groups.all()
+    cur_user_groups = [group.name for group in list(user_groups_queryset)]
+    if "Admin" in cur_user_groups:
+        return True
+    return False
+
+
+def isSubscriber(user):
+    user_groups_queryset = user.groups.all()
+    cur_user_groups = [group.name for group in list(user_groups_queryset)]
+    if "Subscriber" in cur_user_groups:
+        return True
+    return False

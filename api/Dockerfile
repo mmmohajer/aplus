@@ -1,5 +1,5 @@
 # Pull official base image
-FROM python:3.10.1-alpine3.14
+FROM python:3.9.12-alpine3.15
 
 # Assign the label for the developer (arbitrary)
 LABEL Developer="Mohammad Mahdi Mohajer"

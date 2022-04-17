@@ -1,20 +1,27 @@
 from django.shortcuts import get_object_or_404, render
 from django.conf import settings
-from rest_framework import viewsets, permissions, status, views, response, decorators, response, pagination
+from rest_framework import viewsets, mixins, permissions, status, views, response, decorators, response, pagination
 from django.contrib.auth import get_user_model
 
 from core.permissions import *
 from core.models import *
 from core.serializers import *
+from core.utils import isAdmin, isSubscriber
+from core.pagination import PaginationType1
 
 User = get_user_model()
 
 
-class ProfileViewSet(viewsets.ModelViewSet):
+class ProfileViewSet(
+        mixins.RetrieveModelMixin,
+        mixins.UpdateModelMixin,
+        mixins.DestroyModelMixin,
+        mixins.ListModelMixin,
+        viewsets.GenericViewSet):
     queryset = ProfileModel.objects.select_related('user').all()
     serializer_class = ProfileSerializer
     permission_classes = [IsAdminOrReadOnly]
-    pagination_class = pagination.PageNumberPagination
+    pagination_class = PaginationType1
 
     # def get_permissions(self):
     #     if self.request.method == "GET":
@@ -22,9 +29,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
     #     return [permissions.IsAdminUser()]
 
     def get_queryset(self):
-        user_groups_queryset = self.request.user.groups.all()
-        cur_user_groups = [group.name for group in list(user_groups_queryset)]
-        if "Admin" in cur_user_groups or "Subscriber" in cur_user_groups:
+        if isAdmin(self.request.user) or isSubscriber(self.request.user):
             return ProfileModel.objects.select_related('user').all()
         else:
             return []

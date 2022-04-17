@@ -8,14 +8,10 @@ django-countries>=5.0.0,<=7.2.1
 django-phonenumber-field>=4.0.0,<=6.0.0
 phonenumbers>=8.12.20,<=8.12.43
 psycopg2>=2.6.0,<=2.9.3
-isort>=5.6.0,<=5.10.1
-flake8>=3.7.0,<=4.0.1
-autopep8>=1.0.0,<=1.6.0
 gunicorn>=20.0.0,<=20.0.4
 django-cors-headers>=3.3.0,<=3.10.0
 uWSGI>=2.0.0,<=2.0.20
 django-debug-toolbar>=3.0.0,<=3.2.4
-Pillow==8.3.2
 djoser>=1.0.0,<=2.1.0
 djangorestframework_simplejwt>=4.0.0,<=5.1.0
 Fabric3>=1.14.post1

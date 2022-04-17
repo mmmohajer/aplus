@@ -89,6 +89,20 @@ services:
       - smtp4dev
       - redis
 
+  api-test:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./api
+    env_file:
+      - ./config/envFiles/django/develop/.env
+    volumes:
+      - ./api:/usr/src/app
+    command: ptw
+    depends_on:
+      - db
+      - smtp4dev
+      - redis
+
   db:
     image: postgres:13-alpine
     env_file:
