@@ -29,7 +29,7 @@ class ProfileViewSet(
     #     return [permissions.IsAdminUser()]
 
     def get_queryset(self):
-        if isAdmin(self.request.user) or isSubscriber(self.request.user):
+        if self.request.user.is_authenticated:
             return ProfileModel.objects.select_related('user').all()
         else:
             return []

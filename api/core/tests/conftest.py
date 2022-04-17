@@ -14,18 +14,20 @@ def api_client():
 
 @pytest.fixture
 def authenticate(api_client):
-    def do_authenticate(user_group="Subscriber"):
+    def do_authenticate(user_group=None):
         user = User.objects.create()
-        group = Group.objects.create(name=user_group)
-        group.user_set.add(user)
+        if user_group:
+            group = Group.objects.create(name=user_group)
+            group.user_set.add(user)
         return api_client.force_authenticate(user=user)
     return do_authenticate
 
 
 @pytest.fixture
 def authenticate_with_user(api_client):
-    def do_authenticate_sith_user(user, user_group="Subscriber"):
-        group = Group.objects.create(name=user_group)
-        group.user_set.add(user)
+    def do_authenticate_sith_user(user, user_group=None):
+        if user_group:
+            group = Group.objects.create(name=user_group)
+            group.user_set.add(user)
         return api_client.force_authenticate(user=user)
     return do_authenticate_sith_user

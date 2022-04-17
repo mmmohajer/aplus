@@ -26,7 +26,7 @@ class WebsiteUser(HttpUser):
         self.client.get(f'/api/profile/{profile_id}/', name='/api/profile/:id')
 
     def on_start(self):
-        data = {"email": "mmmohajer70@gmail.com", "password": "Mb3742870!?!"}
+        data = {"email": "mmmohajer70@gmail.com", "password": "mySuperSecurePassword"}
         response = self.client.post('/api/auth/jwt/create/', data=data)
         result = response.json()
         self.client.headers = {'Authorization': f"JWT {result['access']}"}

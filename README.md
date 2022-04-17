@@ -27,7 +27,14 @@
 
 <hr>
 
-3. Setup Production environment: <br>
+3. Test performance of production environment on your local PC: <br>
+   Run `docker-compose -f docker-compose-prod.yml up -build -d` <br>
+   `cd api` <br>
+   `locust -f locustfiles/browse_api.py`
+
+<hr>
+
+4. Setup Production environment: <br>
    Create the following subfolders: <br>
    `./api/vol/static/` <br>
    `./api/vol/media/` <br>
