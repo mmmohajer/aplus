@@ -41,14 +41,4 @@ describe("Test TargetComponent", () => {
     expect(screen.getByText(/This is an error messsage/i)).toBeInTheDocument();
     expect(screen.getByText(/This is a danger messsage/i)).toBeInTheDocument();
   });
-
-  test("Alert components shows all types of messages simultaneously and properly", () => {
-    mockStore = {
-      notifications: [
-        { key: "key1", message: "This is a success messsage", type: "success" },
-      ],
-    };
-
-    render(<Alert />);
-  });
 });
