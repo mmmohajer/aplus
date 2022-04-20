@@ -3,17 +3,22 @@ createReactComponent() {
     
     compName="$(tr '[:lower:]' '[:upper:]' <<< ${compName:0:1})${compName:1}"
     local addr="client/src/components/$compName"
+    local testFolderAddr="client/src/components/$compName/__test__"
     mkdir -p "$addr"
+    mkdir -p "$testFolderAddr"
     
     local jsContext=$(getJsContext $compName)
     local indexContext="export { default } from \"./$compName\";"
+    local testFileContext=$(getTestFileContext $compName)
     
     local innerJsFileAddr="client/src/components/$compName/$compName.js"
     local innerIndexFileAddr="client/src/components/$compName/index.js"
     local innersassFileAddr="client/src/components/$compName/$compName.module.scss"
+    local innerTestFileAddr="client/src/components/$compName/__test__/$compName.test.js"
     
     echo "$jsContext" >> $innerJsFileAddr
     echo "$indexContext" >> "$innerIndexFileAddr"
+    echo "$testFileContext" >> $innerTestFileAddr
     touch "$innersassFileAddr"
     
     echo "Done!"
@@ -27,18 +32,24 @@ createReactPage() {
     
     pageName="$(tr '[:lower:]' '[:upper:]' <<< ${pageName:0:1})${pageName:1}"
     local addr="client/src/pages/$pageName"
+    local testFolderAddr="client/src/pages/$pageName/__test__"
     mkdir -p "$addr"
+    mkdir -p "$testFolderAddr"
     
     local jsContext=$(getJsPageContext $pageName)
     local indexContext="export { default } from \"./$pageName\";"
+    local testFileContext=$(getTestFileContext $pageName)
     
     local innerJsFileAddr="client/src/pages/$pageName/$pageName.js"
     local innerIndexFileAddr="client/src/pages/$pageName/index.js"
     local innersassFileAddr="client/src/pages/$pageName/$pageName.module.scss"
+    local innerTestFileAddr="client/src/pages/$pageName/__test__/$pageName.test.js"
     
     echo "$jsContext" >> $innerJsFileAddr
     echo "$indexContext" >> "$innerIndexFileAddr"
+    echo "$testFileContext" >> $innerTestFileAddr
     touch "$innersassFileAddr"
+    
     echo -en "${I_YELLOW}"
     echo "Do not forget to add the follwoings to the AppRoutes.js file:"
     echo -en "${I_GREEN}"
