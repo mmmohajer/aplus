@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
@@ -59,7 +59,7 @@ const ResetPassword = () => {
     bodyData,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (data) {
       addAlertItem(
         dispatch,
@@ -69,14 +69,14 @@ const ResetPassword = () => {
     }
   }, [data]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (searchParams?.get("token")) {
       const localToken = searchParams.get("token");
       setToken(localToken);
     }
   }, [searchParams]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (token) {
       let decoded;
       try {
@@ -110,7 +110,7 @@ const ResetPassword = () => {
     bodyData: passwordSetbodyData,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (passwordData) {
       addAlertItem(
         dispatch,

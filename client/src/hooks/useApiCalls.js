@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
@@ -23,7 +23,7 @@ const useApiCalls = ({
   const [data, setData] = useState();
   const [error, setError] = useState();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const sendRequest = async () => {
       if (Boolean(parseInt(process.env.WITHOUT_DOCKER))) {
         url = `${process.env.API_BASE_URL_WITHOUT_DOCKER}${url}`;

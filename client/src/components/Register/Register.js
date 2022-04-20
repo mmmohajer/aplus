@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useDispatch } from "react-redux";
 import { Form, Label, Input, Div, Button } from "basedesign-iswad";
@@ -82,7 +82,7 @@ const Register = () => {
     bodyData,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (data) {
       setSubmitted(true);
       addAlertItem(
@@ -105,7 +105,7 @@ const Register = () => {
     bodyData: bodyResendData,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (resendData) {
       addAlertItem(
         dispatch,

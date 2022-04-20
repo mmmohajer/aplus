@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useSearchParams } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -31,14 +31,14 @@ const ActivateUser = () => {
     bodyData,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (searchParams?.get("token")) {
       const localToken = searchParams.get("token");
       setToken(localToken);
     }
   }, [searchParams]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (token) {
       let decoded;
       try {
@@ -62,13 +62,13 @@ const ActivateUser = () => {
     }
   }, [token]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (token && userId) {
       setSendActivateReq(true);
     }
   }, [token, userId]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (data) {
       if (data.is_activated) {
         addAlertItem(

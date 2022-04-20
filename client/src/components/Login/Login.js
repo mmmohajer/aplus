@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useDispatch } from "react-redux";
 import { Form, Label, Input } from "basedesign-iswad";
@@ -52,7 +52,7 @@ const Login = () => {
     bodyData,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (data) {
       setLocalStorage("access_token", data["access"]);
       setLocalStorage("refresh_token", data["refresh"]);
