@@ -1,6 +1,6 @@
 import React from "react";
 import { render as renderRTL, screen, fireEvent } from "@testing-library/react";
-import Alert from "../Alert";
+import PublicRoute from "../PublicRoute";
 import * as reactRedux from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
@@ -12,12 +12,12 @@ jest.mock("react-redux", () => ({
   useDispatch: jest.fn(),
 }));
 
-describe("Test TargetComponent", () => {
+describe("Test PublicRoute Component", () => {
   const useSelectorMock = reactRedux.useSelector;
   const useDispatchMock = reactRedux.useDispatch;
 
   let mockStore = {
-    notifications: [],
+    profile: {},
   };
 
   beforeEach(() => {
@@ -30,19 +30,27 @@ describe("Test TargetComponent", () => {
     useSelectorMock.mockClear();
   });
 
-  test("Alert components shows all types of messages simultaneously and properly", () => {
+  test("Public route content is observale to an authenticated user", () => {
     mockStore = {
-      notifications: [
-        { key: "key1", message: "This is a success messsage", type: "success" },
-        { key: "key2", message: "This is an error messsage", type: "error" },
-        { key: "key3", message: "This is a danger messsage", type: "danger" },
-      ],
+      isAuthenticated: true,
     };
 
-    render(<Alert />);
+    const children = `<div>This is a secret messsage</div>`;
 
-    expect(screen.getByText(/This is a success messsage/i)).toBeInTheDocument();
-    expect(screen.getByText(/This is an error messsage/i)).toBeInTheDocument();
-    expect(screen.getByText(/This is a danger messsage/i)).toBeInTheDocument();
+    render(<PublicRoute children={children} />);
+
+    expect(screen.getByText(/This is a secret messsage/i)).toBeInTheDocument();
+  });
+
+  test("Public route content is observable for ananymous user", () => {
+    mockStore = {
+      isAuthenticated: false,
+    };
+
+    const children = `<div>This is a secret messsage</div>`;
+
+    render(<PublicRoute children={children} />);
+
+    expect(screen.getByText(/This is a secret messsage/i)).toBeInTheDocument();
   });
 });
