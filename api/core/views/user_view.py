@@ -101,3 +101,13 @@ class UserDeleteViewSet(views.APIView):
                 return response.Response(status=status.HTTP_204_NO_CONTENT)
             return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"error": "Incorrect password"})
         return response.Response(status=status.HTTP_403_FORBIDDEN)
+
+
+class AuthenticateUserViewSet(views.APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        current_user = request.user
+        if current_user:
+            return response.Response(status=status.HTTP_200_OK, data={"Authenticated": current_user.is_authenticated})
+        return response.Response(status=status.HTTP_404_NOT_FOUND)

@@ -13,4 +13,5 @@ urlpatterns = [
     path('send-reset-password-email/', views.SendForgotPasswordViewSet),
     path('reset-password/', views.ResetPasswordViewSet),
     path('auth/user/<int:id>/', views.UserDeleteViewSet),
+    path('auth/authenticate-user/', views.AuthenticateUserViewSet),
 ]

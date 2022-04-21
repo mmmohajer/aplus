@@ -10,6 +10,7 @@ import { ACCESS_TOKEN_CHEANGE_TIME } from "Constants/vars";
 import {
   REFRESH_TOKEN_API_ROUTE,
   MY_PROFILE_API_ROUTE,
+  AUTHENTICATE_USER_API_ROUTE,
 } from "Constants/apiRoutes";
 
 import AppRoutes from "./AppRoutes";
@@ -29,6 +30,7 @@ function App() {
     getLocalStorage("refresh_token")
   );
   const [sendGetCurUserReq, setSendGetCurUserReq] = useState(false);
+  const [sendAuthenticatedReq, setSendAuthenticatedReq] = useState(false);
   const [sendrefreshTokenReq, setSendRefreshTokenReq] = useState(false);
 
   const { data: refreshData, error: refreshError } = useApiCalls({
@@ -37,6 +39,15 @@ function App() {
     method: "POST",
     url: REFRESH_TOKEN_API_ROUTE,
     bodyData: { refresh: refreshToken },
+    showLoading: false,
+    showErrorMessage: false,
+  });
+
+  const { data: authenticatedData, error: authenticatedError } = useApiCalls({
+    sendReq: sendAuthenticatedReq,
+    setSendReq: setSendAuthenticatedReq,
+    method: "GET",
+    url: AUTHENTICATE_USER_API_ROUTE,
     showLoading: false,
     showErrorMessage: false,
   });
@@ -52,11 +63,19 @@ function App() {
 
   useEffect(() => {
     if (accessToken) {
-      authenticated(dispatch);
-    } else {
-      notAuthenticated(dispatch);
+      setSendAuthenticatedReq(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (authenticatedData) {
+      if (authenticatedData?.Authenticated) {
+        authenticated(dispatch);
+      } else {
+        notAuthenticated(dispatch);
+      }
+    }
+  }, [authenticatedData]);
 
   useEffect(() => {
     if (isAuthenticated) {
