@@ -76,17 +76,6 @@ class ResetPasswordViewSet(views.APIView):
 class UserDeleteViewSet(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request, id, *args, **kwargs):
-        current_user = request.user
-        to_be_given_user = get_object_or_404(User, id=id)
-        if isAdmin(current_user):
-            serializer = UserSerializer(to_be_given_user)
-            return response.Response(status=status.HTTP_200_OK, data=serializer.data)
-        if current_user.id == to_be_given_user.id:
-            serializer = UserSerializer(to_be_given_user)
-            return response.Response(status=status.HTTP_200_OK, data=serializer.data)
-        return response.Response(status=status.HTTP_403_FORBIDDEN)
-
     def delete(self, request, id, *args, **kwargs):
         current_user = request.user
         to_be_deleted_user = get_object_or_404(User, id=id)

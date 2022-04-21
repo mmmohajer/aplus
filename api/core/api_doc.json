@@ -14,12 +14,13 @@
     },
     "header": {
       "Authorization": "JWT ACCESS_TOKEN"
-    }
+    },
+    "allowedUser": "Anyone"
   },
 
   {
     "name": "Profile",
-    "description": "Get list of all existing profiles, in a paginated format, including information about an authenticated user",
+    "description": "Get information about an existing profile",
     "url": "/api/profile/<id>",
     "method": "GET",
     "body": {
@@ -32,6 +33,7 @@
     },
     "header": {
       "Authorization": "JWT ACCESS_TOKEN"
-    }
+    },
+    "allowedUser": "Authenticated user"
   }
 ]

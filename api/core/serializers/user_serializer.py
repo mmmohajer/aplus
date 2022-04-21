@@ -43,7 +43,7 @@ class UserCreateSerializer(BaseUserCreateSerializer):
                 user.register_token = user_token
                 user.save(update_fields=["is_active", "register_token"])
                 send_activation_email.delay(
-                    validated_data["first_name"], validated_data["email"], user_token)
+                    validated_data.get("first_name", validated_data["email"]), validated_data["email"], user_token)
         return user
 
 

@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getLocalStorage, setLocalStorage } from "Utils/auth";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  removeLocalStorage,
+} from "Utils/auth";
 import { authenticated, notAuthenticated } from "Services/auth";
 import { getProfile } from "Services/profile";
 import useApiCalls from "Hooks/useApiCalls";
@@ -73,9 +77,19 @@ function App() {
         authenticated(dispatch);
       } else {
         notAuthenticated(dispatch);
+        removeLocalStorage("access_token");
+        removeLocalStorage("refresh_token");
       }
     }
   }, [authenticatedData]);
+
+  useEffect(() => {
+    if (authenticatedError?.data) {
+      notAuthenticated(dispatch);
+      removeLocalStorage("access_token");
+      removeLocalStorage("refresh_token");
+    }
+  }, [authenticatedError]);
 
   useEffect(() => {
     if (isAuthenticated) {
