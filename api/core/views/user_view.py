@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.conf import settings
+from requests import delete
 from rest_framework import viewsets, permissions, status, views, response, decorators, response, pagination
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import AccessToken
@@ -9,6 +10,7 @@ from core.permissions import *
 from core.models import *
 from core.serializers import *
 from core.tasks import send_activation_email, send_reset_password_email
+from core.utils import isAdmin
 
 User = get_user_model()
 
@@ -69,3 +71,33 @@ class ResetPasswordViewSet(views.APIView):
                 except Exception as e:
                     return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"password_reset": False, "error": str(e)})
         return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"password_reset": False, "message": "Unable to reset the password!"})
+
+
+class UserDeleteViewSet(views.APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, id, *args, **kwargs):
+        current_user = request.user
+        to_be_given_user = get_object_or_404(User, id=id)
+        if isAdmin(current_user):
+            serializer = UserSerializer(to_be_given_user)
+            return response.Response(status=status.HTTP_200_OK, data=serializer.data)
+        if current_user.id == to_be_given_user.id:
+            serializer = UserSerializer(to_be_given_user)
+            return response.Response(status=status.HTTP_200_OK, data=serializer.data)
+        return response.Response(status=status.HTTP_403_FORBIDDEN)
+
+    def delete(self, request, id, *args, **kwargs):
+        current_user = request.user
+        to_be_deleted_user = get_object_or_404(User, id=id)
+        if isAdmin(current_user):
+            to_be_deleted_user.delete()
+            return response.Response(status=status.HTTP_204_NO_CONTENT)
+        if current_user.id == to_be_deleted_user.id:
+            password = request.GET.get("password")
+            is_correct_password = to_be_deleted_user.check_password(password)
+            if (is_correct_password):
+                to_be_deleted_user.delete()
+                return response.Response(status=status.HTTP_204_NO_CONTENT)
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"error": "Incorrect password"})
+        return response.Response(status=status.HTTP_403_FORBIDDEN)

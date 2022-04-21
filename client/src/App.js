@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -46,9 +46,11 @@ function App() {
     setSendReq: setSendGetCurUserReq,
     method: "GET",
     url: MY_PROFILE_API_ROUTE,
+    showLoading: false,
+    showErrorMessage: false,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (accessToken) {
       authenticated(dispatch);
     } else {
@@ -56,25 +58,29 @@ function App() {
     }
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isAuthenticated) {
       setAccessToken(getLocalStorage("access_token"));
       setRefreshToken(getLocalStorage("refresh_token"));
-      setSendGetCurUserReq(true);
-      setInterval(() => {
-        setSendRefreshTokenReq(true);
-        setSendRefreshTokenReq(false);
-      }, ACCESS_TOKEN_CHEANGE_TIME);
+      try {
+        setSendGetCurUserReq(true);
+        setInterval(() => {
+          setSendRefreshTokenReq(true);
+          setSendRefreshTokenReq(false);
+        }, ACCESS_TOKEN_CHEANGE_TIME);
+      } catch (err) {
+        console.log(err);
+      }
     }
   }, [isAuthenticated]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (profileData) {
       getProfile(dispatch, profileData);
     }
   }, [profileData]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (refreshData) {
       setLocalStorage("access_token", refreshData["access"]);
     }

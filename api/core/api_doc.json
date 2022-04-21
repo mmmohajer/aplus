@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Profile",
+    "description": "Get list of all existing profiles, in a paginated format, including information about an authenticated user",
+    "url": "/api/profile",
+    "method": "GET",
+    "body": {
+      "regired": {
+        "": ""
+      },
+      "optional": {
+        "": ""
+      }
+    },
+    "header": {
+      "Authorization": "JWT ACCESS_TOKEN"
+    }
+  },
+
+  {
+    "name": "Profile",
+    "description": "Get list of all existing profiles, in a paginated format, including information about an authenticated user",
+    "url": "/api/profile/<id>",
+    "method": "GET",
+    "body": {
+      "regired": {
+        "": ""
+      },
+      "optional": {
+        "": ""
+      }
+    },
+    "header": {
+      "Authorization": "JWT ACCESS_TOKEN"
+    }
+  }
+]
