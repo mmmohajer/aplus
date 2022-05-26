@@ -10,7 +10,9 @@ function Home() {
   return (
     <PublicRoute>
       <Div>
-        <Paragraph>This is the homepage for your new app!</Paragraph>
+        <Paragraph className={cx("bgPrimary")}>
+          This is the homepage for your new app!
+        </Paragraph>
         <Paragraph>Test env var {process.env.TEST}</Paragraph>
       </Div>
       <Div className="footer">Footer</Div>
