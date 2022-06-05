@@ -1,5 +1,8 @@
 import cookie from "js-cookie";
 
+import { authenticated } from "Services/auth";
+import { addAlertItem } from "Utils/notifications";
+
 // set cookie
 export const setCookie = (key, value) => {
   cookie?.set(key, value, {
@@ -82,4 +85,11 @@ export const handleResponse = (response) => {
       });
     });
   }
+};
+
+export const loginUser = (access_token, refresh_token, dispatch) => {
+  setLocalStorage("access_token", access_token);
+  setLocalStorage("refresh_token", refresh_token);
+  authenticated(dispatch);
+  addAlertItem(dispatch, "You have successfully logged in.", "success");
 };

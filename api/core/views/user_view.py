@@ -3,14 +3,18 @@ from django.conf import settings
 from requests import delete
 from rest_framework import viewsets, permissions, status, views, response, decorators, response, pagination
 from django.contrib.auth import get_user_model
-from rest_framework_simplejwt.tokens import AccessToken
+from django.contrib.auth.models import Group
+from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 import django.contrib.auth.password_validation as validators
+import requests
+import json
+import jwt
 
 from core.permissions import *
 from core.models import *
 from core.serializers import *
 from core.tasks import send_activation_email, send_reset_password_email
-from core.utils import isAdmin
+from core.utils import isAdmin, code_generator
 
 User = get_user_model()
 
@@ -100,3 +104,60 @@ class AuthenticateUserViewSet(views.APIView):
         if current_user:
             return response.Response(status=status.HTTP_200_OK, data={"Authenticated": current_user.is_authenticated})
         return response.Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class GoogleAuthViewSet(views.APIView):
+
+    def post(self, request, *args, **kwargs):
+        client_id = settings.GOOGLE_AUTH_CLIENT_ID
+        client_secret = settings.GOOGLE_AUTH_CLIENT_SECRET
+        ouathUrl = "https://oauth2.googleapis.com/token"
+        redirect_url = settings.GOOGLE_OAUTH_REDIRECT_URI
+        code = request.data.get("code")
+        googleTokenReqApiUrl = f"{ouathUrl}?client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_url}&grant_type=authorization_code&code={code}"
+        try:
+            res = requests.post(googleTokenReqApiUrl)
+            return response.Response(status=status.HTTP_200_OK, data={"Authorization Data": json.loads(res.content)})
+        except Exception as e:
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})
+
+
+class GoogleAuthHandleTokenViewSet(views.APIView):
+
+    def post(self, request, *args, **kwargs):
+        id_token = request.data.get("id_token")
+        access_token = f"Bearer {request.data.get('access_token')}"
+        googleAuthGetProfileUrl = f"https://oauth2.googleapis.com/tokeninfo?id_token={id_token}"
+        headers = {"Content-Type": "application/json", "Authorization": access_token}
+        try:
+            res = requests.get(googleAuthGetProfileUrl, headers=headers)
+            user_data = json.loads(res.content)
+            email = user_data.get("email")
+            user_queryset = User.objects.filter(email=email)
+            if user_queryset:
+                cur_user = user_queryset.first()
+                cur_user_access_token = AccessToken.for_user(cur_user)
+                cur_user_refresh_token = RefreshToken.for_user(cur_user)
+            else:
+                first_name = user_data.get("given_name")
+                last_name = user_data.get("family_name")
+                password = code_generator()
+                # Register User
+                cur_user = User(first_name=first_name, last_name=last_name, email=email)
+                cur_user.set_password(password)
+                cur_user.is_active = True
+                cur_user.save()
+                # Create profile for the new registered user
+                profile = ProfileModel()
+                profile.user = cur_user
+                profile.save()
+                subscriber_group = Group.objects.filter(name="Subscriber").first()
+                if subscriber_group:
+                    subscriber_group.user_set.add(cur_user)
+                # Generate access and refresh tokens to login the user
+                cur_user_access_token = AccessToken.for_user(cur_user)
+                cur_user_refresh_token = RefreshToken.for_user(cur_user)
+            return response.Response(status=status.HTTP_200_OK,
+                                     data={"access": str(cur_user_access_token), "refresh": str(cur_user_refresh_token)})
+        except Exception as e:
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})

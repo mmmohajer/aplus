@@ -20,3 +20,7 @@ django-templated-email>=2.0.0,<=3.0.0
 celery>=4.4.0,<=5.2.6
 redis>=3.5.3,<=4.2.2
 flower>=0.8.0,<=1.0.0
+google-api-python-client>=2.26.0,<=2.49.0
+google-auth>=2.3.0,<=2.6.6
+google-auth-oauthlib>0.4.0,<=0.5.1
+google-auth-httplib2>0.0.1,<=0.1.0

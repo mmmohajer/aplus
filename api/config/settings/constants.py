@@ -61,3 +61,13 @@ EMAIL_PORT = os.environ.get('EMAIL_PORT', 25)
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'mmmohajer70@gmail.com')
 
 USE_CELERY = bool(int(os.environ.get('USE_CELERY', 0)))
+
+
+# ----------------------- Google Auth -----------------------
+GOOGLE_AUTH_CLIENT_ID = os.environ.get(
+    'GOOGLE_AUTH_CLIENT_ID', '673909378840-l15orsj40lj7bh4c1e0vg1ajgearqv1o.apps.googleusercontent.com')
+GOOGLE_AUTH_CLIENT_SECRET = os.environ.get(
+    'GOOGLE_AUTH_CLIENT_SECRET', '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')
+GOOGLE_OAUTH_REDIRECT_URI = os.environ.get(
+    'GOOGLE_OAUTH_REDIRECT_URI', 'https://makeclient.ngrok.io/login')
+# -----------------------------------------------------------

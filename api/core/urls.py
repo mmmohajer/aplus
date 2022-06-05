@@ -14,4 +14,6 @@ urlpatterns = [
     path('reset-password/', views.ResetPasswordViewSet),
     path('auth/delete-users/<int:id>/', views.UserDeleteViewSet),
     path('auth/authenticate-user/', views.AuthenticateUserViewSet),
+    path('auth/google-auth/', views.GoogleAuthViewSet),
+    path('auth/google-auth-handle-token/', views.GoogleAuthHandleTokenViewSet),
 ]

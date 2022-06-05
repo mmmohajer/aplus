@@ -5,10 +5,8 @@ import { Form, Label, Input } from "basedesign-iswad";
 
 import useApiCalls from "Hooks/useApiCalls";
 import { emailValidators, passwordValidators } from "./utils";
-import { setLocalStorage } from "Utils/auth";
-import { authenticated } from "Services/auth";
+import { loginUser } from "Utils/auth";
 import { LOGIN_API_ROUTE } from "Constants/apiRoutes";
-import { addAlertItem } from "Utils/notifications";
 
 import styles from "./Login.module.scss";
 
@@ -54,10 +52,7 @@ const Login = () => {
 
   useEffect(() => {
     if (data) {
-      setLocalStorage("access_token", data["access"]);
-      setLocalStorage("refresh_token", data["refresh"]);
-      authenticated(dispatch);
-      addAlertItem(dispatch, "You have successfully logged in.", "success");
+      loginUser(data["access"], data["refresh"], dispatch);
     }
   }, [data]);
 

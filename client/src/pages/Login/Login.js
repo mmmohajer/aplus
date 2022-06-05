@@ -3,6 +3,7 @@ import cx from "classnames";
 
 import PublicRoute from "Components/PublicRoute";
 import LoginComponent from "Components/Login";
+import GoogleAuth from "Components/GoogleAuth";
 
 import styles from "./Login.module.scss";
 
@@ -10,6 +11,7 @@ const Login = () => {
   return (
     <PublicRoute>
       <LoginComponent />
+      <GoogleAuth />
     </PublicRoute>
   );
 };
