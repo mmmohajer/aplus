@@ -65,9 +65,9 @@ USE_CELERY = bool(int(os.environ.get('USE_CELERY', 0)))
 
 # ----------------------- Google Auth -----------------------
 GOOGLE_AUTH_CLIENT_ID = os.environ.get(
-    'GOOGLE_AUTH_CLIENT_ID', 'GOOGLE_AUTH_CLIENT_ID')
+    'GOOGLE_AUTH_CLIENT_ID', 'GOOGLE_AUTH_CLIENT_ID_CODE')
 GOOGLE_AUTH_CLIENT_SECRET = os.environ.get(
-    'GOOGLE_AUTH_CLIENT_SECRET', 'GOOGLE_AUTH_CLIENT_SECRET')
+    'GOOGLE_AUTH_CLIENT_SECRET', 'GOOGLE_AUTH_CLIENT_SECRET_CODE')
 GOOGLE_OAUTH_REDIRECT_URI = os.environ.get(
-    'GOOGLE_OAUTH_REDIRECT_URI', 'GOOGLE_OAUTH_REDIRECT_URI')
+    'GOOGLE_OAUTH_REDIRECT_URI', 'GOOGLE_OAUTH_REDIRECT_URI_CODE')
 # -----------------------------------------------------------
