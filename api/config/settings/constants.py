@@ -65,9 +65,9 @@ USE_CELERY = bool(int(os.environ.get('USE_CELERY', 0)))
 
 # ----------------------- Google Auth -----------------------
 GOOGLE_AUTH_CLIENT_ID = os.environ.get(
-    'GOOGLE_AUTH_CLIENT_ID', '673909378840-l15orsj40lj7bh4c1e0vg1ajgearqv1o.apps.googleusercontent.com')
+    'GOOGLE_AUTH_CLIENT_ID', 'GOOGLE_AUTH_CLIENT_ID')
 GOOGLE_AUTH_CLIENT_SECRET = os.environ.get(
-    'GOOGLE_AUTH_CLIENT_SECRET', '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')
+    'GOOGLE_AUTH_CLIENT_SECRET', 'GOOGLE_AUTH_CLIENT_SECRET')
 GOOGLE_OAUTH_REDIRECT_URI = os.environ.get(
-    'GOOGLE_OAUTH_REDIRECT_URI', 'https://makeclient.ngrok.io/login')
+    'GOOGLE_OAUTH_REDIRECT_URI', 'GOOGLE_OAUTH_REDIRECT_URI')
 # -----------------------------------------------------------
