@@ -43,7 +43,6 @@ const SocialAuth = ({
 
   useEffect(() => {
     if (code) {
-      console.log(code);
       setSendSocialAuthReq(true);
     }
   }, [code]);
