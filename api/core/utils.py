@@ -1,6 +1,14 @@
 from django.contrib.auth.models import Group, Permission
 import random
 import string
+import requests
+import json
+from django.contrib.auth import get_user_model
+from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
+
+from core.models import ProfileModel
+
+User = get_user_model()
 
 
 def createNewGroup():
@@ -35,3 +43,38 @@ def isSubscriber(user):
     if "Subscriber" in cur_user_groups:
         return True
     return False
+
+def oauthHandleToken(request, authGetProfileUrl):
+    access_token = f"Bearer {request.data.get('access_token')}"
+    headers = {"Content-Type": "application/json", "Authorization": access_token}
+    try:
+        res = requests.get(authGetProfileUrl, headers=headers)
+        user_data = json.loads(res.content)
+        email = user_data.get("email")
+        user_queryset = User.objects.filter(email=email)
+        if user_queryset:
+            cur_user = user_queryset.first()
+            cur_user_access_token = AccessToken.for_user(cur_user)
+            cur_user_refresh_token = RefreshToken.for_user(cur_user)
+        else:
+            first_name = user_data.get("given_name")
+            last_name = user_data.get("family_name")
+            password = code_generator()
+            # Register User
+            cur_user = User(first_name=first_name, last_name=last_name, email=email)
+            cur_user.set_password(password)
+            cur_user.is_active = True
+            cur_user.save()
+            # Create profile for the new registered user
+            profile = ProfileModel()
+            profile.user = cur_user
+            profile.save()
+            subscriber_group = Group.objects.filter(name="Subscriber").first()
+            if subscriber_group:
+                subscriber_group.user_set.add(cur_user)
+            # Generate access and refresh tokens to login the user
+            cur_user_access_token = AccessToken.for_user(cur_user)
+            cur_user_refresh_token = RefreshToken.for_user(cur_user)
+        return (True, {"access": str(cur_user_access_token), "refresh": str(cur_user_refresh_token)})
+    except Exception as e:
+        return (False, {"Error": str(e)})

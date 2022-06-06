@@ -10,3 +10,5 @@ export const PASSWORD_SET_API_ROUTE = "/api/reset-password/";
 export const AUTHENTICATE_USER_API_ROUTE = "/api/auth/authenticate-user/";
 export const GOOGLE_AUTH_TOKEN_API_ROUTE = "/api/auth/google-auth/";
 export const GOOGLE_AUTH_HANDLE_TOKEN_API_ROUTE = "/api/auth/google-auth-handle-token/";
+export const MICROSOFT_AUTH_TOKEN_API_ROUTE = "/api/auth/microsoft-auth/";
+export const MICROSOFT_AUTH_HANDLE_TOKEN_API_ROUTE = "/api/auth/microsoft-auth-handle-token/";

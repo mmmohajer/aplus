@@ -1,0 +1,90 @@
+import React, { useState, useEffect, Children } from "react";
+import cx from "classnames";
+import { Div } from "basedesign-iswad";
+import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import useApiCalls from "Hooks/useApiCalls";
+import { loginUser } from "Utils/auth";
+
+import styles from "./SocialAuth.module.scss";
+
+const SocialAuth = ({
+  socialAuthTokenApiRoute,
+  socialAuthHandleTokenApiRoute,
+  socialAuthUrl,
+  children,
+}) => {
+  const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+
+  const [code, setCode] = useState("");
+  const [sendSocialAuthReq, setSendSocialAuthReq] = useState(false);
+  const [sendGetProfileReq, setSendGetProfileReq] = useState(false);
+  const [accessToken, setAccessToken] = useState("");
+  const [tokenId, setTokenId] = useState("");
+
+  useEffect(() => {
+    if (searchParams?.get("code")) {
+      setCode(searchParams.get("code"));
+    }
+  }, [searchParams]);
+
+  const bodyData = { code };
+
+  const { data, error } = useApiCalls({
+    sendReq: sendSocialAuthReq,
+    setSendReq: setSendSocialAuthReq,
+    method: "POST",
+    url: socialAuthTokenApiRoute,
+    bodyData,
+    showLoading: true,
+  });
+
+  useEffect(() => {
+    if (code) {
+      console.log(code);
+      setSendSocialAuthReq(true);
+    }
+  }, [code]);
+
+  useEffect(() => {
+    if (data) {
+      setAccessToken(data["Authorization Data"]["access_token"]);
+      setTokenId(data["Authorization Data"]["id_token"]);
+    }
+  }, [data]);
+
+  const bodyProfileData = { access_token: accessToken, id_token: tokenId };
+
+  const { data: profileData, error: profileError } = useApiCalls({
+    sendReq: sendGetProfileReq,
+    setSendReq: setSendGetProfileReq,
+    method: "POST",
+    url: socialAuthHandleTokenApiRoute,
+    bodyData: bodyProfileData,
+    showLoading: true,
+  });
+
+  useEffect(() => {
+    if (accessToken.length && tokenId.length) {
+      setSendGetProfileReq(true);
+    }
+  }, [accessToken, tokenId]);
+
+  useEffect(() => {
+    if (profileData) {
+      loginUser(profileData["access"], profileData["refresh"], dispatch);
+    }
+  }, [profileData]);
+
+  return (
+    <>
+      <Div>
+        <a href={`${socialAuthUrl}`}>{children}</a>
+      </Div>
+    </>
+  );
+};
+
+export default SocialAuth;

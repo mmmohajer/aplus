@@ -71,3 +71,12 @@ GOOGLE_AUTH_CLIENT_SECRET = os.environ.get(
 GOOGLE_OAUTH_REDIRECT_URI = os.environ.get(
     'GOOGLE_OAUTH_REDIRECT_URI', 'GOOGLE_OAUTH_REDIRECT_URI_CODE')
 # -----------------------------------------------------------
+
+# ----------------------- Microsoft Auth -----------------------
+MICROSOFT_AUTH_CLIENT_ID = os.environ.get(
+    'MICROSOFT_AUTH_CLIENT_ID', 'MICROSOFT_AUTH_CLIENT_ID_CODE')
+MICROSOFT_AUTH_CLIENT_SECRET = os.environ.get(
+    'MICROSOFT_AUTH_CLIENT_SECRET', 'MICROSOFT_AUTH_CLIENT_SECRET_CODE')
+MICROSOFT_OAUTH_REDIRECT_URI = os.environ.get(
+    'MICROSOFT_OAUTH_REDIRECT_URI', 'MICROSOFT_OAUTH_REDIRECT_URI_CODE')
+# -----------------------------------------------------------
