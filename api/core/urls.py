@@ -18,4 +18,6 @@ urlpatterns = [
     path('auth/google-auth-handle-token/', views.GoogleAuthHandleTokenViewSet),
     path('auth/microsoft-auth/', views.MicrosoftAuthViewSet),
     path('auth/microsoft-auth-handle-token/', views.MicrosoftAuthHandleTokenViewSet),
+    path('auth/facebook-auth/', views.FacebookAuthViewSet),
+    path('auth/facebook-auth-handle-token/', views.FacebookAuthHandleTokenViewSet),
 ]

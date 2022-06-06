@@ -133,6 +133,7 @@ class GoogleAuthHandleTokenViewSet(views.APIView):
         else:
             return response.Response(status=status.HTTP_400_BAD_REQUEST, data=data)
 
+
 class MicrosoftAuthViewSet(views.APIView):
 
     def post(self, request, *args, **kwargs):
@@ -144,12 +145,13 @@ class MicrosoftAuthViewSet(views.APIView):
         microsoftTokenReqApiUrl = f"{ouathUrl}?client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_url}&grant_type=authorization_code&code={code}"
         try:
             headers = {"Content-Type": "application/x-www-form-urlencoded"}
-            payload = {"code": code, "client_secret": client_secret, "grant_type": "authorization_code", "client_id": client_id, "redirect_uri": redirect_url}
+            payload = {"code": code, "client_secret": client_secret,
+                       "grant_type": "authorization_code", "client_id": client_id, "redirect_uri": redirect_url}
             res = requests.post(microsoftTokenReqApiUrl, headers=headers, data=payload)
-            print(client_secret)
             return response.Response(status=status.HTTP_200_OK, data={"Authorization Data": json.loads(res.content)})
         except Exception as e:
             return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})
+
 
 class MicrosoftAuthHandleTokenViewSet(views.APIView):
 
@@ -160,3 +162,40 @@ class MicrosoftAuthHandleTokenViewSet(views.APIView):
             return response.Response(status=status.HTTP_200_OK, data=data)
         else:
             return response.Response(status=status.HTTP_400_BAD_REQUEST, data=data)
+
+
+class FacebookAuthViewSet(views.APIView):
+
+    def post(self, request, *args, **kwargs):
+        client_id = settings.FACEBOOK_AUTH_CLIENT_ID
+        client_secret = settings.FACEBOOK_AUTH_CLIENT_SECRET
+        ouathUrl = "https://graph.facebook.com/v14.0/oauth/access_token"
+        redirect_url = settings.FACEBOOK_OAUTH_REDIRECT_URI
+        code = request.data.get("code")
+        facebookTokenReqApiUrl = f"{ouathUrl}?client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_url}&code={code}"
+        try:
+            res = requests.get(facebookTokenReqApiUrl)
+            return response.Response(status=status.HTTP_200_OK, data={"Authorization Data": json.loads(res.content)})
+        except Exception as e:
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})
+
+
+class FacebookAuthHandleTokenViewSet(views.APIView):
+
+    def post(self, request, *args, **kwargs):
+        facebookAuthGetIdUrl = f"https://graph.facebook.com/v2.3/me"
+        access_token = f"Bearer {request.data.get('access_token')}"
+        headers = {"Content-Type": "application/json", "Authorization": access_token}
+        try:
+            res = requests.get(facebookAuthGetIdUrl, headers=headers)
+            user_data = json.loads(res.content)
+            user_id = user_data.get("id")
+            facebookAuthGetProfileUrl = f"https://graph.facebook.com/{user_id}?fields=id,name,email,picture,first_name,last_name"
+            success, data = oauthHandleToken(
+                request, facebookAuthGetProfileUrl, first_name_key="first_name", last_name_key="last_name")
+            if success:
+                return response.Response(status=status.HTTP_200_OK, data=data)
+            else:
+                return response.Response(status=status.HTTP_400_BAD_REQUEST, data=data)
+        except Exception as e:
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})

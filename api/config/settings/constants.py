@@ -80,3 +80,12 @@ MICROSOFT_AUTH_CLIENT_SECRET = os.environ.get(
 MICROSOFT_OAUTH_REDIRECT_URI = os.environ.get(
     'MICROSOFT_OAUTH_REDIRECT_URI', 'MICROSOFT_OAUTH_REDIRECT_URI_CODE')
 # -----------------------------------------------------------
+
+# ----------------------- Facebook Auth -----------------------
+FACEBOOK_AUTH_CLIENT_ID = os.environ.get(
+    'FACEBOOK_AUTH_CLIENT_ID', 'FACEBOOK_AUTH_CLIENT_ID_CODE')
+FACEBOOK_AUTH_CLIENT_SECRET = os.environ.get(
+    'FACEBOOK_AUTH_CLIENT_SECRET', 'FACEBOOK_AUTH_CLIENT_SECRET_CODE')
+FACEBOOK_OAUTH_REDIRECT_URI = os.environ.get(
+    'FACEBOOK_OAUTH_REDIRECT_URI', 'FACEBOOK_OAUTH_REDIRECT_URI_CODE')
+# -----------------------------------------------------------

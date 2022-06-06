@@ -44,7 +44,8 @@ def isSubscriber(user):
         return True
     return False
 
-def oauthHandleToken(request, authGetProfileUrl):
+
+def oauthHandleToken(request, authGetProfileUrl, first_name_key="given_name", last_name_key="family_name"):
     access_token = f"Bearer {request.data.get('access_token')}"
     headers = {"Content-Type": "application/json", "Authorization": access_token}
     try:
@@ -57,8 +58,8 @@ def oauthHandleToken(request, authGetProfileUrl):
             cur_user_access_token = AccessToken.for_user(cur_user)
             cur_user_refresh_token = RefreshToken.for_user(cur_user)
         else:
-            first_name = user_data.get("given_name")
-            last_name = user_data.get("family_name")
+            first_name = user_data.get(first_name_key)
+            last_name = user_data.get(last_name_key)
             password = code_generator()
             # Register User
             cur_user = User(first_name=first_name, last_name=last_name, email=email)

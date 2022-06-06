@@ -12,3 +12,5 @@ export const GOOGLE_AUTH_TOKEN_API_ROUTE = "/api/auth/google-auth/";
 export const GOOGLE_AUTH_HANDLE_TOKEN_API_ROUTE = "/api/auth/google-auth-handle-token/";
 export const MICROSOFT_AUTH_TOKEN_API_ROUTE = "/api/auth/microsoft-auth/";
 export const MICROSOFT_AUTH_HANDLE_TOKEN_API_ROUTE = "/api/auth/microsoft-auth-handle-token/";
+export const FACEBOOK_AUTH_TOKEN_API_ROUTE = "/api/auth/facebook-auth/";
+export const FACEBOOK_AUTH_HANDLE_TOKEN_API_ROUTE = "/api/auth/facebook-auth-handle-token/";

@@ -51,7 +51,11 @@ const SocialAuth = ({
   useEffect(() => {
     if (data) {
       setAccessToken(data["Authorization Data"]["access_token"]);
-      setTokenId(data["Authorization Data"]["id_token"]);
+      if ("id_token" in data["Authorization Data"]) {
+        setTokenId(data["Authorization Data"]["id_token"]);
+      } else {
+        setTokenId("No token id");
+      }
     }
   }, [data]);
 
@@ -67,7 +71,7 @@ const SocialAuth = ({
   });
 
   useEffect(() => {
-    if (accessToken.length && tokenId.length) {
+    if (accessToken?.length && tokenId?.length) {
       setSendGetProfileReq(true);
     }
   }, [accessToken, tokenId]);

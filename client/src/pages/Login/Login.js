@@ -5,6 +5,7 @@ import PublicRoute from "Components/PublicRoute";
 import LoginComponent from "Components/Login";
 import GoogleAuth from "Components/GoogleAuth";
 import MicrosoftAuth from "Components/MicrosoftAuth";
+import FacebookAuth from "Components/FacebookAuth";
 
 import styles from "./Login.module.scss";
 
@@ -13,7 +14,8 @@ const Login = () => {
     <PublicRoute>
       <LoginComponent />
       {/* <GoogleAuth /> */}
-      <MicrosoftAuth />
+      {/* <MicrosoftAuth /> */}
+      <FacebookAuth />
     </PublicRoute>
   );
 };
