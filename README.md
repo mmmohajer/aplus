@@ -1,7 +1,7 @@
 **Setup**:
 
 1. Setup Development environment: <br>
-   Run `git clone https://github.com/mmmohajer/dockerizedReactDjango.git .` <br>
+   Clone the repository <br>
    Create a python virtual env: `python3 -m venv venv` <br>
    Activate the environment: <br>
    Mac/Linux: `source venv/bin/activate` <br>
