@@ -12,6 +12,7 @@ module.exports = {
         alias: {
           Pages: "./src/pages",
           Components: "./src/components",
+          BaseComponents: "./src/baseComponents",
           Styles: "./src/assets/styles",
           Images: "./src/assets/images",
           Reducers: "./src/reducers",

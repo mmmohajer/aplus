@@ -29,6 +29,7 @@ let config = {
     alias: {
       Pages: path.resolve(__dirname, "src/pages/"),
       Components: path.resolve(__dirname, "src/components/"),
+      BaseComponents: path.resolve(__dirname, "src/baseComponents/"),
       Styles: path.resolve(__dirname, "src/assets/styles/"),
       Images: path.resolve(__dirname, "src/assets/images/"),
       Reducers: path.resolve(__dirname, "src/reducers/"),

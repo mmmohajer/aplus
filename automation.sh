@@ -25,9 +25,10 @@ run() {
         then
             [ $selected == 0 ] && showMenuBar
             [ $selected == 1 ] && createReactComponent
-            [ $selected == 2 ] && createReactPage
-            [ $selected == 3 ] && addDjangoApp
-            [ $selected == 4 ] && deploy
+            [ $selected == 2 ] && createReactBaseComponent
+            [ $selected == 3 ] && createReactPage
+            [ $selected == 4 ] && addDjangoApp
+            [ $selected == 5 ] && deploy
         else
             run
         fi
