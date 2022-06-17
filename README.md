@@ -18,7 +18,11 @@
    In the root folder create `.env` file copy/paste from `.env.sample` <br>
    In the api folder create `.env` file copy/paste from `.env.sample` <br>
    In the client folder create `.env` file copy/paste from `.env.sample` <br>
-   Go to the root folder and run `docker-compose -f docker-compose-dev.yml up --build -d` <br>
+   Do the following parts, in ordet to be able to use docker in your development environment:
+   1. Go to the config/envfiles folder, create all `.env` files copy/paste from `.env.sample` <br>
+   2. Go to the root folder and run `docker-compose -f docker-compose-dev.yml up --build -d` <br>
+
+**Note** You might need to change the database name and database password in /api/config folder and env variables inside /config folder
 
 <hr>
 
