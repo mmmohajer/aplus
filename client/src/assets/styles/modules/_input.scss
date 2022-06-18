@@ -1,0 +1,10 @@
+.input {
+  padding: $inputPaddingY $inputPaddingX;
+  color: $inputTextColor;
+  background-color: $inputBgColor;
+
+  &:focus {
+    color: $focusTextColor;
+    background-color: $focusBgColor;
+  }
+}
