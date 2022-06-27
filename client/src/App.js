@@ -14,8 +14,8 @@ import {
 } from 'Constants/apiRoutes';
 
 import AppRoutes from './AppRoutes';
-import Loading from 'Components/Loading';
-import Alert from 'Components/Alert';
+import Loading from 'BaseComponents/Loading';
+import Alert from 'BaseComponents/Alert';
 
 function App() {
   const dispatch = useDispatch();
