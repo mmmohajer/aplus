@@ -16,6 +16,7 @@ import {
 import AppRoutes from './AppRoutes';
 import Loading from 'BaseComponents/Loading';
 import Alert from 'BaseComponents/Alert';
+import BaseTemplate from 'BaseComponents/BaseTemplate';
 
 function App() {
   const dispatch = useDispatch();
@@ -115,7 +116,9 @@ function App() {
     <BrowserRouter>
       {loading && <Loading />}
       <Alert />
-      <AppRoutes />
+      <BaseTemplate>
+        <AppRoutes />
+      </BaseTemplate>
     </BrowserRouter>
   );
 }
