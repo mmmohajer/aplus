@@ -1,1 +1,1 @@
-export { default } from "./SubscriberRoute";
+export { default } from './SubscriberRoute';

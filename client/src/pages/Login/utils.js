@@ -1,11 +1,9 @@
 export const emailValidators = [
-  { type: "required", message: "Email is required" },
+  { type: 'required', message: 'Email is required' },
   {
-    type: "email",
-    message: "Must be a valid email address",
-  },
+    type: 'email',
+    message: 'Must be a valid email address'
+  }
 ];
 
-export const passwordValidators = [
-  { type: "required", message: "Password required" },
-];
+export const passwordValidators = [{ type: 'required', message: 'Password required' }];

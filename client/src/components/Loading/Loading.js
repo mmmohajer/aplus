@@ -1,5 +1,5 @@
-import React from "react";
-import { Div } from "basedesign-iswad";
+import React from 'react';
+import { Div } from 'basedesign-iswad';
 
 function Loading() {
   return (

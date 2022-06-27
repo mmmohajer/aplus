@@ -1,12 +1,12 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import Home from "Pages/Home";
-import Register from "Pages/Register";
-import Login from "Pages/Login";
-import ActivateUser from "Pages/ActivateUser";
-import ResetPassword from "Pages/ResetPassword";
-import Unknown404 from "Pages/Unknown404";
+import Home from 'Pages/Home';
+import Register from 'Pages/Register';
+import Login from 'Pages/Login';
+import ActivateUser from 'Pages/ActivateUser';
+import ResetPassword from 'Pages/ResetPassword';
+import Unknown404 from 'Pages/Unknown404';
 
 function AppRoutes() {
   return (

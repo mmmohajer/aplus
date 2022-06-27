@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import cx from "classnames";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Div, Paragraph } from "basedesign-iswad";
+import React, { useState, useEffect } from 'react';
+import cx from 'classnames';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Div, Paragraph } from 'basedesign-iswad';
 
-import styles from "./SubscriberRoute.module.scss";
+import styles from './SubscriberRoute.module.scss';
 
 const SubscriberRoute = ({ children }) => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const SubscriberRoute = ({ children }) => {
   const [time, setTime] = useState(5);
 
   useEffect(() => {
-    if (profile?.user?.groups?.includes("Subscriber")) {
+    if (profile?.user?.groups?.includes('Subscriber')) {
       setIsSubscriber(true);
     } else {
       setIsSubscriber(false);
@@ -31,7 +31,7 @@ const SubscriberRoute = ({ children }) => {
         }, 1000);
       }
       if (time === 0) {
-        navigate("/");
+        navigate('/');
       }
     }
   }, [isSubscriber, time]);

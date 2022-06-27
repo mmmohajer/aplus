@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const reducerObject = {};
-reducerObject["authenticated"] = (state, action) => true;
-reducerObject["notAuthenticated"] = (state, action) => false;
+reducerObject['authenticated'] = (state, action) => true;
+reducerObject['notAuthenticated'] = (state, action) => false;
 
 const slice = createSlice({
-  name: "isAuthenticated",
+  name: 'isAuthenticated',
   initialState: false,
-  reducers: reducerObject,
+  reducers: reducerObject
 });
 
 export const { authenticated, notAuthenticated } = slice.actions;

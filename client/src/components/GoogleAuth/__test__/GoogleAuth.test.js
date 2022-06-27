@@ -1,18 +1,17 @@
-import React from "react";
-import { render as renderRTL, screen, fireEvent } from "@testing-library/react";
-import GoogleAuth from "../GoogleAuth";
-import * as reactRedux from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { render as renderRTL, screen, fireEvent } from '@testing-library/react';
+import GoogleAuth from '../GoogleAuth';
+import * as reactRedux from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-const render = (component) =>
-  renderRTL(<BrowserRouter>{component}</BrowserRouter>);
+const render = (component) => renderRTL(<BrowserRouter>{component}</BrowserRouter>);
 
-jest.mock("react-redux", () => ({
+jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
-  useDispatch: jest.fn(),
+  useDispatch: jest.fn()
 }));
 
-describe("Test GoogleAuth Component", () => {
+describe('Test GoogleAuth Component', () => {
   const useSelectorMock = reactRedux.useSelector;
   const useDispatchMock = reactRedux.useDispatch;
 
@@ -26,7 +25,7 @@ describe("Test GoogleAuth Component", () => {
     useSelectorMock.mockClear();
   });
 
-  test("", () => {
+  test('', () => {
     render(<GoogleAuth />);
 
     // expect(screen.getByText(/GoogleAuth/i)).toBeInTheDocument();

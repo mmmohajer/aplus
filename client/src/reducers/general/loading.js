@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const reducerObject = {};
-reducerObject["isLoading"] = (state, action) => true;
-reducerObject["isLoaded"] = (state, action) => false;
+reducerObject['isLoading'] = (state, action) => true;
+reducerObject['isLoaded'] = (state, action) => false;
 
 const slice = createSlice({
-  name: "loading",
+  name: 'loading',
   initialState: false,
-  reducers: reducerObject,
+  reducers: reducerObject
 });
 
 export const { isLoading, isLoaded } = slice.actions;

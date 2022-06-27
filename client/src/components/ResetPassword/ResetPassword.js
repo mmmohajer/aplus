@@ -1,52 +1,49 @@
-import React, { useState, useEffect } from "react";
-import cx from "classnames";
-import { useDispatch } from "react-redux";
-import { useSearchParams } from "react-router-dom";
-import jwt_decode from "jwt-decode";
-import { Form, Input } from "basedesign-iswad";
+import React, { useState, useEffect } from 'react';
+import cx from 'classnames';
+import { useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+import { Form, Input } from 'basedesign-iswad';
 
-import { emailValidators, passwordValidators } from "./utils";
-import useApiCalls from "Hooks/useApiCalls";
-import {
-  SEND_RESET_PASSWORD_EMAIL_API_ROUTE,
-  PASSWORD_SET_API_ROUTE,
-} from "Constants/apiRoutes";
-import { addAlertItem } from "Utils/notifications";
+import { emailValidators, passwordValidators } from './utils';
+import useApiCalls from 'Hooks/useApiCalls';
+import { SEND_RESET_PASSWORD_EMAIL_API_ROUTE, PASSWORD_SET_API_ROUTE } from 'Constants/apiRoutes';
+import { addAlertItem } from 'Utils/notifications';
 
-import styles from "./ResetPassword.module.scss";
+import styles from './ResetPassword.module.scss';
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [token, setToken] = useState("");
-  const [userId, setUserId] = useState("");
+  const [token, setToken] = useState('');
+  const [userId, setUserId] = useState('');
 
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [emailErrorIsActive, setEmailErrorIsActive] = useState(false);
 
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [passwordErrorIsActive, setPasswordErrorIsActive] = useState(false);
 
   const toBeValidatedFields = [
     {
-      input_name: "email",
+      input_name: 'email',
       validators: emailValidators,
       errorMessageHandler: setEmailErrorMessage,
-      errorActivateHandler: setEmailErrorIsActive,
-    },
+      errorActivateHandler: setEmailErrorIsActive
+    }
   ];
 
   const toBeValidatedResetFields = [
     {
-      input_name: "password",
+      input_name: 'password',
       validators: passwordValidators,
       errorMessageHandler: setPasswordErrorMessage,
-      errorActivateHandler: setPasswordErrorIsActive,
-    },
+      errorActivateHandler: setPasswordErrorIsActive
+    }
   ];
 
   const [sendResetEmailReq, setSendResetEmailReq] = useState(false);
@@ -54,24 +51,20 @@ const ResetPassword = () => {
   const { data, error } = useApiCalls({
     sendReq: sendResetEmailReq,
     setSendReq: setSendResetEmailReq,
-    method: "POST",
+    method: 'POST',
     url: SEND_RESET_PASSWORD_EMAIL_API_ROUTE,
-    bodyData,
+    bodyData
   });
 
   useEffect(() => {
     if (data) {
-      addAlertItem(
-        dispatch,
-        "Please check your inbox to validate your email address.",
-        "success"
-      );
+      addAlertItem(dispatch, 'Please check your inbox to validate your email address.', 'success');
     }
   }, [data]);
 
   useEffect(() => {
-    if (searchParams?.get("token")) {
-      const localToken = searchParams.get("token");
+    if (searchParams?.get('token')) {
+      const localToken = searchParams.get('token');
       setToken(localToken);
     }
   }, [searchParams]);
@@ -84,17 +77,13 @@ const ResetPassword = () => {
       } catch (e) {
         decoded = false;
       }
-      if (
-        decoded?.exp &&
-        Date.now() <= decoded.exp * 1000 &&
-        decoded?.user_id
-      ) {
+      if (decoded?.exp && Date.now() <= decoded.exp * 1000 && decoded?.user_id) {
         setUserId(decoded.user_id);
       } else {
         addAlertItem(
           dispatch,
-          "Sorry, we are unable to reset your password. That might be because your token has been expired.",
-          "error"
+          'Sorry, we are unable to reset your password. That might be because your token has been expired.',
+          'error'
         );
       }
     }
@@ -105,18 +94,14 @@ const ResetPassword = () => {
   const { data: passwordData, error: passwordError } = useApiCalls({
     sendReq: sendPasswordSetReq,
     setSendReq: setSendPasswordSetReq,
-    method: "POST",
+    method: 'POST',
     url: PASSWORD_SET_API_ROUTE,
-    bodyData: passwordSetbodyData,
+    bodyData: passwordSetbodyData
   });
 
   useEffect(() => {
     if (passwordData) {
-      addAlertItem(
-        dispatch,
-        "Congrats! you have successfully reset your password!",
-        "success"
-      );
+      addAlertItem(dispatch, 'Congrats! you have successfully reset your password!', 'success');
     }
   }, [passwordData]);
 
@@ -126,8 +111,7 @@ const ResetPassword = () => {
         <Form
           className="textWhite py1"
           toBeValidatedFields={toBeValidatedFields}
-          onSubmit={() => setSendResetEmailReq(true)}
-        >
+          onSubmit={() => setSendResetEmailReq(true)}>
           <Input
             type="text"
             name="email"
@@ -136,7 +120,7 @@ const ResetPassword = () => {
             onChange={(e) => {
               setEmail(e.target.value);
               setEmailErrorIsActive(false);
-              setEmailErrorMessage("");
+              setEmailErrorMessage('');
             }}
             errorMessage={emailErrorMessage}
             errorIsActive={emailErrorIsActive}
@@ -147,8 +131,7 @@ const ResetPassword = () => {
         <Form
           className="textWhite py1"
           toBeValidatedFields={toBeValidatedResetFields}
-          onSubmit={() => setSendPasswordSetReq(true)}
-        >
+          onSubmit={() => setSendPasswordSetReq(true)}>
           <Input
             type="password"
             name="password"
@@ -157,7 +140,7 @@ const ResetPassword = () => {
             onChange={(e) => {
               setPassword(e.target.value);
               setPasswordErrorIsActive(false);
-              setPasswordErrorMessage("");
+              setPasswordErrorMessage('');
             }}
             errorMessage={passwordErrorMessage}
             errorIsActive={passwordErrorIsActive}

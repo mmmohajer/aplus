@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import cx from "classnames";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Div, Paragraph } from "basedesign-iswad";
+import React, { useState, useEffect } from 'react';
+import cx from 'classnames';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Div, Paragraph } from 'basedesign-iswad';
 
-import styles from "./AdminRoute.module.scss";
+import styles from './AdminRoute.module.scss';
 
 const AdminRoute = ({ children }) => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const AdminRoute = ({ children }) => {
   const [time, setTime] = useState(5);
 
   useEffect(() => {
-    if (profile?.user?.groups?.includes("Admin")) {
+    if (profile?.user?.groups?.includes('Admin')) {
       setIsAdmin(true);
     } else {
       setIsAdmin(false);
@@ -31,7 +31,7 @@ const AdminRoute = ({ children }) => {
         }, 1000);
       }
       if (time === 0) {
-        navigate("/");
+        navigate('/');
       }
     }
   }, [isAdmin, time]);

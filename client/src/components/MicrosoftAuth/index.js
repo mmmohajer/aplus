@@ -1,1 +1,1 @@
-export { default } from "./MicrosoftAuth";
+export { default } from './MicrosoftAuth';

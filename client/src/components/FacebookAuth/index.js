@@ -1,1 +1,1 @@
-export { default } from "./FacebookAuth";
+export { default } from './FacebookAuth';

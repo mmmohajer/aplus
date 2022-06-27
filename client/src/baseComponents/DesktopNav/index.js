@@ -1,1 +1,1 @@
-export { default } from "./DesktopNav";
+export { default } from './DesktopNav';

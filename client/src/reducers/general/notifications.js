@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const reducerObject = {};
-reducerObject["addNotification"] = (state, action) => {
+reducerObject['addNotification'] = (state, action) => {
   const newItem = { ...action.payload };
-  newItem["isActive"] = true;
+  newItem['isActive'] = true;
   state.push(newItem);
 };
-reducerObject["removeNotification"] = (state, action) => {
+reducerObject['removeNotification'] = (state, action) => {
   const newState = state.filter((notif) => notif.key !== action.payload.key);
   return newState;
 };
-reducerObject["deactivateNotification"] = (state, action) => {
+reducerObject['deactivateNotification'] = (state, action) => {
   state.forEach((item) => {
     if (item.key === action.payload.key) {
       item.isActive = false;
@@ -18,18 +18,14 @@ reducerObject["deactivateNotification"] = (state, action) => {
   });
   return state;
 };
-reducerObject["clearNotifications"] = (state, action) => [];
+reducerObject['clearNotifications'] = (state, action) => [];
 
 const slice = createSlice({
-  name: "notifications",
+  name: 'notifications',
   initialState: [],
-  reducers: reducerObject,
+  reducers: reducerObject
 });
 
-export const {
-  addNotification,
-  removeNotification,
-  deactivateNotification,
-  clearNotifications,
-} = slice.actions;
+export const { addNotification, removeNotification, deactivateNotification, clearNotifications } =
+  slice.actions;
 export default slice.reducer;

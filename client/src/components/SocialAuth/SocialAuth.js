@@ -1,32 +1,32 @@
-import React, { useState, useEffect, Children } from "react";
-import cx from "classnames";
-import { Div } from "basedesign-iswad";
-import { useSearchParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect, Children } from 'react';
+import cx from 'classnames';
+import { Div } from 'basedesign-iswad';
+import { useSearchParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import useApiCalls from "Hooks/useApiCalls";
-import { loginUser } from "Utils/auth";
+import useApiCalls from 'Hooks/useApiCalls';
+import { loginUser } from 'Utils/auth';
 
-import styles from "./SocialAuth.module.scss";
+import styles from './SocialAuth.module.scss';
 
 const SocialAuth = ({
   socialAuthTokenApiRoute,
   socialAuthHandleTokenApiRoute,
   socialAuthUrl,
-  children,
+  children
 }) => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState('');
   const [sendSocialAuthReq, setSendSocialAuthReq] = useState(false);
   const [sendGetProfileReq, setSendGetProfileReq] = useState(false);
-  const [accessToken, setAccessToken] = useState("");
-  const [tokenId, setTokenId] = useState("");
+  const [accessToken, setAccessToken] = useState('');
+  const [tokenId, setTokenId] = useState('');
 
   useEffect(() => {
-    if (searchParams?.get("code")) {
-      setCode(searchParams.get("code"));
+    if (searchParams?.get('code')) {
+      setCode(searchParams.get('code'));
     }
   }, [searchParams]);
 
@@ -35,10 +35,10 @@ const SocialAuth = ({
   const { data, error } = useApiCalls({
     sendReq: sendSocialAuthReq,
     setSendReq: setSendSocialAuthReq,
-    method: "POST",
+    method: 'POST',
     url: socialAuthTokenApiRoute,
     bodyData,
-    showLoading: true,
+    showLoading: true
   });
 
   useEffect(() => {
@@ -49,11 +49,11 @@ const SocialAuth = ({
 
   useEffect(() => {
     if (data) {
-      setAccessToken(data["Authorization Data"]["access_token"]);
-      if ("id_token" in data["Authorization Data"]) {
-        setTokenId(data["Authorization Data"]["id_token"]);
+      setAccessToken(data['Authorization Data']['access_token']);
+      if ('id_token' in data['Authorization Data']) {
+        setTokenId(data['Authorization Data']['id_token']);
       } else {
-        setTokenId("No token id");
+        setTokenId('No token id');
       }
     }
   }, [data]);
@@ -63,10 +63,10 @@ const SocialAuth = ({
   const { data: profileData, error: profileError } = useApiCalls({
     sendReq: sendGetProfileReq,
     setSendReq: setSendGetProfileReq,
-    method: "POST",
+    method: 'POST',
     url: socialAuthHandleTokenApiRoute,
     bodyData: bodyProfileData,
-    showLoading: true,
+    showLoading: true
   });
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const SocialAuth = ({
 
   useEffect(() => {
     if (profileData) {
-      loginUser(profileData["access"], profileData["refresh"], dispatch);
+      loginUser(profileData['access'], profileData['refresh'], dispatch);
     }
   }, [profileData]);
 

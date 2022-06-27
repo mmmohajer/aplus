@@ -1,9 +1,9 @@
-import { generateKey } from "Utils/helpers";
+import { generateKey } from 'Utils/helpers';
 import {
   addNotification,
   removeNotification,
-  deactivateNotification,
-} from "Reducers/general/notifications";
+  deactivateNotification
+} from 'Reducers/general/notifications';
 
 export const removeAlertItem = (dispatch, key) => {
   dispatch(deactivateNotification({ key }));
@@ -21,9 +21,9 @@ export const addAlertItem = (dispatch, message, type) => {
 };
 
 const cleaningError = (err) => {
-  err = err.replaceAll("[", "");
-  err = err.replaceAll("]", "");
-  err = err.replaceAll("'", "");
+  err = err.replaceAll('[', '');
+  err = err.replaceAll(']', '');
+  err = err.replaceAll("'", '');
   return err;
 };
 
@@ -33,10 +33,10 @@ export const showErrorAPIAlert = (error, dispatch) => {
       if (error.data[key]) {
         if (Array.isArray(error.data[key])) {
           error.data[key].forEach((err) => {
-            addAlertItem(dispatch, err, "error");
+            addAlertItem(dispatch, err, 'error');
           });
         } else {
-          addAlertItem(dispatch, error.data[key], "error");
+          addAlertItem(dispatch, error.data[key], 'error');
         }
       }
     });

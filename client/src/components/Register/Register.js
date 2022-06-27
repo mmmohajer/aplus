@@ -1,70 +1,67 @@
-import React, { useState, useEffect } from "react";
-import cx from "classnames";
-import { useDispatch } from "react-redux";
-import { Form, Label, Input, Div, Button } from "basedesign-iswad";
+import React, { useState, useEffect } from 'react';
+import cx from 'classnames';
+import { useDispatch } from 'react-redux';
+import { Form, Label, Input, Div, Button } from 'basedesign-iswad';
 
-import useApiCalls from "Hooks/useApiCalls";
-import {
-  REGISTER_API_ROUTE,
-  RESEND_ACTIVATE_EMAIL_API_ROUTE,
-} from "Constants/apiRoutes";
-import { addAlertItem } from "Utils/notifications";
+import useApiCalls from 'Hooks/useApiCalls';
+import { REGISTER_API_ROUTE, RESEND_ACTIVATE_EMAIL_API_ROUTE } from 'Constants/apiRoutes';
+import { addAlertItem } from 'Utils/notifications';
 
-import styles from "./Register.module.scss";
+import styles from './Register.module.scss';
 
 import {
   firstNameValidators,
   lastNameValidators,
   emailValidators,
-  passwordValidators,
-} from "./utils";
+  passwordValidators
+} from './utils';
 
 const Register = () => {
   const dispatch = useDispatch();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const [fistNameErrorMessage, setFirstNameErrorMessage] = useState("");
+  const [fistNameErrorMessage, setFirstNameErrorMessage] = useState('');
   const [fistNameErrorIsActive, setFirstNameErrorIsActive] = useState(false);
 
-  const [lastNameErrorMessage, setLastNameErrorMessage] = useState("");
+  const [lastNameErrorMessage, setLastNameErrorMessage] = useState('');
   const [lastNameErrorIsActive, setLastNameErrorIsActive] = useState(false);
 
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [emailErrorIsActive, setEmailErrorIsActive] = useState(false);
 
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [passwordErrorIsActive, setPasswordErrorIsActive] = useState(false);
 
   const toBeValidatedFields = [
     {
-      input_name: "first_name",
+      input_name: 'first_name',
       validators: firstNameValidators,
       errorMessageHandler: setFirstNameErrorMessage,
-      errorActivateHandler: setFirstNameErrorIsActive,
+      errorActivateHandler: setFirstNameErrorIsActive
     },
     {
-      input_name: "last_name",
+      input_name: 'last_name',
       validators: lastNameValidators,
       errorMessageHandler: setLastNameErrorMessage,
-      errorActivateHandler: setLastNameErrorIsActive,
+      errorActivateHandler: setLastNameErrorIsActive
     },
     {
-      input_name: "email",
+      input_name: 'email',
       validators: emailValidators,
       errorMessageHandler: setEmailErrorMessage,
-      errorActivateHandler: setEmailErrorIsActive,
+      errorActivateHandler: setEmailErrorIsActive
     },
     {
-      input_name: "password",
+      input_name: 'password',
       validators: passwordValidators,
       errorMessageHandler: setPasswordErrorMessage,
-      errorActivateHandler: setPasswordErrorIsActive,
-    },
+      errorActivateHandler: setPasswordErrorIsActive
+    }
   ];
 
   const [sendRegisterReq, setSendRegisterReq] = useState(false);
@@ -72,46 +69,38 @@ const Register = () => {
     first_name: firstName,
     last_name: lastName,
     email,
-    password,
+    password
   };
   const { data, error } = useApiCalls({
     sendReq: sendRegisterReq,
     setSendReq: setSendRegisterReq,
-    method: "POST",
+    method: 'POST',
     url: REGISTER_API_ROUTE,
-    bodyData,
+    bodyData
   });
 
   useEffect(() => {
     if (data) {
       setSubmitted(true);
-      addAlertItem(
-        dispatch,
-        "Please check your inbox to validate your email address.",
-        "success"
-      );
+      addAlertItem(dispatch, 'Please check your inbox to validate your email address.', 'success');
     }
   }, [data]);
 
   const [sendResendEmailReq, setSendResendEmailReq] = useState(false);
   const bodyResendData = {
-    email,
+    email
   };
   const { data: resendData, error: resendError } = useApiCalls({
     sendReq: sendResendEmailReq,
     setSendReq: setSendResendEmailReq,
-    method: "POST",
+    method: 'POST',
     url: RESEND_ACTIVATE_EMAIL_API_ROUTE,
-    bodyData: bodyResendData,
+    bodyData: bodyResendData
   });
 
   useEffect(() => {
     if (resendData) {
-      addAlertItem(
-        dispatch,
-        "Please check your inbox to validate your email address.",
-        "success"
-      );
+      addAlertItem(dispatch, 'Please check your inbox to validate your email address.', 'success');
     }
   }, [resendData]);
 
@@ -120,8 +109,7 @@ const Register = () => {
       <Form
         className="textWhite py1"
         toBeValidatedFields={toBeValidatedFields}
-        onSubmit={() => setSendRegisterReq(true)}
-      >
+        onSubmit={() => setSendRegisterReq(true)}>
         <Label className="textBlack" htmlFor="sample">
           First Name
         </Label>
@@ -133,7 +121,7 @@ const Register = () => {
           onChange={(e) => {
             setFirstName(e.target.value);
             setFirstNameErrorIsActive(false);
-            setFirstNameErrorMessage("");
+            setFirstNameErrorMessage('');
           }}
           errorMessage={fistNameErrorMessage}
           errorIsActive={fistNameErrorIsActive}
@@ -146,7 +134,7 @@ const Register = () => {
           onChange={(e) => {
             setLastName(e.target.value);
             setLastNameErrorIsActive(false);
-            setLastNameErrorMessage("");
+            setLastNameErrorMessage('');
           }}
           errorMessage={lastNameErrorMessage}
           errorIsActive={lastNameErrorIsActive}
@@ -159,7 +147,7 @@ const Register = () => {
           onChange={(e) => {
             setEmail(e.target.value);
             setEmailErrorIsActive(false);
-            setEmailErrorMessage("");
+            setEmailErrorMessage('');
           }}
           errorMessage={emailErrorMessage}
           errorIsActive={emailErrorIsActive}
@@ -172,7 +160,7 @@ const Register = () => {
           onChange={(e) => {
             setPassword(e.target.value);
             setPasswordErrorIsActive(false);
-            setPasswordErrorMessage("");
+            setPasswordErrorMessage('');
           }}
           errorMessage={passwordErrorMessage}
           errorIsActive={passwordErrorIsActive}
@@ -181,9 +169,7 @@ const Register = () => {
       </Form>
       {submitted && (
         <Div>
-          <Button onClick={() => setSendResendEmailReq(true)}>
-            Resend Email
-          </Button>
+          <Button onClick={() => setSendResendEmailReq(true)}>Resend Email</Button>
         </Div>
       )}
     </>
