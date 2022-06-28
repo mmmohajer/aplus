@@ -1,8 +1,8 @@
-import React from "react";
-import cx from "classnames";
-import { Div } from "basedesign-iswad";
+import React from 'react';
+import cx from 'classnames';
+import { Div } from 'basedesign-iswad';
 
-import styles from "./Footer.module.scss";
+import styles from './Footer.module.scss';
 
 const Footer = () => {
   return (

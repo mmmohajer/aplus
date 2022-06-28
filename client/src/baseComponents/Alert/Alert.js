@@ -23,12 +23,14 @@ const Alert = () => {
               notif?.type === 'success' && 'bgSuccess',
               notif?.type === 'error' && 'bgWarning',
               notif?.type === 'danger' && 'bgDanger'
-            )}>
+            )}
+          >
             <Div className="w-per-100" type="flex" direction="horizontal" distributedBetween>
               <Paragraph>{notif.message}</Paragraph>
               <Div
                 className="textRed bgWhite mouse-hand"
-                onClick={() => removeAlertItem(dispatch, notif.key)}>
+                onClick={() => removeAlertItem(dispatch, notif.key)}
+              >
                 X
               </Div>
             </Div>

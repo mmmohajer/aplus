@@ -1,23 +1,22 @@
-import React from "react";
-import { render as renderRTL, screen, fireEvent } from "@testing-library/react";
-import SubscriberRoute from "../SubscriberRoute";
-import * as reactRedux from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { render as renderRTL, screen, fireEvent } from '@testing-library/react';
+import SubscriberRoute from '../SubscriberRoute';
+import * as reactRedux from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-const render = (component) =>
-  renderRTL(<BrowserRouter>{component}</BrowserRouter>);
+const render = (component) => renderRTL(<BrowserRouter>{component}</BrowserRouter>);
 
-jest.mock("react-redux", () => ({
+jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
-  useDispatch: jest.fn(),
+  useDispatch: jest.fn()
 }));
 
-describe("Test SubscriberRoute Component", () => {
+describe('Test SubscriberRoute Component', () => {
   const useSelectorMock = reactRedux.useSelector;
   const useDispatchMock = reactRedux.useDispatch;
 
   let mockStore = {
-    profile: {},
+    profile: {}
   };
 
   beforeEach(() => {
@@ -30,53 +29,47 @@ describe("Test SubscriberRoute Component", () => {
     useSelectorMock.mockClear();
   });
 
-  test("Subscriber route content is not observale to an admin user", () => {
+  test('Subscriber route content is not observale to an admin user', () => {
     mockStore = {
       profile: {
         user: {
-          groups: ["Admin"],
-        },
-      },
+          groups: ['Admin']
+        }
+      }
     };
 
     const children = `<div>This is a secret messsage</div>`;
 
     render(<SubscriberRoute children={children} />);
 
-    expect(
-      screen.queryByText(/This is a secret messsage/i)
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/This is a secret messsage/i)).not.toBeInTheDocument();
   });
 
-  test("Subscriber route content is observale for a subscriber user", () => {
+  test('Subscriber route content is observale for a subscriber user', () => {
     mockStore = {
       profile: {
         user: {
-          groups: ["Subscriber"],
-        },
-      },
+          groups: ['Subscriber']
+        }
+      }
     };
 
     const children = `<div>This is a secret messsage</div>`;
 
     render(<SubscriberRoute children={children} />);
 
-    expect(
-      screen.queryByText(/This is a secret messsage/i)
-    ).toBeInTheDocument();
+    expect(screen.queryByText(/This is a secret messsage/i)).toBeInTheDocument();
   });
 
-  test("Subscriber route content is not observale for anonymous user", () => {
+  test('Subscriber route content is not observale for anonymous user', () => {
     mockStore = {
-      profile: {},
+      profile: {}
     };
 
     const children = `<div>This is a secret messsage</div>`;
 
     render(<SubscriberRoute children={children} />);
 
-    expect(
-      screen.queryByText(/This is a secret messsage/i)
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/This is a secret messsage/i)).not.toBeInTheDocument();
   });
 });

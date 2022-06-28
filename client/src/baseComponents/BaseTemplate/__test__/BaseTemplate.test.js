@@ -1,18 +1,17 @@
-import React from "react";
-import { render as renderRTL, screen, fireEvent } from "@testing-library/react";
-import BaseTemplate from "../BaseTemplate";
-import * as reactRedux from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { render as renderRTL, screen, fireEvent } from '@testing-library/react';
+import BaseTemplate from '../BaseTemplate';
+import * as reactRedux from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-const render = (component) =>
-  renderRTL(<BrowserRouter>{component}</BrowserRouter>);
+const render = (component) => renderRTL(<BrowserRouter>{component}</BrowserRouter>);
 
-jest.mock("react-redux", () => ({
+jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
-  useDispatch: jest.fn(),
+  useDispatch: jest.fn()
 }));
 
-describe("Test BaseTemplate Component", () => {
+describe('Test BaseTemplate Component', () => {
   const useSelectorMock = reactRedux.useSelector;
   const useDispatchMock = reactRedux.useDispatch;
 
@@ -26,7 +25,7 @@ describe("Test BaseTemplate Component", () => {
     useSelectorMock.mockClear();
   });
 
-  test("", () => {
+  test('', () => {
     render(<BaseTemplate />);
 
     expect(screen.getByText(/BaseTemplate/i)).toBeInTheDocument();

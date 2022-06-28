@@ -111,7 +111,8 @@ const ResetPassword = () => {
         <Form
           className="textWhite py1"
           toBeValidatedFields={toBeValidatedFields}
-          onSubmit={() => setSendResetEmailReq(true)}>
+          onSubmit={() => setSendResetEmailReq(true)}
+        >
           <Input
             type="text"
             name="email"
@@ -131,7 +132,8 @@ const ResetPassword = () => {
         <Form
           className="textWhite py1"
           toBeValidatedFields={toBeValidatedResetFields}
-          onSubmit={() => setSendPasswordSetReq(true)}>
+          onSubmit={() => setSendPasswordSetReq(true)}
+        >
           <Input
             type="password"
             name="password"

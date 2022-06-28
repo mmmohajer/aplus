@@ -18,7 +18,8 @@ const GoogleAuth = () => {
         <SocialAuth
           socialAuthTokenApiRoute={GOOGLE_AUTH_TOKEN_API_ROUTE}
           socialAuthHandleTokenApiRoute={GOOGLE_AUTH_HANDLE_TOKEN_API_ROUTE}
-          socialAuthUrl={GOOGLE_AUTH_URL}>
+          socialAuthUrl={GOOGLE_AUTH_URL}
+        >
           Continue With Google
         </SocialAuth>
       </Div>

@@ -61,7 +61,8 @@ const Login = () => {
       <Form
         className="textWhite py1"
         toBeValidatedFields={toBeValidatedFields}
-        onSubmit={() => setSendLoginReq(true)}>
+        onSubmit={() => setSendLoginReq(true)}
+      >
         <Input
           type="text"
           name="email"

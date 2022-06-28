@@ -18,7 +18,8 @@ const FacebookAuth = () => {
         <SocialAuth
           socialAuthTokenApiRoute={FACEBOOK_AUTH_TOKEN_API_ROUTE}
           socialAuthHandleTokenApiRoute={FACEBOOK_AUTH_HANDLE_TOKEN_API_ROUTE}
-          socialAuthUrl={FACEBOOK_AUTH_URL}>
+          socialAuthUrl={FACEBOOK_AUTH_URL}
+        >
           Continue With Facebook
         </SocialAuth>
       </Div>

@@ -1,23 +1,22 @@
-import React from "react";
-import { render as renderRTL, screen, fireEvent } from "@testing-library/react";
-import PublicRoute from "../PublicRoute";
-import * as reactRedux from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { render as renderRTL, screen, fireEvent } from '@testing-library/react';
+import PublicRoute from '../PublicRoute';
+import * as reactRedux from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-const render = (component) =>
-  renderRTL(<BrowserRouter>{component}</BrowserRouter>);
+const render = (component) => renderRTL(<BrowserRouter>{component}</BrowserRouter>);
 
-jest.mock("react-redux", () => ({
+jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
-  useDispatch: jest.fn(),
+  useDispatch: jest.fn()
 }));
 
-describe("Test PublicRoute Component", () => {
+describe('Test PublicRoute Component', () => {
   const useSelectorMock = reactRedux.useSelector;
   const useDispatchMock = reactRedux.useDispatch;
 
   let mockStore = {
-    profile: {},
+    profile: {}
   };
 
   beforeEach(() => {
@@ -30,9 +29,9 @@ describe("Test PublicRoute Component", () => {
     useSelectorMock.mockClear();
   });
 
-  test("Public route content is observale to an authenticated user", () => {
+  test('Public route content is observale to an authenticated user', () => {
     mockStore = {
-      isAuthenticated: true,
+      isAuthenticated: true
     };
 
     const children = `<div>This is a secret messsage</div>`;
@@ -42,9 +41,9 @@ describe("Test PublicRoute Component", () => {
     expect(screen.getByText(/This is a secret messsage/i)).toBeInTheDocument();
   });
 
-  test("Public route content is observable for ananymous user", () => {
+  test('Public route content is observable for ananymous user', () => {
     mockStore = {
-      isAuthenticated: false,
+      isAuthenticated: false
     };
 
     const children = `<div>This is a secret messsage</div>`;

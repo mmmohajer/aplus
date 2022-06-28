@@ -18,7 +18,8 @@ const MicrosoftAuth = () => {
         <SocialAuth
           socialAuthTokenApiRoute={MICROSOFT_AUTH_TOKEN_API_ROUTE}
           socialAuthHandleTokenApiRoute={MICROSOFT_AUTH_HANDLE_TOKEN_API_ROUTE}
-          socialAuthUrl={MICROSOFT_AUTH_URL}>
+          socialAuthUrl={MICROSOFT_AUTH_URL}
+        >
           Continue With Microsoft
         </SocialAuth>
       </Div>

@@ -10,7 +10,10 @@
     "build-patch": "grunt bump-only:patch && npm run build",
     "build-minor": "grunt bump-only:minor && npm run build",
     "build-major": "grunt bump-only:major && npm run build",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "author": "Mohammad Mahdi Mohajer",
   "license": "ISC",

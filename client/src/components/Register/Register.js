@@ -109,7 +109,8 @@ const Register = () => {
       <Form
         className="textWhite py1"
         toBeValidatedFields={toBeValidatedFields}
-        onSubmit={() => setSendRegisterReq(true)}>
+        onSubmit={() => setSendRegisterReq(true)}
+      >
         <Label className="textBlack" htmlFor="sample">
           First Name
         </Label>
