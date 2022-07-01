@@ -7,6 +7,7 @@ source ./utils/shellScripting/funcs/contexts.sh
 source ./utils/shellScripting/funcs/client.sh
 source ./utils/shellScripting/funcs/api.sh
 source ./utils/shellScripting/funcs/deploy.sh
+source ./utils/shellScripting/funcs/initialSetup.sh
 
 cat << EOF
 This script runs to help you develop your application much faster.
@@ -24,11 +25,13 @@ run() {
         if [[ ${OPTIONS[*]} =~ $selected ]]
         then
             [ $selected == 0 ] && showMenuBar
-            [ $selected == 1 ] && createReactComponent
-            [ $selected == 2 ] && createReactBaseComponent
-            [ $selected == 3 ] && createReactPage
-            [ $selected == 4 ] && addDjangoApp
-            [ $selected == 5 ] && deploy
+            [ $selected == 1 ] && initialSetupInMAcOrLinux
+            [ $selected == 2 ] && initialSetupInWindows
+            [ $selected == 3 ] && createReactComponent
+            [ $selected == 4 ] && createReactBaseComponent
+            [ $selected == 5 ] && createReactPage
+            [ $selected == 6 ] && addDjangoApp
+            [ $selected == 7 ] && deploy
         else
             run
         fi
