@@ -17,7 +17,7 @@ class ProtectedCRUDViewSet(viewsets.ModelViewSet):
             instance.delete()
             return response.Response(status=status.HTTP_204_NO_CONTENT)
         else:
-            return response.Response(status=status.HTTP_401_UNAUTHORIZED, data={"Error": "Unauthorized"})
+            return response.Response(status=status.HTTP_401_UNAUTHORIZED, data={"message": "Unauthorized"})
 
     def protected_update(self, request, instance, instance_user_id, *args, **kwargs):
         user_groups_queryset = request.user.groups.all()
@@ -28,4 +28,4 @@ class ProtectedCRUDViewSet(viewsets.ModelViewSet):
             serializer.save()
             return response.Response(status=status.HTTP_200_OK, data=serializer.data)
         else:
-            return response.Response(status=status.HTTP_401_UNAUTHORIZED, data={"Error": "Unauthorized"})
+            return response.Response(status=status.HTTP_401_UNAUTHORIZED, data={"message": "Unauthorized"})

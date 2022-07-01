@@ -19,6 +19,23 @@ from core.utils import isAdmin, code_generator, oauthHandleToken
 User = get_user_model()
 
 
+class AddUserToGroup(views.APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, format=None):
+        cur_user = request.user
+        group_name = request.data.get("groupName")
+        if not cur_user:
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"message": "We found no authenticated user!"})
+        if not group_name:
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"message": "No group name is specified!"})
+        cur_group = Group.objects.filter(name=group_name).first()
+        if cur_group:
+            cur_group.user_set.add(cur_user)
+            return response.Response(status=status.HTTP_200_OK, data={"message": f"User has been successfully added to group {group_name}"})
+        return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"message": f"There is no group existing in the database with name {group_name}"})
+
+
 class ActivateUserViewSet(views.APIView):
 
     def post(self, request, format=None):
@@ -92,7 +109,7 @@ class UserDeleteViewSet(views.APIView):
             if (is_correct_password):
                 to_be_deleted_user.delete()
                 return response.Response(status=status.HTTP_204_NO_CONTENT)
-            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"error": "Incorrect password"})
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"message": "Incorrect password"})
         return response.Response(status=status.HTTP_403_FORBIDDEN)
 
 
@@ -119,7 +136,7 @@ class GoogleAuthViewSet(views.APIView):
             res = requests.post(googleTokenReqApiUrl)
             return response.Response(status=status.HTTP_200_OK, data={"Authorization Data": json.loads(res.content)})
         except Exception as e:
-            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"message": str(e)})
 
 
 class GoogleAuthHandleTokenViewSet(views.APIView):
@@ -150,7 +167,7 @@ class MicrosoftAuthViewSet(views.APIView):
             res = requests.post(microsoftTokenReqApiUrl, headers=headers, data=payload)
             return response.Response(status=status.HTTP_200_OK, data={"Authorization Data": json.loads(res.content)})
         except Exception as e:
-            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"message": str(e)})
 
 
 class MicrosoftAuthHandleTokenViewSet(views.APIView):
@@ -177,7 +194,7 @@ class FacebookAuthViewSet(views.APIView):
             res = requests.get(facebookTokenReqApiUrl)
             return response.Response(status=status.HTTP_200_OK, data={"Authorization Data": json.loads(res.content)})
         except Exception as e:
-            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"message": str(e)})
 
 
 class FacebookAuthHandleTokenViewSet(views.APIView):
@@ -198,4 +215,4 @@ class FacebookAuthHandleTokenViewSet(views.APIView):
             else:
                 return response.Response(status=status.HTTP_400_BAD_REQUEST, data=data)
         except Exception as e:
-            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"Error": str(e)})
+            return response.Response(status=status.HTTP_400_BAD_REQUEST, data={"message": str(e)})

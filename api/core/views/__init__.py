@@ -4,6 +4,7 @@ ProtectedCRUDViewSet = general_view.ProtectedCRUDViewSet
 
 ProfileViewSet = profile_view.ProfileViewSet
 
+AddUserToGroup = user_view.AddUserToGroup.as_view()
 ActivateUserViewSet = user_view.ActivateUserViewSet.as_view()
 ResendActivationEmailViewSet = user_view.ResendActivationEmailViewSet.as_view()
 SendForgotPasswordViewSet = user_view.SendForgotPasswordViewSet.as_view()
