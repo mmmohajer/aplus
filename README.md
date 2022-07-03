@@ -25,7 +25,7 @@ Setup:
 
    1. Go to the **root folder** and run `docker-compose -f docker-compose-dev.yml up --build -d` <br>
 
-Note:<br> You might need to change the database name and database password in /api/config folder and env variables inside /config folder
+Note:<br> You might need to change the database name and database password in **/api/config folder** and env variables inside **/config folder**.
 
 <hr>
 
