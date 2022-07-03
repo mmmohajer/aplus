@@ -2,25 +2,18 @@
 
 1. Setup Development environment: <br>
    Clone the repository <br>
-   Create a python virtual env: `python3 -m venv venv` <br>
-   Activate the environment: <br>
-   Mac/Linux: `source venv/bin/activate` <br>
-   Windows: `venv\Scripts\activate` <br>
-   Install all python packages: <br>
+   SETUP ON MAC/Linux:
+   ./automation.sh
+   Choose `Make initial setup on Mac/Linux`
+   SETUP ON WINDOWS:
+   Create a python virtual env: `python -m venv venv` <br>
+   Activate virtual environment --> `venv\Scripts\activate` <br>
    `pip install --upgrade pip` <br>
-   `pip install -r api/requirements.txt` <br>
-   `pip install pytest pytest-django model_bakery pytest-watch isort flake8 autopep8 locust`
-   Create the following subfolders: <br>
-   `./api/vol/static/` <br>
-   `./api/vol/media/` <br>
+   `pip install -r api/requirements-windows-local.txt` <br>
    Go to api folder and run `python manage.py collectstatic` <br>
    Go to client folder and run `npm run update-design` <br>
-   In the root folder create `.env` file copy/paste from `.env.sample` <br>
-   In the api folder create `.env` file copy/paste from `.env.sample` <br>
-   In the client folder create `.env` file copy/paste from `.env.sample` <br>
-   Do the following parts, in ordet to be able to use docker in your development environment:
-   1. Go to the config/envfiles folder, create all `.env` files copy/paste from `.env.sample` <br>
-   2. Go to the root folder and run `docker-compose -f docker-compose-dev.yml up --build -d` <br>
+   Do the following part, in ordet to be able to use docker in your development environment:
+   1. Go to the root folder and run `docker-compose -f docker-compose-dev.yml up --build -d` <br>
 
 **Note** You might need to change the database name and database password in /api/config folder and env variables inside /config folder
 
