@@ -2,6 +2,19 @@ from celery import shared_task
 from templated_email import send_templated_mail
 from django.core.mail import BadHeaderError
 
+# ----------------------------------------------
+# Periodic Tasks
+# ----------------------------------------------
+
+
+# @shared_task
+# def test_periodic_task(first_name, last_name):
+#     print(f"{first_name} {last_name}")
+#     return
+
+# ----------------------------------------------
+# Send Emails
+# ----------------------------------------------
 
 @shared_task
 def send_activation_email(first_name, email, code):
@@ -35,3 +48,7 @@ def send_reset_password_email(first_name, email, code):
     except BadHeaderError:
         pass
     return
+
+# ----------------------------------------------
+# ----------------------------------------------
+# ----------------------------------------------
