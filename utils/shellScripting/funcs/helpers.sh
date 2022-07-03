@@ -72,7 +72,8 @@ cat << EOF
 4. Create a new react base component.
 5. Create a new react page.
 6. Create a new django app.
-7. Deploy to server
+7. Copy environment variables in server
+8. Deploy to server
 $(echo -en "${I_CYAN}")0. Show MenuBar
 $(echo -en "${I_RED}")Q. Exit
 EOF

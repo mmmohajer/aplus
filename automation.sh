@@ -31,7 +31,8 @@ run() {
             [ $selected == 4 ] && createReactBaseComponent
             [ $selected == 5 ] && createReactPage
             [ $selected == 6 ] && addDjangoApp
-            [ $selected == 7 ] && deploy
+            [ $selected == 7 ] && initialSetupInServer
+            [ $selected == 8 ] && deploy
         else
             run
         fi

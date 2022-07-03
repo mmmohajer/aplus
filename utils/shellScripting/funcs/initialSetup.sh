@@ -24,12 +24,6 @@ initialSetupInMAcOrLinux() {
 }
 
 initialSetupInWindows() {
-    python -m venv venv
-    venv\Scripts\activate
-    pip install --upgrade pip
-    pip install -r api/requirements.txt
-    pip install pytest pytest-django model_bakery pytest-watch isort flake8 autopep8 locust
-    echo "Python virtual environment is ready"
     cp ".env.sample" ".env"
     cp "config/envFiles/django/develop/.env.sample" "config/envFiles/django/develop/.env"
     cp "config/envFiles/django/prod/.env.sample" "config/envFiles/django/prod/.env"
@@ -45,9 +39,12 @@ initialSetupInWindows() {
     mkdir "media"
     mkdir "static"
     cd "../.."
-    echo "vol folder created inside api folder"
-    cd api && python manage.py collectstatic && cd ..
-    echo "Static files created"
-    cd client && npm install && cd ..
-    echo "Client folder is ready" 
+    echo "vol folder created inside api folder" 
+}
+
+initialSetupInServer() {
+    cp ".env.sample" ".env"
+    cp "config/envFiles/django/prod/.env.sample" "config/envFiles/django/prod/.env"
+    cp "config/envFiles/postgres/prod/.env.sample" "config/envFiles/postgres/prod/.env"
+    echo "All environment variables have been copied"
 }
