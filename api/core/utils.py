@@ -59,10 +59,8 @@ def oauthHandleToken(request, authGetProfileUrl, first_name_key="given_name", la
         else:
             first_name = user_data.get(first_name_key)
             last_name = user_data.get(last_name_key)
-            password = code_generator()
             # Register User
             cur_user = User(first_name=first_name, last_name=last_name, email=email)
-            cur_user.set_password(password)
             cur_user.is_active = True
             cur_user.save()
             # Create profile for the new registered user

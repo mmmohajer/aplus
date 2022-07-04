@@ -13,9 +13,9 @@ const Login = () => {
   return (
     <PublicRoute>
       <LoginComponent />
-      {/* <GoogleAuth /> */}
+      <GoogleAuth />
       {/* <MicrosoftAuth /> */}
-      <FacebookAuth />
+      {/* <FacebookAuth /> */}
     </PublicRoute>
   );
 };
