@@ -32,14 +32,7 @@ initialSetupInWindows() {
     cp "client/config/develop/.env.sample" "client/config/develop/.env"
     cp "client/config/prod/.env.sample" "client/config/prod/.env"
     cp "api/.env.sample" "api/.env"
-    echo "All environment variables have been copied"
-    cd "api"
-    mkdir "vol"
-    cd "vol"
-    mkdir "media"
-    mkdir "static"
-    cd "../.."
-    echo "vol folder created inside api folder" 
+    echo "All environment variables have been copied" 
 }
 
 initialSetupInServer() {
