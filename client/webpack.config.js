@@ -87,7 +87,8 @@ if (currentTask == 'dev') {
   sassConfig.use.unshift('style-loader');
   config.output = {
     filename: 'bundled.js',
-    path: path.resolve(__dirname, 'src')
+    path: path.resolve(__dirname, 'src'),
+    publicPath: '/'
   };
   config.devServer = {
     static: './src',
@@ -117,7 +118,7 @@ if (currentTask == 'build') {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: './',
+    publicPath: '/',
     libraryTarget: 'commonjs2'
   };
   config.mode = 'production';
