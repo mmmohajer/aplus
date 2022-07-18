@@ -1,28 +1,101 @@
-@use "sass:math";
+@use 'sass:math';
 
 // From Base Folder
-@import "base/_imports";
-@import "base/_variables";
-@import "base/_mixins";
-@import "base/_global";
+@import 'base/_imports';
+@import 'base/_variables';
+@import 'base/_mixins';
+@import 'base/_global';
 
 // From Modules
-@import "modules/_borders";
-@import "modules/_btn";
-@import "modules/_colors";
-@import "modules/_display";
-@import "modules/_form";
-@import "modules/_heading";
-@import "modules/_hover";
-@import "modules/_links";
-@import "modules/_row";
+@import 'modules/_borders';
+@import 'modules/_btn';
+@import 'modules/_colors';
+@import 'modules/_display';
+@import 'modules/_form';
+@import 'modules/_heading';
+@import 'modules/_hover';
+@import 'modules/_links';
+@import 'modules/_row';
 
 // From Iswad
-@import "iswad/_adminNav";
-@import "iswad/_alert";
-@import "iswad/_desktopNavBar";
-@import "iswad/_input";
-@import "iswad/_mobileNavBar";
-@import "iswad/_pagination";
-@import "iswad/_search";
-@import "iswad/_table";
+@import 'iswad/_adminNav';
+@import 'iswad/_alert';
+@import 'iswad/_desktopNavBar';
+@import 'iswad/_input';
+@import 'iswad/_mobileNavBar';
+@import 'iswad/_pagination';
+@import 'iswad/_search';
+@import 'iswad/_table';
+
+// Introduction
+
+.introduction {
+  &_left {
+    flex-direction: column;
+
+    @include atMedium {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &_right {
+    align-items: center;
+    margin-top: 2rem;
+    @include atMedium {
+      align-items: flex-start;
+      margin-top: 0;
+    }
+
+    &_item:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 5px;
+      height: 11px;
+      border-width: 0 2px 2px 0;
+      border-style: solid;
+      border-color: dodgerblue;
+      transform-origin: bottom left;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.profilePhoto {
+  height: 500px;
+  object-fit: contain;
+}
+
+.bigText {
+  font-size: 3rem;
+}
+
+// Item List
+.listItem {
+  &_container {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    // border-bottom: 20px solid #e138385e;
+    margin-bottom: 1rem;
+  }
+
+  &_item {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: #ff1717;
+    transition: all 0.3s;
+    opacity: 0.7;
+    color: white;
+
+    &:hover {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    &_index {
+      background-color: #ffda00a3;
+    }
+  }
+}

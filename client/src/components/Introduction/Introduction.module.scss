@@ -1,0 +1,40 @@
+@import 'Styles/base/_variables';
+@import 'Styles/base/_mixins';
+
+.introduction {
+  &Left {
+    flex-direction: column;
+
+    @include atMedium {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &Right {
+    align-items: center;
+    margin-top: 2rem;
+    @include atMedium {
+      align-items: flex-start;
+      margin-top: 0;
+    }
+
+    &Item:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 5px;
+      height: 11px;
+      border-width: 0 2px 2px 0;
+      border-style: solid;
+      border-color: dodgerblue;
+      transform-origin: bottom left;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.bigText {
+  font-size: 3rem;
+}
