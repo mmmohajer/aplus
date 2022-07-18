@@ -56,7 +56,22 @@
       height: 11px;
       border-width: 0 2px 2px 0;
       border-style: solid;
-      border-color: dodgerblue;
+      border-color: red;
+      transform-origin: bottom left;
+      transform: rotate(45deg);
+    }
+
+    &_item_farsi:before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: -8px;
+      top: -2px;
+      width: 5px;
+      height: 11px;
+      border-width: 0 2px 2px 0;
+      border-style: solid;
+      border-color: red;
       transform-origin: bottom left;
       transform: rotate(45deg);
     }
@@ -84,10 +99,11 @@
   &_item {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    background-color: #ff1717;
+    background-color: black;
     transition: all 0.3s;
     opacity: 0.7;
     color: white;
+    position: relative;
 
     &:hover {
       transform: scale(1.05);
@@ -95,7 +111,7 @@
     }
 
     &_index {
-      background-color: #ffda00a3;
+      background-color: #8d8c84a3;
     }
   }
 }

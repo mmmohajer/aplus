@@ -55,3 +55,16 @@ ul {
   margin: 0 auto;
   position: relative;
 }
+
+@font-face {
+  font-family: BLotus;
+  src: url('../fonts/BLotusBd.ttf') format('truetype');
+}
+
+.farsiFont {
+  font-family: BLotus;
+}
+
+.englishFont {
+  font-family: $fontFamily;
+}

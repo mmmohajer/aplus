@@ -9,7 +9,7 @@ const HrLine = () => {
     <>
       <Div className={cx(styles.astroDivider)}>
         <Div className={cx(styles.astroDividerMask)}></Div>
-        <Text>
+        <Text className="englishFont">
           <i>&#10038;</i>
         </Text>
       </Div>

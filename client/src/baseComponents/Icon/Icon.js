@@ -5,6 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 
 import Dashboard from 'Images/js-images/icons/svg/dashboard.svg';
+import Instagram from 'Images/js-images/icons/svg/instagram.svg';
+import Location from 'Images/js-images/icons/svg/location.svg';
+import Phone from 'Images/js-images/icons/svg/phone.svg';
+import Mail from 'Images/js-images/icons/svg/mail.svg';
 
 function Icon({ type, color, width, scale }) {
   let iconTypes = {
@@ -14,11 +18,21 @@ function Icon({ type, color, width, scale }) {
   iconTypes['dashboard'] = (
     <Dashboard fill={color} stroke={color} style={{ transform: `scale(${scale})` }} />
   );
+  iconTypes['instagram'] = (
+    <Instagram fill={color} stroke={color} style={{ transform: `scale(${scale})` }} />
+  );
+  iconTypes['location'] = (
+    <Location fill={color} stroke={color} style={{ transform: `scale(${scale})` }} />
+  );
+  iconTypes['phone'] = (
+    <Phone fill={color} stroke={color} style={{ transform: `scale(${scale})` }} />
+  );
+  iconTypes['mail'] = <Mail fill={color} stroke={color} style={{ transform: `scale(${scale})` }} />;
   return <>{iconTypes[type]}</>;
 }
 
 Icon.propTypes = {
-  type: PropTypes.oneOf(['flag', 'dashboard']),
+  type: PropTypes.oneOf(['flag', 'dashboard', 'instagram', 'phone', 'location', 'mail']),
   color: PropTypes.string,
   width: PropTypes.string
 };

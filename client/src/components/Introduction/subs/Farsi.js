@@ -28,25 +28,34 @@ const Farsi = () => {
           <h1 className="f-b bigText">
             دفتر وکالت مهاجرتی <span className="textRed">کانادا</span>
           </h1>
-          <div>
+          <div className="text-rtl">
             <p className="mt2 mb1 f-b">عضویت رسمی در</p>
             <ul className="mb2">
-              <li className="pos-rel pl2 mb1 introduction_right_item">
-                انجمن حقوقدانان آنتاریو - کانادا (LSO)
+              <li className="pos-rel pl2 mb1 introduction_right_item_farsi">
+                <div className="flex flex--jc--end flex--ai--center">
+                  <div>(LSO)</div>
+                  <div>انجمن حقوقدانان آنتاریو - کانادا</div>
+                </div>
               </li>
-              <li className="pos-rel pl2 mb1 introduction_right_item">
-                انجمن مشاورین مهاجرتی دولت فدرال - کانادا (ICCRC)
+              <li className="pos-rel pl2 mb1 introduction_right_item_farsi">
+                <div className="flex flex--jc--end flex--ai--center">
+                  <div>(ICCRC)</div>
+                  <div>انجمن مشاورین مهاجرتی دولت فدرال - کانادا</div>
+                </div>
               </li>
-              <li className="pos-rel pl2 mb1 introduction_right_item">
-                ترجمه رسمی توسط دولت فدرال کانادا (Certificated Translation)
+              <li className="pos-rel pl2 mb1 introduction_right_item_farsi">
+                <div className="flex flex--jc--end flex--ai--center">
+                  <div>(Certificated Translation)</div>
+                  <div>ترجمه رسمی توسط دولت فدرال کانادا</div>
+                </div>
               </li>
             </ul>
           </div>
           <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start">
-            <Info src={Email} text="barezai@yahoo.com" />
-            <Info src={Instagram} text="barezai@yahoo.com" />
-            <Info src={Address} text="100 Frontier Path Pvt., Ottawa, ON, Canada" />
-            <Info src={Phone} text="+1(613)291-6167" />
+            <Info type="mail" text="barezai@yahoo.com" />
+            <Info type="instagram" text="barezai@yahoo.com" />
+            <Info type="location" text="100 Frontier Path Pvt., Ottawa, ON, Canada" />
+            <Info type="phone" text="+1(613)291-6167" />
           </div>
         </div>
       </div>

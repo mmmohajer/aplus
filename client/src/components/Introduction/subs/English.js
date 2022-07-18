@@ -43,10 +43,10 @@ const English = () => {
             </ul>
           </div>
           <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start">
-            <Info src={Email} text="barezai@yahoo.com" />
-            <Info src={Instagram} text="barezai@yahoo.com" />
-            <Info src={Address} text="100 Frontier Path Pvt., Ottawa, ON, Canada" />
-            <Info src={Phone} text="+1(613)291-6167" />
+            <Info type="mail" text="barezai@yahoo.com" />
+            <Info type="instagram" text="barezai@yahoo.com" />
+            <Info type="location" text="100 Frontier Path Pvt., Ottawa, ON, Canada" />
+            <Info type="phone" text="+1(613)291-6167" />
           </div>
         </div>
       </div>

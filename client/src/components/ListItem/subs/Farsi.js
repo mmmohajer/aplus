@@ -25,11 +25,11 @@ const Farsi = () => {
             return (
               <li
                 key={item.Index}
-                className="flex flex--jc--start flex--ai--center mb2 bgRed p2 listItem_item">
-                <span className="flex flex--jc--center flex--ai--center br-per-rad-50 w-px-40 box-px-40 mr2 listItem_item_index">
-                  {item.Index}
-                </span>
+                className="flex flex--jc--end flex--ai--center mb2 bgRed p2 listItem_item">
                 {item.Subject}
+                <span className="flex flex--jc--center flex--ai--center br-per-rad-50 w-px-40 box-px-40 ml2 listItem_item_index">
+                  <span className="mt1">{item.Index}</span>
+                </span>
               </li>
             );
           })}
