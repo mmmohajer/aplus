@@ -10,7 +10,7 @@ function Home() {
   return (
     <PublicRoute>
       <Div>
-        <Paragraph>This is the homepage for your new app!</Paragraph>
+        <Paragraph>This is the homepage for your new app!!!</Paragraph>
       </Div>
     </PublicRoute>
   );
