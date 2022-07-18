@@ -25,7 +25,7 @@ const English = () => {
           </div>
         </div>
         <div className="flex--jc--around row--12 row--sm--12 row--md--6 row--lg--6 pl2 pr2 flex flex--jc--center flex--dir--col introduction_right">
-          <h1 className="f-b">
+          <h1 className="f-b secondFont">
             <span className="textRed">Canadian</span> Immigration Law Office
           </h1>
           <div>
