@@ -7,11 +7,13 @@ import styles from '../ListItem.module.scss';
 const items = [
   { Subject: 'Family Sponsorship', Index: '1' },
   { Subject: 'VISA (Tourisem/Work/Super Visa)', Index: '2' },
-  { Subject: 'Startup Visa', Index: '3' },
-  { Subject: 'Investments / ENTR', Index: '4' },
-  { Subject: 'Care Giver', Index: '5' },
+  { Subject: 'Startup - Visa', Index: '3' },
+  { Subject: 'Investments', Index: '4' },
+  { Subject: 'Caregiver', Index: '5' },
   { Subject: 'Self Employed', Index: '6' },
-  { Subject: 'Skilled Worker', Index: '7' }
+  { Subject: 'Skilled Worker', Index: '7' },
+  { Subject: 'Student Visa', Index: '8' },
+  { Subject: 'Notary Public', Index: '9' }
 ];
 
 const English = () => {

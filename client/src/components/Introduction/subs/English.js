@@ -6,7 +6,7 @@ import Info from 'Components/Info';
 
 import styles from '../Introduction.module.scss';
 
-import ProfilePhote from 'Images/js-Images/general/Profile2.jpg';
+import ProfilePhote from 'Images/js-Images/general/behzad-modified-2.jpg';
 import Email from 'Images/js-Images/general/icons8-send-email-48.png';
 import Instagram from 'Images/js-Images/general/icons8-instagram-logo-48.png';
 import Address from 'Images/js-Images/general/icons8-address-48.png';
@@ -25,9 +25,7 @@ const English = () => {
           </div>
         </div>
         <div className="flex--jc--around row--12 row--sm--12 row--md--6 row--lg--6 pl2 pr2 flex flex--jc--center flex--dir--col introduction_right">
-          <h1 className="f-b secondFont">
-            <span className="textRed">Canadian</span> Immigration Law Office
-          </h1>
+          <h1 className="f-b secondFont">A Plus Canada Immigration Law Office</h1>
           <div>
             <p className="mt2 mb1 f-b">Memberships</p>
             <ul className="mb2">
@@ -35,17 +33,20 @@ const English = () => {
                 Law Society of Ontario (LSO)
               </li>
               <li className="pos-rel pl2 mb1 introduction_right_item">
-                Canadian Immigration Council (ICCRC)
+                Immigration Council (ICCRC)
               </li>
               <li className="pos-rel pl2 mb1 introduction_right_item">
-                Federal Translation (Certificated Translation)
+                Federal Translation Bureau of Canada (Certificated Translation)
               </li>
             </ul>
           </div>
           <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start">
             <Info type="mail" text="barezai@yahoo.com" />
             <Info type="instagram" text="barezai@yahoo.com" />
-            <Info type="location" text="100 Frontier Path Pvt., Ottawa, ON, Canada" />
+            <Info
+              type="location"
+              text="211-190 Summerset Street West, Ottawa, ON, Canada, K2P 0J4"
+            />
             <Info type="phone" text="+1(613)291-6167" />
           </div>
         </div>

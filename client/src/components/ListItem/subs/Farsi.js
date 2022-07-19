@@ -12,7 +12,8 @@ const items = [
   { Subject: 'مهارت کاری (اقامت دائم)', Index: '5' },
   { Subject: 'پناهندگی', Index: '6' },
   { Subject: 'ترجمه رسمی کامل مدارک (حقوقی)', Index: '7' },
-  { Subject: 'دعوتنامه و تنظیم دعوتنامه', Index: '8' }
+  { Subject: 'دعوتنامه و تنظیم دعوتنامه', Index: '8' },
+  { Subject: 'مهر حقوقی', Index: '9' }
 ];
 
 const Farsi = () => {

@@ -6,7 +6,7 @@ import Info from 'Components/Info';
 
 import styles from '../Introduction.module.scss';
 
-import ProfilePhote from 'Images/js-Images/general/Profile2.jpg';
+import ProfilePhote from 'Images/js-Images/general/behzad-modified-2.jpg';
 import Email from 'Images/js-Images/general/icons8-send-email-48.png';
 import Instagram from 'Images/js-Images/general/icons8-instagram-logo-48.png';
 import Address from 'Images/js-Images/general/icons8-address-48.png';
@@ -26,7 +26,7 @@ const Farsi = () => {
         </div>
         <div className="row--12 row--sm--12 row--md--6 row--lg--6 pl2 pr2 flex flex--jc--center flex--dir--col f-right flex--jc--around introduction_right">
           <h1 className="f-b bigText">
-            دفتر وکالت مهاجرتی <span className="textRed">کانادا</span>
+            دفتر حقوق مهاجرتی <span className="textRed">کانادا</span>
           </h1>
           <div className="text-rtl">
             <p className="mt2 mb1 f-b">عضویت رسمی در</p>
