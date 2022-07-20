@@ -23,7 +23,8 @@ const BaseTemplate = ({ children }) => {
           <HrLine />
           <Div>{children}</Div>
         </Div>
-        {/* <Footer /> */}
+        <HrLine />
+        <Footer />
       </Div>
     </>
   );

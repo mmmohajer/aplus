@@ -1,0 +1,7 @@
+@import 'Styles/base/_variables';
+
+.menuItem {
+  &:hover {
+    color: $fadedColor;
+  }
+}

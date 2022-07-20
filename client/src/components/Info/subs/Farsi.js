@@ -6,9 +6,9 @@ import Icon from 'BaseComponents/Icon';
 
 import styles from '../Info.module.scss';
 
-const Farsi = ({ type, text }) => {
+const Farsi = ({ type, text, className }) => {
   return (
-    <div className="flex flex--jc--start flex--ai--center">
+    <div className={cx('flex flex--jc--start flex--ai--center', className)}>
       <div className="flex flex--jc--center flex--ai--center">
         <Icon type={type} color="red" />
       </div>
