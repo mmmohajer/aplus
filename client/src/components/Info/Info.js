@@ -8,13 +8,13 @@ import Farsi from './subs/Farsi';
 
 import styles from './Info.module.scss';
 
-const Info = ({ type, text }) => {
+const Info = ({ type, text, ...props }) => {
   const language = useSelector((state) => state.language);
 
   return (
     <>
-      {language === 'en' && <English type={type} text={text} />}
-      {language === 'fa' && <Farsi type={type} text={text} />}
+      {language === 'en' && <English type={type} text={text} {...props} />}
+      {language === 'fa' && <Farsi type={type} text={text} {...props} />}
     </>
   );
 };

@@ -1,4 +1,29 @@
 .iswad_input {
+  padding: 20px 20px;
+  margin: 8px 0;
+  border: none;
+  outline: none;
+  display: inline-block;
+  border-bottom: 2px solid rgb(168, 166, 166);
+  font-size: 24px;
+  &:hover {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(204, 13, 13);
+  }
+
+  &:active {
+    border: none;
+    border-bottom: 2px solid rgb(241, 0, 0);
+    outline: none;
+  }
+
+  &:focus {
+    border: none;
+    border-bottom: 2px solid rgb(241, 0, 0);
+    outline: none;
+  }
+
   &_container {
     justify-content: start;
     position: relative;
