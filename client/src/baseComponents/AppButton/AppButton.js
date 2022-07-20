@@ -4,10 +4,12 @@ import { Button, Div } from 'basedesign-iswad';
 
 import styles from './AppButton.module.scss';
 
-const AppButton = ({ children, ...props }) => {
+const AppButton = ({ children, className, ...props }) => {
   return (
     <>
-      <Button className="bgRed br-rad-px-5 textWhite px3 py1" {...props}>
+      <Button
+        className={cx('w-per-100 bgFaded br-rad-px-5 textWhite', styles.btn, className)}
+        {...props}>
         {children}
       </Button>
     </>

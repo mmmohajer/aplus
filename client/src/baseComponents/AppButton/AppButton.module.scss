@@ -1,0 +1,13 @@
+@import 'Styles/base/_variables';
+
+.btn {
+  border: none;
+  padding: 20px 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: $primaryColor;
+
+  &:hover {
+    background-color: black;
+  }
+}

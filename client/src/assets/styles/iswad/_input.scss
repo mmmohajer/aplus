@@ -1,27 +1,22 @@
 .iswad_input {
-  padding: 20px 20px;
+  width: 100%;
+  padding: 12px 20px;
   margin: 8px 0;
-  border: none;
-  outline: none;
+  border-radius: 10px;
   display: inline-block;
-  border-bottom: 2px solid rgb(168, 166, 166);
-  font-size: 24px;
+  border: 2px solid rgb(168, 166, 166);
+
   &:hover {
-    outline: none;
-    border: none;
-    border-bottom: 2px solid rgb(204, 13, 13);
+    border: 2px solid $fadedColor;
   }
 
   &:active {
-    border: none;
-    border-bottom: 2px solid rgb(241, 0, 0);
-    outline: none;
+    border: 2px solid $fadedColor;
   }
 
   &:focus {
-    border: none;
-    border-bottom: 2px solid rgb(241, 0, 0);
     outline: none;
+    border: 2px solid $fadedColor;
   }
 
   &_container {
@@ -34,10 +29,12 @@
   }
 
   &_errorMessage {
+    left: 4px;
     display: none;
     color: red;
     position: absolute;
-    top: 1rem;
+    bottom: 0px;
+    font-size: 13px;
 
     &_active {
       display: block;
