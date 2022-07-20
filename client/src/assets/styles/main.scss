@@ -50,7 +50,7 @@
       content: '';
       display: block;
       position: absolute;
-      left: 0;
+      left: -4px;
       top: -2px;
       width: 5px;
       height: 11px;
@@ -65,7 +65,7 @@
       content: '';
       display: block;
       position: absolute;
-      right: -8px;
+      right: -12px;
       top: -2px;
       width: 5px;
       height: 11px;
@@ -81,10 +81,6 @@
 .profilePhoto {
   height: 500px;
   object-fit: contain;
-}
-
-.bigText {
-  font-size: 3rem;
 }
 
 // Item List

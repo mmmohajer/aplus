@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { useDispatch } from 'react-redux';
-import { Div, Image } from 'basedesign-iswad';
+import { Div, Image, Text } from 'basedesign-iswad';
 
 import { LangToFarsi, langToEnglish } from 'Reducers/general/language';
 
@@ -20,11 +20,15 @@ const Header = () => {
         <Image src={Logo} width="200" height="80" alt="APlus Logo" />
       </Div>
       <Div type="flex">
-        <Div className="mr2 mouse-hand" onClick={() => dispatch(langToEnglish())}>
-          <Image src={CaFlag} alt="APlus Logo" width="36" height="36" />
+        <Div
+          className="pr1 mr1 mouse-hand br-right-solid-1"
+          onClick={() => dispatch(langToEnglish())}>
+          {/* <Image src={CaFlag} alt="APlus Logo" width="36" height="36" /> */}
+          <Text>EN</Text>
         </Div>
         <Div className="mouse-hand" onClick={() => dispatch(LangToFarsi())}>
-          <Image src={IrFlag} alt="APlus Logo" width="36" height="36" />
+          {/* <Image src={IrFlag} alt="APlus Logo" width="36" height="36" /> */}
+          <Text>FA</Text>
         </Div>
       </Div>
     </Div>

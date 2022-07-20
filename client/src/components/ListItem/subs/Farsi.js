@@ -26,7 +26,7 @@ const Farsi = () => {
             return (
               <li
                 key={item.Index}
-                className="flex flex--jc--end flex--ai--center mb2 bgRed p2 listItem_item">
+                className="flex flex--jc--end flex--ai--center mb2 bgRed p2 text-rtl mouse-hand listItem_item">
                 {item.Subject}
                 <span className="flex flex--jc--center flex--ai--center br-per-rad-50 w-px-40 box-px-40 ml2 listItem_item_index">
                   <span className="mt1">{item.Index}</span>
@@ -35,13 +35,7 @@ const Farsi = () => {
             );
           })}
         </ul>
-        <p>
-          برای اطلاعات بیشتر به{' '}
-          <a target="_blank" href="https://www.canada.ca/en/services/immigration-citizenship.html">
-            سایت مهاجرت کانادا
-          </a>{' '}
-          مراجعه نمایید
-        </p>
+        <p className="text-rtl">برای اطلاعات بیشتر، لطفا با ما تماس حاصل فرمایید</p>
       </div>
     </>
   );

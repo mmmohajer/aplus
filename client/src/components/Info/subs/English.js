@@ -12,7 +12,7 @@ const English = ({ type, text }) => {
       <div className="flex flex--jc--center flex--ai--center">
         <Icon type={type} color="red" />
       </div>
-      <div className="box-px-50 ml2 flex flex--jc--center flex--ai--center">{text}</div>
+      <div className="box-px-50 ml2 flex flex--jc--center flex--ai--center text-ltr">{text}</div>
     </div>
   );
 };

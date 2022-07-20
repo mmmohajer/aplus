@@ -25,7 +25,9 @@ const English = () => {
           </div>
         </div>
         <div className="flex--jc--around row--12 row--sm--12 row--md--6 row--lg--6 pl2 pr2 flex flex--jc--center flex--dir--col introduction_right">
-          <h1 className="f-b secondFont">A Plus Canada Immigration Law Office</h1>
+          <h1 className="f-b secondFont h1 text-center mb3">
+            A Plus Canada Immigration Law Office
+          </h1>
           <div>
             <p className="mt2 mb1 f-b">Memberships</p>
             <ul className="mb2">
@@ -36,16 +38,16 @@ const English = () => {
                 Immigration Council (ICCRC)
               </li>
               <li className="pos-rel pl2 mb1 introduction_right_item">
-                Federal Translation Bureau of Canada (Certificated Translation)
+                Federal Translation Bureau of Canada (Certified Translation)
               </li>
             </ul>
           </div>
-          <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start">
+          <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start my3">
             <Info type="mail" text="barezai@yahoo.com" />
             <Info type="instagram" text="barezai@yahoo.com" />
             <Info
               type="location"
-              text="211-190 Summerset Street West, Ottawa, ON, Canada, K2P 0J4"
+              text="211-190 Somerset Street West, Ottawa, ON, Canada, K2P 0J4"
             />
             <Info type="phone" text="+1(613)291-6167" />
           </div>

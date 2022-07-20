@@ -24,13 +24,14 @@ const Farsi = () => {
             </div>
           </div>
         </div>
-        <div className="row--12 row--sm--12 row--md--6 row--lg--6 pl2 pr2 flex flex--jc--center flex--dir--col f-right flex--jc--around introduction_right">
-          <h1 className="f-b bigText">
-            دفتر حقوق مهاجرتی <span className="textRed">کانادا</span>
+        <div className="row--12 row--sm--12 row--md--6 row--lg--6 pl2 pr2 flex flex--dir--col f-right flex--jc--around text-rtl introduction_right">
+          <h1 className="f-b h1 ml-auto mr3 mb3 flex flex--ai--center">
+            <div className="mr1">APlus</div>
+            <div>دفتر حقوق مهاجرتی</div>
           </h1>
-          <div className="text-rtl">
+          <div className="text-rtl ml-auto mr3">
             <p className="mt2 mb1 f-b">عضویت رسمی در</p>
-            <ul className="mb2">
+            <ul className="mb2 mr3">
               <li className="pos-rel pl2 mb1 introduction_right_item_farsi">
                 <div className="flex flex--jc--end flex--ai--center">
                   <div>(LSO)</div>
@@ -45,16 +46,19 @@ const Farsi = () => {
               </li>
               <li className="pos-rel pl2 mb1 introduction_right_item_farsi">
                 <div className="flex flex--jc--end flex--ai--center">
-                  <div>(Certificated Translation)</div>
+                  <div>(Certified Translation)</div>
                   <div>ترجمه رسمی توسط دولت فدرال کانادا</div>
                 </div>
               </li>
             </ul>
           </div>
-          <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start">
+          <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start my3">
             <Info type="mail" text="barezai@yahoo.com" />
             <Info type="instagram" text="barezai@yahoo.com" />
-            <Info type="location" text="100 Frontier Path Pvt., Ottawa, ON, Canada" />
+            <Info
+              type="location"
+              text="211-190 Somerset Street West, Ottawa, ON, Canada, K2P 0J4"
+            />
             <Info type="phone" text="+1(613)291-6167" />
           </div>
         </div>
