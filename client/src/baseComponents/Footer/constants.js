@@ -1,5 +1,3 @@
-export const MENU_ITEMS = ['Home', 'About us', 'Services', 'Contact us'];
-
 export const INFORMATION = [
   { type: 'mail', text: 'barezai@yahoo.com' },
   { type: 'instagram', text: 'barezai@yahoo.com' },
