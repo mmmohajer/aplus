@@ -14,6 +14,18 @@
   color: red;
 }
 
+.required-before {
+  &::before {
+    content: '*';
+    color: red;
+  }
+
+  &::after {
+    content: '';
+    color: red;
+  }
+}
+
 .textarea {
   width: 100%;
   padding: 12px 20px;
