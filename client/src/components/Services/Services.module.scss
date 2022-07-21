@@ -1,0 +1,41 @@
+@import 'Styles/base/_variables';
+@import 'Styles/base/_mixins';
+
+.container {
+  display: grid;
+  gap: 2rem;
+
+  @include atSmall {
+    grid-template-columns: repeat(1, 300px);
+  }
+
+  @include atMedium {
+    grid-template-columns: repeat(2, 300px);
+  }
+
+  @include atLarge {
+    grid-template-columns: repeat(3, 300px);
+  }
+}
+
+.mobContainer {
+  display: flex;
+}
+
+.carouselButton {
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(33, 6, 58);
+  top: 50%;
+  z-index: 100000;
+
+  &Left {
+    left: 40%;
+  }
+
+  &Right {
+    right: 0px;
+  }
+}

@@ -8,6 +8,7 @@ import PublicRoute from 'Components/PublicRoute';
 import Introduction from 'Components/Introduction';
 import ListItem from 'Components/ListItem';
 import Contact from 'Components/Contact';
+import Services from 'Components/Services';
 
 import styles from './Home.module.scss';
 
@@ -16,8 +17,9 @@ function Home() {
     <PublicRoute>
       <Introduction />
       <HrLine />
-      <ListItem />
-      <Div className="w-per-100 bgInverse py3">
+      {/* <ListItem /> */}
+      <Services />
+      <Div className="mt8 w-per-100 bgInverse py3">
         <Div className="show-block-in-md-lg w-per-50 ml-auto mr-auto">
           <Contact />
         </Div>
