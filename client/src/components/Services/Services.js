@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
-import { Div, Carousel, CarouselItem, Button } from 'basedesign-iswad';
+import { Div, DraggableSlider, DraggableSliderItem, Button } from 'basedesign-iswad';
 
 import ServiceCard from 'Components/ServiceCard';
 
@@ -31,30 +31,33 @@ const Services = () => {
       </Div>
 
       <Div type="flex" hAlign="center" className={cx('pos-rel w-per-100 p4 show-flex-in-sm-xsm')}>
-        <Carousel
+        <DraggableSlider
           moveLeft={moveLeft}
           setMoveLeft={setMoveLeft}
           moveRight={moveRight}
           setMoveRight={setMoveRight}
           moveToItemWithNum={moveToItemWithNum}
           setMoveToItemWithNum={setMoveToItemWithNum}
-          className={cx(styles.mobContainer)}>
+          initialTranslateX="0%"
+          moveLeftTranslateX="33.33333%"
+          moveRightTranslateX="-33.33333%"
+          className={cx('flex flex--jc--center', styles.mobContainer)}>
           {ITEMS.map((item, idx) => (
-            <CarouselItem key={idx} className={cx(styles.mobCardItem)}>
+            <DraggableSliderItem key={idx} className={cx('mx2', styles.mobCardItem)}>
               <ServiceCard
                 src={item.src}
                 title={language === 'en' ? item.titleEn : item.titleFa}
                 text={language === 'en' ? item.textEn : item.textFa}
               />
-            </CarouselItem>
+            </DraggableSliderItem>
           ))}
-        </Carousel>
-        <Div className={cx(styles.carouselButton, styles.carouselButtonLeft)}>
+        </DraggableSlider>
+        {/* <Div className={cx(styles.carouselButton, styles.carouselButtonLeft)}>
           <Button onClick={() => setMoveLeft(true)}>Left</Button>
         </Div>
         <Div className={cx(styles.carouselButton, styles.carouselButtonRight)}>
           <Button onClick={() => setMoveRight(true)}>Right</Button>
-        </Div>
+        </Div> */}
       </Div>
     </>
   );
