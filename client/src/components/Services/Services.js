@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
-import { Div, DraggableSlider, DraggableSliderItem, Button } from 'basedesign-iswad';
+import { Div, SwipableSlider, SwipableSliderItem, Button } from 'basedesign-iswad';
 
 import ServiceCard from 'Components/ServiceCard';
 
@@ -31,7 +31,7 @@ const Services = () => {
       </Div>
 
       <Div type="flex" hAlign="center" className={cx('pos-rel w-per-100 p4 show-flex-in-sm-xsm')}>
-        <DraggableSlider
+        <SwipableSlider
           moveLeft={moveLeft}
           setMoveLeft={setMoveLeft}
           moveRight={moveRight}
@@ -43,15 +43,15 @@ const Services = () => {
           moveRightTranslateX="-33.33333%"
           className={cx('flex flex--jc--center', styles.mobContainer)}>
           {ITEMS.map((item, idx) => (
-            <DraggableSliderItem key={idx} className={cx('mx2', styles.mobCardItem)}>
+            <SwipableSliderItem key={idx} className={cx('mx2', styles.mobCardItem)}>
               <ServiceCard
                 src={item.src}
                 title={language === 'en' ? item.titleEn : item.titleFa}
                 text={language === 'en' ? item.textEn : item.textFa}
               />
-            </DraggableSliderItem>
+            </SwipableSliderItem>
           ))}
-        </DraggableSlider>
+        </SwipableSlider>
         {/* <Div className={cx(styles.carouselButton, styles.carouselButtonLeft)}>
           <Button onClick={() => setMoveLeft(true)}>Left</Button>
         </Div>
