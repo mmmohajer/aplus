@@ -19,7 +19,7 @@
 }
 
 .mobContainer {
-  display: flex;
+  padding-bottom: 1rem;
 }
 
 .carouselButton {
@@ -30,9 +30,10 @@
   background-color: rgb(33, 6, 58);
   top: 50%;
   z-index: 100000;
+  transform: translateY(-50%);
 
   &Left {
-    left: 40%;
+    left: 0px;
   }
 
   &Right {

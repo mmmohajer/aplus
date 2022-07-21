@@ -12,6 +12,7 @@ const Services = () => {
   const language = useSelector((state) => state.language);
 
   const [moveLeft, setMoveLeft] = useState(false);
+  const [moveRight, setMoveRight] = useState(false);
   const [moveToItemWithNum, setMoveToItemWithNum] = useState(1);
 
   return (
@@ -33,11 +34,13 @@ const Services = () => {
         <Carousel
           moveLeft={moveLeft}
           setMoveLeft={setMoveLeft}
+          moveRight={moveRight}
+          setMoveRight={setMoveRight}
           moveToItemWithNum={moveToItemWithNum}
           setMoveToItemWithNum={setMoveToItemWithNum}
           className={cx(styles.mobContainer)}>
           {ITEMS.map((item, idx) => (
-            <CarouselItem key={idx} className={cx('w-per-100 mx1')}>
+            <CarouselItem key={idx} className={cx(styles.mobCardItem)}>
               <ServiceCard
                 src={item.src}
                 title={language === 'en' ? item.titleEn : item.titleFa}
@@ -45,14 +48,13 @@ const Services = () => {
               />
             </CarouselItem>
           ))}
-
-          <Div className={cx(styles.carouselButton, styles.carouselButtonLeft)}>
-            <Button onClick={() => setMoveLeft(true)}>Left</Button>
-          </Div>
-          <Div className={cx(styles.carouselButton, styles.carouselButtonRight)}>
-            <Button onClick={() => setMoveToItemWithNum(4)}>Jump To number 4</Button>
-          </Div>
         </Carousel>
+        <Div className={cx(styles.carouselButton, styles.carouselButtonLeft)}>
+          <Button onClick={() => setMoveLeft(true)}>Left</Button>
+        </Div>
+        <Div className={cx(styles.carouselButton, styles.carouselButtonRight)}>
+          <Button onClick={() => setMoveRight(true)}>Right</Button>
+        </Div>
       </Div>
     </>
   );
