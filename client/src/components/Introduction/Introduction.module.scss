@@ -2,37 +2,16 @@
 @import 'Styles/base/_mixins';
 
 .introduction {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-  &Left {
-    flex-direction: column;
+  box-shadow: rgba(240, 46, 46, 0.4) 0px 5px, rgba(240, 46, 46, 0.3) 0px 10px,
+    rgba(240, 46, 46, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
+    rgba(240, 46, 170, 0.05) 0px 25px;
 
-    @include atMedium {
-      flex-direction: column-reverse;
-    }
+  &Row {
+    flex-direction: row-reverse;
   }
 
-  &Right {
-    align-items: center;
-    margin-top: 2rem;
-    @include atMedium {
-      align-items: flex-start;
-      margin-top: 0;
-    }
-
-    &Item:before {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 2px;
-      width: 5px;
-      height: 11px;
-      border-width: 0 2px 2px 0;
-      border-style: solid;
-      border-color: dodgerblue;
-      transform-origin: bottom left;
-      transform: rotate(45deg);
-    }
+  &Button {
+    font-size: 16px;
   }
 }
 
