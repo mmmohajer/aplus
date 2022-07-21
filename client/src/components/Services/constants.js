@@ -1,6 +1,16 @@
+import FamilyImage from 'Images/js-Images/general/family-immigration.jpg';
+import Tourist from 'Images/js-Images/general/tourist.jpg';
+import Investment from 'Images/js-Images/general/investment.jpg';
+import SelfEmployment from 'Images/js-Images/general/self-employment.jpg';
+import SkilledWorker from 'Images/js-Images/general/skillworker.jpeg';
+import Refugee from 'Images/js-Images/general/refugee.jpg';
+import ProfessionalTranslation from 'Images/js-Images/general/professional-translation.jpg';
+import Invitation from 'Images/js-Images/general/invitation.jpg';
+import Transaltion from 'Images/js-Images/general/translation.jpg';
+
 export const ITEMS = [
   {
-    src: '../../assets/images/js-Images/general/family-immigration.jpg',
+    src: FamilyImage,
     titleFa: 'ساپورت اعضای خانواده (اقامت دائم)',
     titleEn: 'Family Sponsorship',
     textFa:
@@ -10,7 +20,7 @@ export const ITEMS = [
   },
 
   {
-    src: '../../assets/images/js-Images/general/tourist.jpg',
+    src: Tourist,
     titleFa: 'ویزاهای توریستی، والدین و تحصیلی',
     titleEn: 'Toutist/Student/Super VISA',
     textFa:
@@ -20,7 +30,7 @@ export const ITEMS = [
   },
 
   {
-    src: '../../assets/images/js-Images/general/investment.jpg',
+    src: Investment,
     titleFa: 'سرمایه گذاری فدرال و ایالتی (اقامت دائم)',
     titleEn: 'Investment VISA',
     textFa:
@@ -30,7 +40,7 @@ export const ITEMS = [
   },
 
   {
-    src: '../../assets/images/js-Images/general/self-employment.jpg',
+    src: SelfEmployment,
     titleFa: 'خود اشتغالی (اقامت دائم)',
     titleEn: 'Startup - Visa',
     textFa:
@@ -40,7 +50,7 @@ export const ITEMS = [
   },
 
   {
-    src: '../../assets/images/js-Images/general/skillworker.jpeg',
+    src: SkilledWorker,
     titleFa: 'مهارت کاری (اقامت دائم)',
     titleEn: 'Skilled Worker',
     textFa:
@@ -50,7 +60,7 @@ export const ITEMS = [
   },
 
   {
-    src: '../../assets/images/js-Images/general/refugee.jpg',
+    src: Refugee,
     titleFa: 'پناهندگی',
     titleEn: 'Refugee VISA',
     textFa:
@@ -60,7 +70,7 @@ export const ITEMS = [
   },
 
   {
-    src: '../../assets/images/js-Images/general/professional-translation.jpg',
+    src: ProfessionalTranslation,
     titleFa: 'ترجمه رسمی کامل مدارک (حقوقی)',
     titleEn: 'Document Transaltion',
     textFa:
@@ -70,7 +80,7 @@ export const ITEMS = [
   },
 
   {
-    src: '../../assets/images/js-Images/general/invitation.jpg',
+    src: Invitation,
     titleFa: 'دعوتنامه و تنظیم دعوتنامه',
     titleEn: 'Invitation Letter to Canada',
     textFa:
@@ -80,7 +90,7 @@ export const ITEMS = [
   },
 
   {
-    src: '../../assets/images/js-Images/general/translation.jpg',
+    src: Transaltion,
     titleFa: 'مهر حقوقی',
     titleEn: 'Notary Public',
     textFa:
