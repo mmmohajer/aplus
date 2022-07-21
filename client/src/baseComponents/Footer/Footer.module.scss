@@ -1,5 +1,9 @@
 @import 'Styles/base/_variables';
 
+.footer {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .menuItem {
   &:hover {
     color: $fadedColor;
