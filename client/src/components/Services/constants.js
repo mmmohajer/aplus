@@ -1,6 +1,6 @@
 export const ITEMS = [
   {
-    src: 'https://picsum.photos/300',
+    src: '../../assets/images/js-Images/general/family-immigration.jpg',
     titleFa: 'ساپورت اعضای خانواده (اقامت دائم)',
     titleEn: 'Family Sponsorship',
     textFa:
@@ -10,9 +10,9 @@ export const ITEMS = [
   },
 
   {
-    src: 'https://picsum.photos/300',
+    src: '../../assets/images/js-Images/general/tourist.jpg',
     titleFa: 'ویزاهای توریستی، والدین و تحصیلی',
-    titleEn: 'Family Sponsorship',
+    titleEn: 'Toutist/Student/Super VISA',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:
@@ -20,9 +20,9 @@ export const ITEMS = [
   },
 
   {
-    src: 'https://picsum.photos/300',
+    src: '../../assets/images/js-Images/general/investment.jpg',
     titleFa: 'سرمایه گذاری فدرال و ایالتی (اقامت دائم)',
-    titleEn: 'Family Sponsorship',
+    titleEn: 'Investment VISA',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:
@@ -30,9 +30,9 @@ export const ITEMS = [
   },
 
   {
-    src: 'https://picsum.photos/300',
+    src: '../../assets/images/js-Images/general/self-employment.jpg',
     titleFa: 'خود اشتغالی (اقامت دائم)',
-    titleEn: 'Family Sponsorship',
+    titleEn: 'Startup - Visa',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:
@@ -40,9 +40,9 @@ export const ITEMS = [
   },
 
   {
-    src: 'https://picsum.photos/300',
+    src: '../../assets/images/js-Images/general/skillworker.jpeg',
     titleFa: 'مهارت کاری (اقامت دائم)',
-    titleEn: 'Family Sponsorship',
+    titleEn: 'Skilled Worker',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:
@@ -50,9 +50,9 @@ export const ITEMS = [
   },
 
   {
-    src: 'https://picsum.photos/300',
+    src: '../../assets/images/js-Images/general/refugee.jpg',
     titleFa: 'پناهندگی',
-    titleEn: 'Family Sponsorship',
+    titleEn: 'Refugee VISA',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:
@@ -60,9 +60,9 @@ export const ITEMS = [
   },
 
   {
-    src: 'https://picsum.photos/300',
+    src: '../../assets/images/js-Images/general/professional-translation.jpg',
     titleFa: 'ترجمه رسمی کامل مدارک (حقوقی)',
-    titleEn: 'Family Sponsorship',
+    titleEn: 'Document Transaltion',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:
@@ -70,9 +70,9 @@ export const ITEMS = [
   },
 
   {
-    src: 'https://picsum.photos/300',
+    src: '../../assets/images/js-Images/general/invitation.jpg',
     titleFa: 'دعوتنامه و تنظیم دعوتنامه',
-    titleEn: 'Family Sponsorship',
+    titleEn: 'Invitation Letter to Canada',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:
@@ -80,9 +80,9 @@ export const ITEMS = [
   },
 
   {
-    src: 'https://picsum.photos/300',
-    titleFa: 'ترجمه رسمی کامل مدارک (حقوقی)',
-    titleEn: 'Family Sponsorship',
+    src: '../../assets/images/js-Images/general/translation.jpg',
+    titleFa: 'مهر حقوقی',
+    titleEn: 'Notary Public',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:
