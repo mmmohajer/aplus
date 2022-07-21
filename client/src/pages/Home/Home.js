@@ -16,8 +16,6 @@ function Home() {
   return (
     <PublicRoute>
       <Introduction />
-      <HrLine />
-      {/* <ListItem /> */}
       <Services />
       <Div className="mt8 w-per-100 bgInverse py3">
         <Div className="show-block-in-md-lg w-per-50 ml-auto mr-auto">

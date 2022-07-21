@@ -15,7 +15,7 @@ import Phone from 'Images/js-Images/general/icons8-phone-64.png';
 const Farsi = () => {
   return (
     <>
-      <div className="row introduction_farsi">
+      <div className="row introduction_farsi bgInverse">
         <div className="row--12 row--sm--12 row--md--6 row--lg--6 p2">
           <div className="flex flex--jc--center flex--ai--center introduction_left">
             <h2 className="text-center mt2">بهزاد افخم رضایی</h2>
@@ -51,15 +51,6 @@ const Farsi = () => {
                 </div>
               </li>
             </ul>
-          </div>
-          <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start my3">
-            <Info type="mail" text="barezai@yahoo.com" />
-            <Info type="instagram" text="barezai@yahoo.com" />
-            <Info
-              type="location"
-              text="211-190 Somerset Street West, Ottawa, ON, Canada, K2P 0J4"
-            />
-            <Info type="phone" text="+1(613)291-6167" />
           </div>
         </div>
       </div>

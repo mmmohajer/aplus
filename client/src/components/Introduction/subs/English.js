@@ -15,7 +15,7 @@ import Phone from 'Images/js-Images/general/icons8-phone-64.png';
 const English = () => {
   return (
     <>
-      <div className="row">
+      <div className="row bgInverse">
         <div className="row--12 row--sm--12 row--md--6 row--lg--6 p2 flex--jc--around">
           <div className="flex flex--jc--center flex--ai--center introduction_left">
             <h2 className="text-center mt2">Behzad A. Rezai</h2>
@@ -41,15 +41,6 @@ const English = () => {
                 Federal Translation Bureau of Canada (Certified Translation)
               </li>
             </ul>
-          </div>
-          <div className="text-center flex flex--dir--col flex--jc--center flex--ai--start my3">
-            <Info type="mail" text="barezai@yahoo.com" />
-            <Info type="instagram" text="barezai@yahoo.com" />
-            <Info
-              type="location"
-              text="211-190 Somerset Street West, Ottawa, ON, Canada, K2P 0J4"
-            />
-            <Info type="phone" text="+1(613)291-6167" />
           </div>
         </div>
       </div>

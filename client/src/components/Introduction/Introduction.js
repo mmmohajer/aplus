@@ -13,8 +13,10 @@ const Introduction = () => {
 
   return (
     <>
-      {language === 'en' && <English />}
-      {language === 'fa' && <Farsi />}
+      <Div className={cx('mb5', styles.introduction)}>
+        {language === 'en' && <English />}
+        {language === 'fa' && <Farsi />}
+      </Div>
     </>
   );
 };
