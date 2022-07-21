@@ -6,6 +6,15 @@
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.2s ease-in-out;
+  width: 200px;
+
+  @include atSmall {
+    width: 250px;
+  }
+
+  @include atMedium {
+    width: 300px;
+  }
 
   &:hover {
     @include atMedium {
