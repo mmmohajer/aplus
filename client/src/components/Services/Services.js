@@ -17,6 +17,9 @@ const Services = () => {
 
   return (
     <>
+      <Div className={cx('mb5 h1 text-center', styles.sectionTitle)}>
+        {language === 'en' ? 'Our Services' : 'خدمات ما'}
+      </Div>
       <Div type="flex" hAlign="center" className={cx('show-flex-in-md-lg')}>
         <Div className={cx(styles.container)}>
           {ITEMS.map((item, idx) => (
@@ -49,11 +52,19 @@ const Services = () => {
             </CarouselItem>
           ))}
         </Carousel>
-        <Div className={cx(styles.carouselButton, styles.carouselButtonLeft)}>
-          <Button onClick={() => setMoveLeft(true)}>Left</Button>
+        <Div>
+          <Button
+            className={cx('mx2', styles.carouselButton, styles.carouselButtonLeft)}
+            onClick={() => setMoveLeft(true)}>
+            {'<'}
+          </Button>
         </Div>
-        <Div className={cx(styles.carouselButton, styles.carouselButtonRight)}>
-          <Button onClick={() => setMoveRight(true)}>Right</Button>
+        <Div>
+          <Button
+            className={cx('mx2', styles.carouselButton, styles.carouselButtonRight)}
+            onClick={() => setMoveRight(true)}>
+            {'>'}
+          </Button>
         </Div>
       </Div>
     </>

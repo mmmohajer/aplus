@@ -17,11 +17,11 @@ function Home() {
     <PublicRoute>
       <Introduction />
       <Services />
+
       <Div className="mt8 w-per-100 bgInverse py3">
         <Div className="show-block-in-md-lg w-per-50 ml-auto mr-auto">
           <Contact />
         </Div>
-
         <Div className="show-block-in-sm-xsm ml-auto mr-auto">
           <Contact />
         </Div>
