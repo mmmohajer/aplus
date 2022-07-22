@@ -63,7 +63,7 @@ const Footer = () => {
             </Div>
           </Column>
         </Row>
-        <Row className={cx('flex flex--jc--center mt3 textWhite bgSilver')}>
+        <Row className={cx('flex flex--jc--center mt3 textWhite bgSilver englishFont fs-px-14 p1')}>
           Copyright © 2022 APlus | Powered by
           <a href="https://www.iswad.tech" className={cx('flex flex--jc--center ml1 textRed')}>
             ISWAD

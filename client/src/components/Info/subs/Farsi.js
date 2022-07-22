@@ -8,7 +8,7 @@ import styles from '../Info.module.scss';
 
 const Farsi = ({ type, text, className }) => {
   return (
-    <div className={cx('flex flex--jc--start flex--ai--center', className)}>
+    <div className={cx('flex flex--jc--start flex--ai--start', className)}>
       <div className="flex flex--jc--center flex--ai--center">
         <Icon type={type} color="red" />
       </div>

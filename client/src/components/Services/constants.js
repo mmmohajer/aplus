@@ -22,7 +22,7 @@ export const ITEMS = [
   {
     src: Tourist,
     titleFa: 'ویزاهای توریستی، والدین و تحصیلی',
-    titleEn: 'Toutist/Student/Super VISA',
+    titleEn: 'Tourist, Student, Super VISA',
     textFa:
       'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
     textEn:

@@ -46,6 +46,7 @@ const Services = () => {
           moveRightTranslateX="-33.33333%"
           minXDifferenceToMove={10}
           notScrollableOnSwipableElement={false}
+          transitionDuration={0.3}
           className={cx('flex flex--jc--center', styles.mobContainer)}>
           {ITEMS.map((item, idx) => (
             <SwipableSliderItem key={idx} className={cx('mx2', styles.mobCardItem)}>

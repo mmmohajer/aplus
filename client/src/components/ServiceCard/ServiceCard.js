@@ -17,7 +17,7 @@ const ServiceCard = ({ src, title, text, ...props }) => {
           </Div>
         </CardHeader>
         <CardBody className="px1 flex flex--gr--1 flex--dir--col flex--jc--between">
-          <Div className={cx('mb1', styles.cardTitle)}>{title}</Div>
+          <Div className={cx('mb1 px1', styles.cardTitle)}>{title}</Div>
           <Paragraph className={cx(styles.cardText)}>{text}</Paragraph>
         </CardBody>
       </Card>
