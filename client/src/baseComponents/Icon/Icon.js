@@ -3,6 +3,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faCertificate } from '@fortawesome/free-solid-svg-icons';
 
 import Dashboard from 'Images/js-images/icons/svg/dashboard.svg';
 import Instagram from 'Images/js-images/icons/svg/instagram.svg';
@@ -12,7 +13,8 @@ import Mail from 'Images/js-images/icons/svg/mail.svg';
 
 function Icon({ type, color, width, scale }) {
   let iconTypes = {
-    flag: <FontAwesomeIcon icon={faFlag} style={{ color, width }} />
+    flag: <FontAwesomeIcon icon={faFlag} style={{ color, width }} />,
+    certificate: <FontAwesomeIcon icon={faCertificate} style={{ color, width }} />
   };
 
   iconTypes['dashboard'] = (
@@ -32,7 +34,15 @@ function Icon({ type, color, width, scale }) {
 }
 
 Icon.propTypes = {
-  type: PropTypes.oneOf(['flag', 'dashboard', 'instagram', 'phone', 'location', 'mail']),
+  type: PropTypes.oneOf([
+    'flag',
+    'dashboard',
+    'instagram',
+    'phone',
+    'location',
+    'mail',
+    'certificate'
+  ]),
   color: PropTypes.string,
   width: PropTypes.string
 };
