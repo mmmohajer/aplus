@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faCertificate } from '@fortawesome/free-solid-svg-icons';
+import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Dashboard from 'Images/js-images/icons/svg/dashboard.svg';
 import Instagram from 'Images/js-images/icons/svg/instagram.svg';
@@ -14,7 +17,10 @@ import Mail from 'Images/js-images/icons/svg/mail.svg';
 function Icon({ type, color, width, scale }) {
   let iconTypes = {
     flag: <FontAwesomeIcon icon={faFlag} style={{ color, width }} />,
-    certificate: <FontAwesomeIcon icon={faCertificate} style={{ color, width }} />
+    certificate: <FontAwesomeIcon icon={faCertificate} style={{ color, width }} />,
+    quoteLeft: <FontAwesomeIcon icon={faQuoteLeft} style={{ color, width }} />,
+    angleRight: <FontAwesomeIcon icon={faAngleRight} style={{ color, width }} />,
+    angleLeft: <FontAwesomeIcon icon={faAngleLeft} style={{ color, width }} />
   };
 
   iconTypes['dashboard'] = (
@@ -41,7 +47,10 @@ Icon.propTypes = {
     'phone',
     'location',
     'mail',
-    'certificate'
+    'certificate',
+    'quoteLeft',
+    'angleLeft',
+    'angleRight'
   ]),
   color: PropTypes.string,
   width: PropTypes.string

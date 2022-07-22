@@ -2,14 +2,12 @@ import React from 'react';
 import cx from 'classnames';
 import { Div, Paragraph } from 'basedesign-iswad';
 
-import HrLine from 'BaseComponents/HrLine';
-
 import PublicRoute from 'Components/PublicRoute';
 import Introduction from 'Components/Introduction';
-import ListItem from 'Components/ListItem';
 import Contact from 'Components/Contact';
 import Services from 'Components/Services';
 import About from 'Components/About';
+import Testimonials from 'Components/Testimonials';
 
 import styles from './Home.module.scss';
 
@@ -28,6 +26,8 @@ function Home() {
           <Contact />
         </Div>
       </Div>
+
+      <Testimonials />
     </PublicRoute>
   );
 }
