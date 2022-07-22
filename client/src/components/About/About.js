@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
-import { Column, Div, Row, Image, Text, Paragraph } from 'basedesign-iswad';
+import { Column, Div, Row, Image, Text, Paragraph, Heading } from 'basedesign-iswad';
 
 import { aboutText } from './constants';
 
@@ -18,8 +18,18 @@ const About = () => {
           {language === 'en' ? 'About Us' : 'درباره ما'}
         </Div>
         <Row className={cx(language === 'en' && styles.row)}>
-          <Column xs={12} sm={12} md={12} lg={6} className={cx('flex flex--jc--center mb4')}>
-            <Image src={AboutImage} className={cx(styles.aboutImage)} />
+          <Column
+            xs={12}
+            sm={12}
+            md={12}
+            lg={6}
+            className={cx('flex flex--dir--col flex--ai--center flex--jc--center mb4')}>
+            <Div>
+              <Image src={AboutImage} className={cx(styles.aboutImage)} />
+            </Div>
+            <Heading type={1} className="h1 mt1">
+              {language === 'en' ? 'Behzad A. Rezai' : 'بهزاد افخم رضایی'}
+            </Heading>
           </Column>
           <Column xs={12} sm={12} md={12} lg={6}>
             <Div
