@@ -52,7 +52,7 @@ const Introduction = () => {
                   key={idx}
                   className={cx('mx3')}>
                   {language === 'en' ? (
-                    <Div type="flex" vAlign="center">
+                    <Div type="flex" vAlign="start">
                       <Div className={cx('mr2')}>
                         <Icon type="certificate" color={COLORS.faded} />
                       </Div>
