@@ -15,9 +15,9 @@ const TestimonialCard = ({ src, name, opinion, ...props }) => {
 
   return (
     <>
-      <Div type="flex">
+      <Div type="flex" className="pos-rel">
         {open && (
-          <Div type="flex" vAlign="center">
+          <Div type="flex" vAlign="center" className={cx(styles.leftIcon)}>
             <Icon type="angleLeft" color={COLORS.faded} />
           </Div>
         )}
@@ -41,7 +41,7 @@ const TestimonialCard = ({ src, name, opinion, ...props }) => {
           </CardBody>
         </Card>
         {open && (
-          <Div type="flex" vAlign="center">
+          <Div type="flex" vAlign="center" className={cx(styles.rightIcon)}>
             <Icon type="angleRight" color={COLORS.faded} />
           </Div>
         )}

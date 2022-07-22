@@ -24,3 +24,17 @@
     max-width: 300px;
   }
 }
+
+.leftIcon {
+  transform: translateY(-50%);
+  top: 50%;
+  left: -8px;
+  position: absolute;
+}
+
+.rightIcon {
+  transform: translateY(-50%);
+  top: 50%;
+  right: -8px;
+  position: absolute;
+}
