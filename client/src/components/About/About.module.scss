@@ -13,6 +13,7 @@
 .aboutImage {
   max-width: 380px;
   border-radius: 10px;
+  max-height: 550px;
 }
 
 .textEnContainer {
@@ -35,4 +36,9 @@
     padding-left: 2rem;
     margin-right: 4rem;
   }
+}
+
+.textFarsi {
+  direction: rtl;
+  text-align: justify;
 }
