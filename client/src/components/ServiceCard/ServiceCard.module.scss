@@ -7,6 +7,26 @@
   overflow: hidden;
   transition: all 0.2s ease-in-out;
   width: 200px;
+  height: 500px;
+
+  @include atMedium {
+    height: auto;
+  }
+
+  &Img {
+    width: 200px;
+    height: 200px;
+
+    @include atSmall {
+      width: 250px;
+      height: 250px;
+    }
+
+    @include atMedium {
+      width: 300px;
+      height: 300px;
+    }
+  }
 
   @include atSmall {
     width: 250px;

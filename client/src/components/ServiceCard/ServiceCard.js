@@ -13,10 +13,10 @@ const ServiceCard = ({ src, title, text, ...props }) => {
       <Card className={cx('w-px-300 pb2', language === 'fa' && 'text-rtl', styles.card)} {...props}>
         <CardHeader>
           <Div>
-            <Image src={src} />
+            <Image src={src} className={cx(styles.cardImg)} />
           </Div>
         </CardHeader>
-        <CardBody className="px1">
+        <CardBody className="px1 flex flex--gr--1 flex--dir--col flex--jc--between">
           <Div className={cx('mb1', styles.cardTitle)}>{title}</Div>
           <Paragraph className={cx(styles.cardText)}>{text}</Paragraph>
         </CardBody>
