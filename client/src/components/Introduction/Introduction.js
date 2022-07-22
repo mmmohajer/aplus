@@ -17,7 +17,7 @@ const Introduction = () => {
   return (
     <>
       <Div className={cx('py5', styles.introduction)}>
-        <Div className="f-b secondFont h1 text-center mb3">
+        <Div className="f-b secondFont px1 h1 text-center mb3">
           {language === 'en' ? (
             'A Plus Canada Immigration Law Office'
           ) : (
