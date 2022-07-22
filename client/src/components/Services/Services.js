@@ -44,7 +44,7 @@ const Services = () => {
           initialTranslateX="0%"
           moveLeftTranslateX="33.33333%"
           moveRightTranslateX="-33.33333%"
-          minXDifferenceToMove={10}
+          minXDifferenceToMove={50}
           notScrollableOnSwipableElement={false}
           transitionDuration={0.3}
           className={cx('flex flex--jc--center', styles.mobContainer)}>
