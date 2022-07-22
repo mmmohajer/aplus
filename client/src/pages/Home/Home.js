@@ -9,6 +9,7 @@ import Introduction from 'Components/Introduction';
 import ListItem from 'Components/ListItem';
 import Contact from 'Components/Contact';
 import Services from 'Components/Services';
+import About from 'Components/About';
 
 import styles from './Home.module.scss';
 
@@ -16,6 +17,7 @@ function Home() {
   return (
     <PublicRoute>
       <Introduction />
+      <About />
       <Services />
 
       <Div className="mt8 w-per-100 bgInverse py3">

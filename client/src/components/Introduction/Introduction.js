@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import { Div, Text, Image, Row, Column } from 'basedesign-iswad';
 
 import AppButton from 'BaseComponents/AppButton';
+import Icon from 'BaseComponents/Icon';
 import styles from './Introduction.module.scss';
 import { CERTIFICATES } from './constants';
+import { COLORS } from '../../constants/vars';
 
 import IntroductionImage from 'Images/js-Images/general/introduction.png';
 
@@ -14,7 +16,7 @@ const Introduction = () => {
 
   return (
     <>
-      <Div className={cx('bgInverse py5 mb3 ', styles.introduction)}>
+      <Div className={cx('py5', styles.introduction)}>
         <Div className="f-b secondFont h1 text-center mb3">
           {language === 'en' ? (
             'A Plus Canada Immigration Law Office'
@@ -43,7 +45,28 @@ const Introduction = () => {
               </Div>
 
               {CERTIFICATES.map((item, idx) => (
-                <Div className={cx('mx3')}>{language === 'en' ? item.en : item.fa}</Div>
+                <Div
+                  type="flex"
+                  direction="vertical"
+                  hAlign={language === 'en' ? 'start' : 'end'}
+                  key={idx}
+                  className={cx('mx3')}>
+                  {language === 'en' ? (
+                    <Div type="flex" vAlign="center">
+                      <Div className={cx('mr2')}>
+                        <Icon type="certificate" color={COLORS.faded} />
+                      </Div>
+                      <Div>{item.en}</Div>
+                    </Div>
+                  ) : (
+                    <Div type="flex" vAlign="end">
+                      <Div>{item.fa}</Div>
+                      <Div className={cx('ml2')}>
+                        <Icon type="certificate" color={COLORS.faded} />
+                      </Div>
+                    </Div>
+                  )}
+                </Div>
               ))}
 
               <Div type="flex" hAlign={language === 'en' ? 'start' : 'end'}>
