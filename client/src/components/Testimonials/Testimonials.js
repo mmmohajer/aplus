@@ -17,7 +17,7 @@ const Testimonials = () => {
 
   return (
     <>
-      <Div>
+      <Div id="Testimonial">
         <Div className={cx('text-center h1 my3')}>
           {language === 'en' ? 'Read what our customers say' : 'مشتریان ما درباره ما چه می‌گویند؟'}
         </Div>

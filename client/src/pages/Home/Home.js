@@ -18,7 +18,7 @@ function Home() {
       <About />
       <Services />
 
-      <Div className="mt8 w-per-100 bgInverse py3">
+      <Div className="mt8 w-per-100 bgInverse py3" id="Contact">
         <Div className="show-block-in-md-lg w-per-50 ml-auto mr-auto">
           <Contact />
         </Div>
