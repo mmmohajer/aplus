@@ -11,72 +11,78 @@ import Transaltion from 'Images/js-Images/general/translation.jpg';
 export const ITEMS = [
   {
     src: FamilyImage,
-    titleFa: 'ساپورت اعضای خانواده (اقامت دائم)',
+    titleFa: 'ساپورت اعضای خانواده ',
     titleEn: 'Family Sponsorship',
-    textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
+    textFa: `برای بودن در کنار عزیزانتان: حمایت از همسر، فرزندخواندگی، ملاقات، سوپر ویزا والدین/پدربزرگ و مادربزرگ و بستگان.`,
     textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+      'To re-unite with your loved ones: Spouse Sponsorship, Adoption, Visit, Parents/Grandparent Super Visa & relatives;'
   },
 
   {
     src: Tourist,
-    titleFa: 'ویزاهای توریستی، والدین و تحصیلی',
-    titleEn: 'Tourist, Student, Super VISA',
-    textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
-    textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+    titleFa: 'ویزای توریستی',
+    titleEn: 'Tourist VISA',
+    textFa: 'بازدید از کانادا برای گردشگری، تحقیقات، کنفرانس ها و رویدادهای ورزشی/اجتماعی؛',
+    textEn: `Visiting Canada for Tourism, Research, Conference, and 
+      Sport/social events;`
   },
 
   {
     src: Investment,
-    titleFa: 'سرمایه گذاری فدرال و ایالتی (اقامت دائم)',
-    titleEn: 'Investment VISA',
+    titleFa: 'ویزای سرمایه گذاری و استارتاپ',
+    titleEn: 'INVESTMENT & START-UP VISA',
     textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
-    textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+      'از تحصیلات، تجربه کاری و سرمایه خود در یک قدم سریع برای دریافت مجوز کار و در عین حال درخواست اقامت دائم استفاده کنید.',
+    textEn: `Use your education, work experience, and capital in a quick step   
+    to  get work- permit and at the same time to apply for  permanent 
+   residency;
+`
   },
 
   {
     src: SelfEmployment,
-    titleFa: 'خود اشتغالی (اقامت دائم)',
-    titleEn: 'Startup - Visa',
-    textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
-    textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+    titleFa: 'اجازه کار موقت',
+    titleEn: 'TEMPORARY WORK-PERMIT',
+    textFa: 'درخواست مجوز کار در دسته های مختلف مشاغل در سطوح مختلف: 0، A, B, C و D',
+    textEn: `Applying for work-permit in various categories of jobs 
+    in different  levels:  0, A, B, C, and D;`
   },
 
   {
     src: SkilledWorker,
     titleFa: 'مهارت کاری (اقامت دائم)',
-    titleEn: 'Skilled Worker',
+    titleEn: 'Skilled Worker/Self-Employment',
     textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
-    textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+      'اگر دارای مدرک دانشگاهی یا کالج با یک سال تجربه شغلی با دانش زبان انگلیسی یا فرانسوی هستید، این می تواند مقوله ای باشد که شما را واجد شرایط درخواست برای Landed-Imigrant می کند.',
+    textEn: `If you have a university or college degree with one year of job  
+    experience with the  knowledge of English or French language, 
+    this could be the category that makes  you qualify to apply for
+   landed- immigrant;
+`
   },
 
   {
     src: Refugee,
     titleFa: 'پناهندگی',
-    titleEn: 'Refugee VISA',
+    titleEn: 'Refugee & Asylum',
     textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
-    textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+      'اگر به دلیل سیاسی، اجتماعی، مذهبی، عضویت در یک گروه/انجمن/قومیت خاص از کشور خود فرار کرده اید، ما پرونده شما را برای اعلام پناهندگی یا پناهندگی در داخل یا خارج از کانادا ارسال می کنیم. حمایت های خصوصی، حمایت های اجتماعی، دارنده توافق گزینه های موجود برای شما هستند.',
+    textEn: `If you fled your country because of political, social, religion, being a member 
+    of a particular group/association/ethnicity, we forward your case to declare as 
+    a refugee or an asylum in or outside Canada. Private Sponsorships, Community 
+    Sponsorships, Agreement Holder are the options available for you.
+`
   },
 
   {
     src: ProfessionalTranslation,
-    titleFa: 'ترجمه رسمی کامل مدارک (حقوقی)',
-    titleEn: 'Document Transaltion',
+    titleFa: 'ویزای تحصیلی',
+    titleEn: 'Study VISA',
     textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
-    textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+      'زیر 6 ماه یا بیش از 6 ماه تحصیل در کانادا در مقاطع مختلف از مهدکودک تا دکتری. با یا بدون دانش انگلیسی یا فرانسه',
+    textEn: `Under 6 months or over 6 months of study in Canada in 
+    various level  from Kindergarten to post PhD- with or without 
+   knowledge of English or French`
   },
 
   {
