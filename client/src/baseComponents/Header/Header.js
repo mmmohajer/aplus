@@ -21,44 +21,9 @@ const SUB_MENUES = {
 
 const Header = () => {
   const dispatch = useDispatch();
-  const language = useSelector((state) => state.language);
 
-  const [activeSubMenues, setActiveSubMenues] = useState([]);
-  const [activeMenu, setActiveMenu] = useState('Home');
   const [mobMenuIsActive, setMobMenuIsActive] = useState(false);
   const [iconToggler, setIconToggler] = useState(false);
-
-  const addActiveSubMenu = (menu) => {
-    setActiveSubMenues([menu]);
-  };
-
-  const removeActiveSubMenu = (menu) => {
-    let localActiveSubMenues = [...activeSubMenues];
-    localActiveSubMenues = localActiveSubMenues.filter((m) => m !== menu);
-    setActiveSubMenues(localActiveSubMenues);
-  };
-
-  const menuClickHandler = (menu) => {
-    setActiveSubMenues([]);
-    if (Object.keys(SUB_MENUES).includes(menu)) {
-      if (activeSubMenues.includes(menu)) {
-        removeActiveSubMenu(menu);
-      } else {
-        addActiveSubMenu(menu);
-      }
-    } else {
-      setActiveMenu(menu);
-      setActiveSubMenues([]);
-    }
-  };
-
-  const mobMenuClickHandler = (menu) => {
-    menuClickHandler(menu);
-    if (!Object.keys(SUB_MENUES).includes(menu)) {
-      setIconToggler(true);
-      setMobMenuIsActive(false);
-    }
-  };
 
   return (
     <>
@@ -72,15 +37,9 @@ const Header = () => {
         </Div>
         <Div type="flex" vAlign="center">
           <Div className="show-flex-in-lg">
-            <DesktopNav
-              activeMenu={activeMenu}
-              setActiveMenu={setActiveMenu}
-              activeSubMenues={activeSubMenues}
-              menuClickHandler={menuClickHandler}
-              MENUES={MENU_ITEMS}
-            />
+            <DesktopNav MENUES={MENU_ITEMS} />
           </Div>
-          <Div type="flex" className="bgInverse pt1 pb1 pl1 pr1 br-rad-px-5">
+          <Div type="flex" className="bgInverse pt1 pb1 pl1 pr1 br-rad-px-5 englishFont">
             <Div
               className="pr1 mr1 mouse-hand br-right-solid-1"
               onClick={() => dispatch(langToEnglish())}>
@@ -109,17 +68,15 @@ const Header = () => {
                 mobMenuIsActive && 'iswad_mobNav_active'
               )}>
               <Div className="height-px-80"></Div>
-              <MobileNav
-                activeMenu={activeMenu}
-                setActiveMenu={setActiveMenu}
-                activeSubMenues={activeSubMenues}
-                mobMenuClickHandler={mobMenuClickHandler}
-                MENUES={MENU_ITEMS}
-                mobMenuIsActive={mobMenuIsActive}
-                setMobMenuIsActive={setMobMenuIsActive}
-                iconToggler={iconToggler}
-                setIconToggler={setIconToggler}
-              />
+              <Div type="flex" hAlign="end">
+                <MobileNav
+                  MENUES={MENU_ITEMS}
+                  mobMenuIsActive={mobMenuIsActive}
+                  setMobMenuIsActive={setMobMenuIsActive}
+                  iconToggler={iconToggler}
+                  setIconToggler={setIconToggler}
+                />
+              </Div>
             </Div>
           </Div>
         </Div>

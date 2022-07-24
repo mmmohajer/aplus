@@ -53,7 +53,14 @@ const Footer = () => {
                 {MENU_ITEMS.map((item, idx) => {
                   if (item.showInFooter) {
                     return (
-                      <Div className={cx('mb1 mouse-hand', styles.menuItem)} key={idx}>
+                      <Div
+                        className={cx('mb1 mouse-hand', styles.menuItem)}
+                        key={idx}
+                        onClick={() =>
+                          document?.querySelector(`#${item.en}`).scrollIntoView({
+                            behavior: 'smooth'
+                          })
+                        }>
                         {language === 'en' ? item.en : item.fa}
                       </Div>
                     );

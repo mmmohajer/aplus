@@ -16,12 +16,10 @@
       rgba(17, 17, 26, 0.1) 0px 16px 56px;
   }
 
+  max-width: 300px;
+
   @include atLarge {
     min-width: 600px;
-  }
-
-  @include atSmall {
-    max-width: 300px;
   }
 }
 

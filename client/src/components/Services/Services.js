@@ -17,7 +17,7 @@ const Services = () => {
 
   return (
     <>
-      <Div className={cx('mb5 h1 text-center mt5', styles.sectionTitle)}>
+      <Div className={cx('mb5 h1 text-center mt5', styles.sectionTitle)} id="Services">
         {language === 'en' ? 'Our Services' : 'خدمات ما'}
       </Div>
       <Div type="flex" hAlign="center" className={cx('show-flex-in-md-lg')}>

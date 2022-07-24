@@ -1,12 +1,17 @@
 import React from 'react';
 import cx from 'classnames';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavBar, NavItem } from 'basedesign-iswad';
+
+import { setActiveMenu } from 'Reducers/general/activeMenu';
 
 import styles from '../Header.module.scss';
 
-const DesktopNav = ({ activeMenu, menuClickHandler, MENUES }) => {
+const DesktopNav = ({ MENUES }) => {
+  const dispatch = useDispatch();
+
   const language = useSelector((state) => state.language);
+  const activeMenu = useSelector((state) => state.activeMenu);
 
   return (
     <>
@@ -20,8 +25,13 @@ const DesktopNav = ({ activeMenu, menuClickHandler, MENUES }) => {
                     className={cx(
                       'mx1 px1 flex flex--ai--center textBlack br-rad-px-5  br-color-primary'
                     )}
-                    onClick={() => menuClickHandler('')}
-                    isActive={activeMenu === ''}
+                    onClick={() => {
+                      dispatch(setActiveMenu(menu.en));
+                      document?.querySelector(`#${menu.en}`).scrollIntoView({
+                        behavior: 'smooth'
+                      });
+                    }}
+                    isActive={activeMenu === menu.en}
                     key={idx1}>
                     <div className="mouse-hand pb1 pt1">
                       {language === 'en' ? menu.en : menu.fa}

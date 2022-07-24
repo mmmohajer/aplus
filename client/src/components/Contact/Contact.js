@@ -50,7 +50,7 @@ const Contact = () => {
 
   return (
     <>
-      <Div type="flex" direction="vertical" hAlign="start" className="px5 my3">
+      <Div type="flex" direction="vertical" hAlign="start" className="px5 my3" id="Contact">
         <Div className={cx('text-center h1 mb3')}>
           {language === 'en' ? 'Get an Appointment' : 'تعیین وقت ملاقات'}
         </Div>
