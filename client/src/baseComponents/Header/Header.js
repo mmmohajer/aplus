@@ -27,6 +27,17 @@ const Header = () => {
 
   return (
     <>
+      {mobMenuIsActive && (
+        <Div
+          className="w-per-100 height-vh-full bgBlack op-20 pos-fix pos-fix--lt show-flex-in-md-sm-xsm"
+          onClick={() => {
+            setIconToggler(true);
+            setTimeout(() => {
+              setIconToggler(false);
+            }, [500]);
+            setMobMenuIsActive(false);
+          }}></Div>
+      )}
       <Div
         type="flex"
         distributedBetween
@@ -64,7 +75,7 @@ const Header = () => {
             </Div>
             <Div
               className={cx(
-                'height-vh-full w-per-80 pos-fix pos-fix--rt flex flex--dir--col z-10000 iswad_mobNav',
+                'height-vh-full w-per-80 flex flex--dir--col z-10000 iswad_mobNav',
                 mobMenuIsActive && 'iswad_mobNav_active'
               )}>
               <Div className="height-px-80"></Div>

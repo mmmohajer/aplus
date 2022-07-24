@@ -1,6 +1,9 @@
 .iswad_mobNav {
   transform: translateY(-100%);
   transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 30px;
+  right: -12px;
 
   &_active {
     transform: translateY(0);

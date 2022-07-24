@@ -73,7 +73,7 @@ const Introduction = () => {
                 <AppButton
                   className={cx('max-w-px-200 mt5 mx3', styles.introductionButton)}
                   onClick={() =>
-                    document?.querySelector(`#Contact`).scrollIntoView({
+                    document?.querySelector('#Contact').scrollIntoView({
                       behavior: 'smooth'
                     })
                   }>
