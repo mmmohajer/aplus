@@ -15,7 +15,7 @@ const About = () => {
     <>
       <Div className={cx('bgInverse pb4 pt4', styles.about)} id="About">
         <Div type="flex" hAlign="center" className="h1 mb3">
-          {language === 'en' ? 'About Us' : 'درباره ما'}
+          {language === 'en' ? 'About Me' : 'درباره من'}
         </Div>
         <Row className={cx(language === 'en' && styles.row)}>
           <Column
