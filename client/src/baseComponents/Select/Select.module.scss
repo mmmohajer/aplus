@@ -6,25 +6,47 @@
   margin-bottom: 0.2rem;
 }
 
-.input {
+.select {
   width: 100%;
   border: none;
+  height: 40px;
+}
+
+.defaultSelect {
   box-shadow: $boxShadow1;
-  padding: 8px 1rem;
   border: solid 1px $appGrayBrightColor;
   height: 40px;
+}
 
-  &WithEye {
-    padding-left: 1.5rem;
-  }
+.optionsContainer {
+  box-shadow: $boxShadow1;
+  width: 100%;
+  padding: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10000;
+  background-color: white;
+}
 
-  &Container {
-    position: relative;
-  }
+.option {
+  padding: 1rem;
+  cursor: pointer;
 
-  &:focus {
-    outline: none;
+  &:hover {
+    background-color: $appGrayBrightColor;
   }
+}
+
+.searchInput {
+  outline: none;
+  box-shadow: $boxShadow1;
+  border: solid 1px $appGrayBrightColor;
+  padding: 0.65rem;
+}
+
+.placeHolder {
+  font-size: 14px;
+  color: $appGrayDarkColor;
 }
 
 .label {

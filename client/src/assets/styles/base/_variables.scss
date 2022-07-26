@@ -31,7 +31,7 @@ $successColor: #5cb85c;
 $dangerColor: #d9534f;
 
 // Fonts
-$fontFamily: "Roboto", "sans-serif";
+$fontFamily: 'Roboto', 'sans-serif';
 $fontSize: 16px;
 $fontSmallSize: 16px;
 $fontMediumSize: 16px;
@@ -75,3 +75,10 @@ $atSmall: 400px;
 $atMedium: 800px;
 $atLarge: 1200px;
 $maxContainerWidth: 100%;
+
+// Box Shadows
+$boxShadow1: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+// Generals
+$appGrayBrightColor: #ebebeb;
+$appGrayDarkColor: #777;

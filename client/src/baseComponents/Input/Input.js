@@ -34,7 +34,7 @@ const Input = ({ labelText, isRequired, className, type, ...props }) => {
                     setCurType('password');
                   }
                 }}>
-                <Icon type="eye" color="black" width={14} />
+                <Icon type="eye" color="black" width={'14'} />
               </Div>
               {curType !== 'password' && <div className={cx(styles.lineThrough)}></div>}
             </>
