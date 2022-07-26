@@ -13,7 +13,7 @@ export const ITEMS = [
     src: FamilyImage,
     titleFa: 'ساپورت اعضای خانواده ',
     titleEn: 'Family Sponsorship',
-    textFa: `برای بودن در کنار عزیزانتان: حمایت از همسر، فرزندخواندگی، ملاقات، سوپر ویزا والدین/پدربزرگ و مادربزرگ و بستگان.`,
+    textFa: `برای بودن در کنار عزیزانتان: حمایت از همسر، فرزندخواندگی، ملاقات، سوپر ویزا والدین/پدربزرگ و مادربزرگ و بستگان`,
     textEn:
       'To re-unite with your loved ones: Spouse Sponsorship, Adoption, Visit, Parents/Grandparent Super Visa & relatives;'
   },
@@ -32,7 +32,7 @@ export const ITEMS = [
     titleFa: 'ویزای سرمایه گذاری و استارتاپ',
     titleEn: 'INVESTMENT & START-UP VISA',
     textFa:
-      'از تحصیلات، تجربه کاری و سرمایه خود در یک قدم سریع برای دریافت مجوز کار و در عین حال درخواست اقامت دائم استفاده کنید.',
+      'از تحصیلات، تجربه کاری و سرمایه خود در یک قدم سریع برای دریافت مجوز کار و در عین حال درخواست اقامت دائم استفاده کنید',
     textEn: `Use your education, work experience, and capital in a quick step   
     to  get work- permit and at the same time to apply for  permanent 
    residency;
@@ -43,7 +43,7 @@ export const ITEMS = [
     src: SelfEmployment,
     titleFa: 'اجازه کار موقت',
     titleEn: 'TEMPORARY WORK-PERMIT',
-    textFa: 'درخواست مجوز کار در دسته های مختلف مشاغل در سطوح مختلف: 0، A, B, C و D',
+    textFa: 'درخواست مجوز کار در دسته های مختلف مشاغل در سطوح : O، A, B, C و D',
     textEn: `Applying for work-permit in various categories of jobs 
     in different  levels:  0, A, B, C, and D;`
   },
@@ -53,7 +53,7 @@ export const ITEMS = [
     titleFa: 'مهارت کاری (اقامت دائم)',
     titleEn: 'Skilled Worker/Self-Employment',
     textFa:
-      'اگر دارای مدرک دانشگاهی یا کالج با یک سال تجربه شغلی با دانش زبان انگلیسی یا فرانسوی هستید، این می تواند مقوله ای باشد که شما را واجد شرایط درخواست برای Landed-Imigrant می کند.',
+      'اگر دارای مدرک دانشگاهی یا کالج با یک سال تجربه شغلی با دانش زبان انگلیسی یا فرانسوی هستید، این می تواند مقوله ای باشد که شما را واجد شرایط درخواست برای اقامت دائم میکند',
     textEn: `If you have a university or college degree with one year of job  
     experience with the  knowledge of English or French language, 
     this could be the category that makes  you qualify to apply for
@@ -66,7 +66,7 @@ export const ITEMS = [
     titleFa: 'پناهندگی',
     titleEn: 'Refugee & Asylum',
     textFa:
-      'اگر به دلیل سیاسی، اجتماعی، مذهبی، عضویت در یک گروه/انجمن/قومیت خاص از کشور خود فرار کرده اید، ما پرونده شما را برای اعلام پناهندگی یا پناهندگی در داخل یا خارج از کانادا ارسال می کنیم. حمایت های خصوصی، حمایت های اجتماعی، دارنده توافق گزینه های موجود برای شما هستند.',
+      'اگر به دلیل سیاسی، اجتماعی، مذهبی، عضویت در یک گروه/انجمن/قومیت خاص از کشور خود فرار کرده اید، ما پرونده شما را برای اعلام پناهندگی یا پناهندگی در داخل یا خارج از کانادا ارسال می کنیم. حمایت های خصوصی، حمایت های اجتماعی، دارنده توافق گزینه های موجود برای شما هستند',
     textEn: `If you fled your country because of political, social, religion, being a member 
     of a particular group/association/ethnicity, we forward your case to declare as 
     a refugee or an asylum in or outside Canada. Private Sponsorships, Community 
@@ -88,20 +88,16 @@ export const ITEMS = [
   {
     src: Invitation,
     titleFa: 'دعوتنامه و تنظیم دعوتنامه',
-    titleEn: 'Invitation Letter to Canada',
-    textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
-    textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+    titleEn: 'Invitation Letter',
+    textFa: '',
+    textEn: ''
   },
 
   {
     src: Transaltion,
-    titleFa: 'مهر حقوقی',
-    titleEn: 'Notary Public',
-    textFa:
-      'کانادا یکی از کشورهای توسعه‌یافته و مهاجرپذیر است که تقریباً 22 درصد جمعیت آن را مهاجران تشکیل می‌دهند. سوال‌های زیادی در خصوص مهاجرت به کانادا، روش‌ها و شرایط اخذ اقامت کانادا در ذهن کاربران وجود دارد',
-    textEn:
-      'Canada is one of the developed and immigrant-friendly countries, with approximately 22% of its population being immigrants. There are many questions in the minds'
+    titleFa: 'مهر حق،قی - کپی برابر با اصل',
+    titleEn: 'Notary Public - True Copies of Documents',
+    textFa: '',
+    textEn: ''
   }
 ];

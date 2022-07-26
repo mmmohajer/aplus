@@ -41,7 +41,7 @@ const Introduction = () => {
               direction="vertical"
               className={cx(language === 'en' ? 'ml5' : 'mr5 text-rtl')}>
               <Div className={cx('f-b h2 mb1')}>
-                {language === 'en' ? 'Membership' : 'عضویت رسمی در'}
+                {language === 'en' ? 'Memberships' : 'عضویت رسمی در'}
               </Div>
 
               {CERTIFICATES.map((item, idx) => (
