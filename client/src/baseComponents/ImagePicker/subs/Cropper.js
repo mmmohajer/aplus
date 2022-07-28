@@ -16,8 +16,8 @@ const Cropper = ({ src, setSrc, setFile, fileName, setShowCropper, cropInfo }) =
   const aspect = cropInfo?.aspect || 1;
   const minWidth = cropInfo?.minWidth || 0;
   const minHeight = cropInfo?.minHeight || 0;
-  const maxWidth = cropInfo?.minHeight || 500;
-  const maxHeight = cropInfo?.maxHeight || 500;
+  const maxWidth = cropInfo?.minHeight || 400;
+  const maxHeight = cropInfo?.maxHeight || 400;
   const useScaledSize = cropInfo?.useScaledSize;
 
   const [crop, setCrop] = useState();
@@ -50,7 +50,6 @@ const Cropper = ({ src, setSrc, setFile, fileName, setShowCropper, cropInfo }) =
     const originalImage = new Image();
     originalImage.src = src;
     setTimeout(() => {
-      console.log(cropper.offsetWidth);
       setWidthScale(cropper.offsetWidth / originalImage.width);
       setHeightScale(cropper.offsetHeight / originalImage.height);
     }, 1000);
