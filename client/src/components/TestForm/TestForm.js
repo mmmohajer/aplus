@@ -5,6 +5,7 @@ import { Div, Form } from 'basedesign-iswad';
 import TextBox from 'BaseComponents/TextBox';
 import Select from 'BaseComponents/Select';
 import DatePicker from 'BaseComponents/DatePicker';
+import ImagePicker from 'BaseComponents/ImagePicker';
 
 import { PROVINCE_CHOICES } from './constants';
 
@@ -12,6 +13,7 @@ import styles from './TestForm.module.scss';
 
 const TestForm = () => {
   const [val, setVal] = useState('');
+  const [file, setFile] = useState('');
 
   return (
     <>
@@ -27,6 +29,7 @@ const TestForm = () => {
           isRequired
         />
         <DatePicker labelText="Birth Date" isRequired />
+        <ImagePicker labelText="Profile Photo" isRequired file={file} setFile={setFile} />
       </Form>
     </>
   );

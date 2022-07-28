@@ -1,0 +1,48 @@
+@import 'Styles/base/_variables.scss';
+@import 'Styles/base/_mixins.scss';
+
+%fileContainer {
+  width: 100px;
+  height: 100px;
+  padding: 0.5rem;
+  border: dashed 1px $appGrayDarkColor;
+  border-radius: 10px;
+}
+
+.iconContainer {
+  width: 100px;
+  height: 100px;
+  padding: 0.5rem;
+  border: dashed 1px $appGrayDarkColor;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.imagePreviewContainer {
+  box-shadow: $boxShadow1;
+  padding: 1rem;
+  background-color: white;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+
+  & img {
+    border-radius: 10px;
+  }
+}
+
+.cropperContainer {
+  box-shadow: $boxShadow1;
+  min-width: 300px;
+  z-index: 1000;
+}
+
+.cropper {
+  width: 300px;
+}
+
+.canvasContainer {
+  position: absolute;
+  visibility: hidden;
+  z-index: -10;
+}

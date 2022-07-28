@@ -28,5 +28,7 @@ export const COLORS = {
   inverse: '#292b2c',
   warning: '#f0ad4e',
   success: '#5cb85c',
-  danger: '#d9534f'
+  danger: '#d9534f',
+  grayBright: '#ebebeb',
+  grayDark: '#777'
 };

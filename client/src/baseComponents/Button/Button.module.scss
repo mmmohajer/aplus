@@ -1,0 +1,13 @@
+@import 'Styles/base/_variables';
+
+.btn {
+  outline: none;
+  border: solid 1px;
+  border-radius: 10px;
+  box-shadow: $boxShadow1;
+}
+
+.primary {
+  background-color: $primaryColor;
+  border-color: $primaryColor;
+}

@@ -19,15 +19,6 @@ const Select = ({
 
   return (
     <>
-      {isOptionsActive && (
-        <Div
-          className={cx(
-            'w-per-100 height-vh-full bgWhite pos-fix pos-fix--lt op-10 z-100',
-            styles.clickable
-          )}
-          onClick={() => setIsOptionsActive(false)}
-        />
-      )}
       <Div className={cx('mainInputContainer', className)}>
         {labelText && (
           <Div className={cx('labelForInputContainer')}>
