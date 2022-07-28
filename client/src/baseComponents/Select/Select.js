@@ -13,13 +13,14 @@ const Select = ({
   placeHolder,
   isRequired,
   labelText,
+  errorMessage,
   className
 }) => {
   const [isOptionsActive, setIsOptionsActive] = useState(false);
 
   return (
     <>
-      <Div className={cx('mainInputContainer', className)}>
+      <Div className={cx('mainInputContainer pos-rel', className)}>
         {labelText && (
           <Div className={cx('labelForInputContainer')}>
             <Label className={cx(isRequired && 'required', 'labelForInput')}>{labelText}</Label>
@@ -49,6 +50,13 @@ const Select = ({
             selectIntialShownText={selectIntialShownText}
             placeHolder={placeHolder || 'Choose an option...'}
           />
+        </Div>
+        <Div
+          className={cx(
+            'iswad_input_errorMessage',
+            errorMessage && 'iswad_input_errorMessage_active'
+          )}>
+          {errorMessage}
         </Div>
       </Div>
     </>

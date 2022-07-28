@@ -9,6 +9,18 @@
   border-radius: 10px;
 }
 
+%cropper {
+  max-width: 600px !important;
+
+  @include atMedium {
+    max-width: 600px !important;
+  }
+
+  @include atLarge {
+    max-width: 1000px !important;
+  }
+}
+
 .iconContainer {
   width: 100px;
   height: 100px;
@@ -33,12 +45,18 @@
 
 .cropperContainer {
   box-shadow: $boxShadow1;
-  min-width: 300px;
   z-index: 1000;
+  position: fixed;
+  @extend %cropper;
+}
+
+.reactCropper {
+  @extend %cropper;
+  background-color: red;
 }
 
 .cropper {
-  width: 300px;
+  @extend %cropper;
 }
 
 .canvasContainer {

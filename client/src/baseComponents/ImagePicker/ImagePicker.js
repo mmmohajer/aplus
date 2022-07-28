@@ -10,7 +10,15 @@ import Cropper from './subs/Cropper';
 
 import styles from './ImagePicker.module.scss';
 
-const ImagePicker = ({ labelText, isRequired, setFile, cropInfo, className }) => {
+const ImagePicker = ({
+  labelText,
+  isRequired,
+  setFile,
+  hasCropper = true,
+  cropInfo,
+  errorMessage,
+  className
+}) => {
   const [src, setSrc] = useState('');
   const [fileName, setFileName] = useState('');
   const [showCropper, setShowCropper] = useState(false);
@@ -27,7 +35,7 @@ const ImagePicker = ({ labelText, isRequired, setFile, cropInfo, className }) =>
 
   return (
     <>
-      {showCropper && (
+      {hasCropper && showCropper ? (
         <Cropper
           src={src}
           setSrc={setSrc}
@@ -36,8 +44,10 @@ const ImagePicker = ({ labelText, isRequired, setFile, cropInfo, className }) =>
           setShowCropper={setShowCropper}
           cropInfo={cropInfo}
         />
+      ) : (
+        ''
       )}
-      <Div className={cx('mainInputContainer', className)}>
+      <Div className={cx('mainInputContainer pos-rel', className)}>
         {labelText && (
           <Div className={cx('labelForInputContainer')}>
             <Label className={cx(isRequired && 'required', 'labelForInput')}>{labelText}</Label>
@@ -61,6 +71,13 @@ const ImagePicker = ({ labelText, isRequired, setFile, cropInfo, className }) =>
             </Div>
           </Label>
           <ImagePreview src={src} setSrc={setSrc} setFile={setFile} />
+        </Div>
+        <Div
+          className={cx(
+            'iswad_input_errorMessage',
+            errorMessage && 'iswad_input_errorMessage_active'
+          )}>
+          {errorMessage}
         </Div>
       </Div>
     </>

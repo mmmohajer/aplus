@@ -16,11 +16,12 @@ const DatePicker = ({
   dateFormat = 'dd-MM-yyyy',
   yearDropdownItemNumber = 100,
   showYearDropdown = true,
-  showMonthDropdown = false
+  showMonthDropdown = false,
+  errorMessage
 }) => {
   return (
     <>
-      <Div className={cx('mainInputContainer', className)}>
+      <Div className={cx('mainInputContainer pos-rel', className)}>
         {labelText && (
           <Div className={cx('labelForInputContainer')}>
             <Label className={cx(isRequired && 'required', 'labelForInput')}>{labelText}</Label>
@@ -37,6 +38,13 @@ const DatePicker = ({
             showYearDropdown={showYearDropdown}
             showMonthDropdown={showMonthDropdown}
           />
+        </Div>
+        <Div
+          className={cx(
+            'iswad_input_errorMessage',
+            errorMessage && 'iswad_input_errorMessage_active'
+          )}>
+          {errorMessage}
         </Div>
       </Div>
     </>

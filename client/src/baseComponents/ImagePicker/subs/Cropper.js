@@ -16,8 +16,8 @@ const Cropper = ({ src, setSrc, setFile, fileName, setShowCropper, cropInfo }) =
   const aspect = cropInfo?.aspect || 1;
   const minWidth = cropInfo?.minWidth || 0;
   const minHeight = cropInfo?.minHeight || 0;
-  const maxWidth = cropInfo?.minHeight || 400;
-  const maxHeight = cropInfo?.maxHeight || 400;
+  const maxWidth = cropInfo?.maxWidth || 500;
+  const maxHeight = cropInfo?.maxHeight || 500;
   const useScaledSize = cropInfo?.useScaledSize;
 
   const [crop, setCrop] = useState();
@@ -68,8 +68,8 @@ const Cropper = ({ src, setSrc, setFile, fileName, setShowCropper, cropInfo }) =
         type="flex"
         direction="vertical"
         hAlign="center"
-        vAlign="start"
-        className={cx('pos-fix pos-fix--center p4 bgWhite', styles.cropperContainer)}
+        vAlign="center"
+        className={cx('pos-fix pos-fix--center p2 bgWhite', styles.cropperContainer)}
         id={CROPPER_ID}>
         <ReactCrop
           aspect={aspect}
@@ -78,12 +78,13 @@ const Cropper = ({ src, setSrc, setFile, fileName, setShowCropper, cropInfo }) =
           maxWidth={maxWidth * widthScale}
           maxHeight={maxHeight * heightScale}
           crop={crop}
-          onChange={(c) => setCrop(c)}>
-          <Div className={cx(styles.cropper)}>
+          onChange={(c) => setCrop(c)}
+          className={styles.reactCropper}>
+          <Div type="flex" hAlign="center" vAlign="center" className={cx(styles.cropper)}>
             <BaseImage src={src} id={IMAGE_CROPPER_ID} />
           </Div>
         </ReactCrop>
-        <Div>
+        <Div type="flex" hAlign="center" vAlign="center" className="w-per-100 mt2">
           <Button onClick={cropHandler}>Crop Image</Button>
           <Div className={cx(styles.canvasContainer)}>
             <canvas id={CANVAS_ID} className=""></canvas>
