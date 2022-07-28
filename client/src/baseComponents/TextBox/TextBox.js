@@ -4,22 +4,22 @@ import { Div, Input as BaseInput, Label } from 'basedesign-iswad';
 
 import Icon from 'BaseComponents/Icon';
 
-import styles from './Input.module.scss';
+import styles from './TextBox.module.scss';
 
-const Input = ({ labelText, isRequired, className, type, ...props }) => {
+const TextBox = ({ labelText, isRequired, className, type, ...props }) => {
   const [curType, setCurType] = useState(type);
 
   return (
     <>
-      <Div className={cx(styles.container, className)}>
+      <Div className={cx('mainInputContainer', className)}>
         {labelText && (
-          <Div className={cx(styles.labelContainer)}>
-            <Label className={cx(isRequired && 'required', styles.label)}>{labelText}</Label>
+          <Div className={cx('labelForInputContainer')}>
+            <Label className={cx(isRequired && 'required', 'labelForInput')}>{labelText}</Label>
           </Div>
         )}
-        <Div className={cx(styles.inputContainer)}>
+        <Div className={cx('inputFieldContainer')}>
           <BaseInput
-            className={cx(styles.input, type === 'password' && styles.inputWithEye)}
+            className={cx('inputField', type === 'password' && styles.inputWithEye)}
             type={curType}
             {...props}
           />
@@ -45,4 +45,4 @@ const Input = ({ labelText, isRequired, className, type, ...props }) => {
   );
 };
 
-export default Input;
+export default TextBox;

@@ -1,6 +1,6 @@
 import React from "react";
 import { render as renderRTL, screen, fireEvent } from "@testing-library/react";
-import Input from "../Input";
+import DatePicker from "../DatePicker";
 import * as reactRedux from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
@@ -12,7 +12,7 @@ jest.mock("react-redux", () => ({
   useDispatch: jest.fn(),
 }));
 
-describe("Test Input Component", () => {
+describe("Test DatePicker Component", () => {
   const useSelectorMock = reactRedux.useSelector;
   const useDispatchMock = reactRedux.useDispatch;
 
@@ -27,8 +27,8 @@ describe("Test Input Component", () => {
   });
 
   test("", () => {
-    render(<Input />);
+    render(<DatePicker />);
 
-    expect(screen.getByText(/Input/i)).toBeInTheDocument();
+    expect(screen.getByText(/DatePicker/i)).toBeInTheDocument();
   });
 });

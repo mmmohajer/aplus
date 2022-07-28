@@ -1,11 +1,5 @@
 @import 'Styles/base/_variables';
 
-.container {
-  width: 100%;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-}
-
 .select {
   width: 100%;
   border: none;
@@ -47,30 +41,4 @@
 .placeHolder {
   font-size: 14px;
   color: $appGrayDarkColor;
-}
-
-.label {
-  color: $appGrayDarkColor;
-  font-size: 14px;
-
-  &Container {
-    margin-bottom: 4px;
-    margin-left: 4px;
-  }
-}
-
-.eye {
-  position: absolute;
-  top: 12px;
-  left: 6px;
-}
-
-.lineThrough {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  height: 18px;
-  background-color: #595959;
-  width: 1.5px;
-  transform: rotate(45deg);
 }

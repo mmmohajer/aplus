@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
-import { Div } from 'basedesign-iswad';
+import { Div, Form } from 'basedesign-iswad';
 
-import Input from 'BaseComponents/Input';
+import TextBox from 'BaseComponents/TextBox';
 import Select from 'BaseComponents/Select';
+import DatePicker from 'BaseComponents/DatePicker';
 
 import { PROVINCE_CHOICES } from './constants';
 
@@ -14,14 +15,19 @@ const TestForm = () => {
 
   return (
     <>
-      <Input type="password" />
-      <Select
-        options={PROVINCE_CHOICES}
-        val={val}
-        setVal={setVal}
-        selectIntialShownText={''}
-        placeHolder="Choose"
-      />
+      <Form className="w-per-50 ml-auto mr-auto br-all-solid-1 p2 br-rad-px-10">
+        <TextBox isRequired type="password" labelText="Password" />
+        <Select
+          options={PROVINCE_CHOICES}
+          val={val}
+          setVal={setVal}
+          selectIntialShownText={''}
+          placeHolder="Choose"
+          labelText="Province"
+          isRequired
+        />
+        <DatePicker labelText="Birth Date" isRequired />
+      </Form>
     </>
   );
 };
