@@ -11,9 +11,3 @@ export const passwordValidators = [
     maxRequired: 8
   }
 ];
-
-export const provniceValidators = [{ type: 'required', message: 'Province is required' }];
-
-export const birthDateValidators = [{ type: 'required', message: 'Birth date is required' }];
-
-export const profilePhotoValidators = [{ type: 'required', message: 'Profile Photo is required' }];
