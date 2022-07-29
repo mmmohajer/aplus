@@ -17,7 +17,8 @@ const DatePicker = ({
   yearDropdownItemNumber = 100,
   showYearDropdown = true,
   showMonthDropdown = false,
-  errorMessage
+  errorMessage,
+  placeHolder
 }) => {
   return (
     <>
@@ -37,6 +38,7 @@ const DatePicker = ({
             scrollableYearDropdown={true}
             showYearDropdown={showYearDropdown}
             showMonthDropdown={showMonthDropdown}
+            placeholderText={placeHolder}
           />
         </Div>
         <Div
