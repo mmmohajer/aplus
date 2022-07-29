@@ -17,6 +17,7 @@ const ImagePicker = ({
   hasCropper = true,
   cropInfo,
   errorMessage,
+  errorHandler,
   className
 }) => {
   const [src, setSrc] = useState('');
@@ -47,7 +48,7 @@ const ImagePicker = ({
       ) : (
         ''
       )}
-      <Div className={cx('mainInputContainer pos-rel', className)}>
+      <Div className={cx('mainInputContainer pos-rel', className)} onClick={() => errorHandler('')}>
         {labelText && (
           <Div className={cx('labelForInputContainer')}>
             <Label className={cx(isRequired && 'required', 'labelForInput')}>{labelText}</Label>

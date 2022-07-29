@@ -14,6 +14,7 @@ const Select = ({
   isRequired,
   labelText,
   errorMessage,
+  errorHandler,
   className
 }) => {
   const [isOptionsActive, setIsOptionsActive] = useState(false);
@@ -26,7 +27,7 @@ const Select = ({
             <Label className={cx(isRequired && 'required', 'labelForInput')}>{labelText}</Label>
           </Div>
         )}
-        <Div className={cx('inputFieldContainer')}>
+        <Div className={cx('inputFieldContainer')} onClick={() => errorHandler('')}>
           <BaseSelect
             selectValue={val}
             setSelectValue={setVal}

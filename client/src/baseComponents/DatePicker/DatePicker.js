@@ -18,11 +18,12 @@ const DatePicker = ({
   showYearDropdown = true,
   showMonthDropdown = false,
   errorMessage,
+  errorHandler,
   placeHolder
 }) => {
   return (
     <>
-      <Div className={cx('mainInputContainer pos-rel', className)}>
+      <Div className={cx('mainInputContainer pos-rel', className)} onClick={() => errorHandler('')}>
         {labelText && (
           <Div className={cx('labelForInputContainer')}>
             <Label className={cx(isRequired && 'required', 'labelForInput')}>{labelText}</Label>
