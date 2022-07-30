@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { Div, Form, Input, Label } from 'basedesign-iswad';
 
-import AppButton from 'BaseComponents/AppButton';
+import Button from 'BaseComponents/Button';
 
 import { nameValidators, emailValidators, phoneValidators } from './utils';
 import styles from './Contact.module.scss';
@@ -134,9 +134,9 @@ const Contact = () => {
             </Div>
 
             <Div type="flex" hAlign="center">
-              <AppButton className="max-w-px-200 mt2" type="submit">
+              <Button className="max-w-px-200 mt2" type="submit">
                 {language === 'en' ? 'Submit' : 'ارسال'}
-              </AppButton>
+              </Button>
             </Div>
           </Form>
         </Div>

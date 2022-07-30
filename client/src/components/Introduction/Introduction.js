@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { Div, Text, Image, Row, Column } from 'basedesign-iswad';
 
-import AppButton from 'BaseComponents/AppButton';
+import Button from 'BaseComponents/Button';
 import Icon from 'BaseComponents/Icon';
 import styles from './Introduction.module.scss';
 import { CERTIFICATES } from './constants';
@@ -70,7 +70,7 @@ const Introduction = () => {
               ))}
 
               <Div type="flex" hAlign={language === 'en' ? 'start' : 'end'}>
-                <AppButton
+                <Button
                   className={cx('max-w-px-200 mt5 mx3', styles.introductionButton)}
                   onClick={() => {
                     document?.querySelector('#Contact').scrollIntoView({
@@ -78,7 +78,7 @@ const Introduction = () => {
                     });
                   }}>
                   {language === 'en' ? 'Get an Appointment' : 'رزرو وقت ملاقات'}
-                </AppButton>
+                </Button>
               </Div>
             </Div>
           </Column>

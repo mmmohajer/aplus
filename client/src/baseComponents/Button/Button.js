@@ -1,14 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
-import { Div, Button as BaseButton } from 'basedesign-iswad';
+import { Button as BaseButton, Div } from 'basedesign-iswad';
 
 import styles from './Button.module.scss';
 
-const Button = ({ colorType = 'primary', children, ...props }) => {
+const Button = ({ children, className, ...props }) => {
   return (
     <>
       <BaseButton
-        className={cx('p1', styles.btn, colorType === 'primary' && styles.primary)}
+        className={cx('w-per-100 bgFaded br-rad-px-5 textWhite', styles.btn, className)}
         {...props}>
         {children}
       </BaseButton>

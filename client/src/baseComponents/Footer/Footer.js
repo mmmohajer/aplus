@@ -3,7 +3,6 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { Div, Row, Column, Input, Form, Button } from 'basedesign-iswad';
 
-import AppButton from 'BaseComponents/AppButton';
 import Info from 'Components/Info';
 
 import { INFORMATION } from './constants';
