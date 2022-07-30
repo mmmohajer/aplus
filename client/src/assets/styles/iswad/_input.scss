@@ -24,17 +24,18 @@
     position: relative;
   }
 
-  &_field_container {
-    margin-bottom: 1rem;
-  }
+  // &_field_container {
+  //   // margin-bottom: 1rem;
+  // }
 
   &_errorMessage {
     left: 4px;
     display: none;
-    color: red;
     position: absolute;
-    bottom: 0px;
-    font-size: 13px;
+    bottom: -1.5rem;
+    left: 8px;
+    font-size: 12px;
+    color: red;
 
     &_active {
       display: block;

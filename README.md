@@ -58,7 +58,7 @@ Setup:
    1. Create following subfolders: <br>
 
    - ./nginx/certbot/conf/ <br>
-   - ./nginx/certbot/www/ <br> 2.`docker-compose -f docker-compose-createSSl.yml up --build -d` <br>
+   - ./nginx/certbot/www/ <br> 2.`docker-compose -f docker-compose-createSSL.yml up --build -d` <br>
      3.And then change domains and email in **init-letsencrypt.sh** <br>
      4.Then run `./init-letsencrypt.sh` <br>
 

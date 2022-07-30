@@ -1,0 +1,21 @@
+@import 'Styles/base/_variables';
+
+.btn {
+  outline: none;
+  border: solid 1px;
+  border-radius: 4px;
+  box-shadow: $boxShadow1;
+  padding: 10px 1rem;
+}
+
+.primary {
+  background-color: $primaryColor;
+  border-color: $primaryColor;
+  color: white;
+  min-width: 200px;
+
+  &:hover {
+    background-color: $inverseColor;
+    border-color: $inverseColor;
+  }
+}

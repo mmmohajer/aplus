@@ -2,11 +2,16 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag } from '@fortawesome/free-solid-svg-icons';
-import { faCertificate } from '@fortawesome/free-solid-svg-icons';
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFlag,
+  faEye,
+  faImage,
+  faClose,
+  faCertificate,
+  faQuoteLeft,
+  faAngleRight,
+  faAngleLeft
+} from '@fortawesome/free-solid-svg-icons';
 
 import Dashboard from 'Images/js-images/icons/svg/dashboard.svg';
 import Instagram from 'Images/js-images/icons/svg/instagram.svg';
@@ -20,7 +25,12 @@ function Icon({ type, color, width, scale }) {
     certificate: <FontAwesomeIcon icon={faCertificate} style={{ color, width }} />,
     quoteLeft: <FontAwesomeIcon icon={faQuoteLeft} style={{ color, width }} />,
     angleRight: <FontAwesomeIcon icon={faAngleRight} style={{ color, width }} />,
-    angleLeft: <FontAwesomeIcon icon={faAngleLeft} style={{ color, width }} />
+    angleLeft: <FontAwesomeIcon icon={faAngleLeft} style={{ color, width }} />,
+    eye: <FontAwesomeIcon icon={faEye} style={{ color, width, transform: `scale(${scale})` }} />,
+    'image-upload': (
+      <FontAwesomeIcon icon={faImage} style={{ color, width, transform: `scale(${scale})` }} />
+    ),
+    close: <FontAwesomeIcon icon={faClose} style={{ color, width, transform: `scale(${scale})` }} />
   };
 
   iconTypes['dashboard'] = (
@@ -52,6 +62,7 @@ Icon.propTypes = {
     'angleLeft',
     'angleRight'
   ]),
+  type: PropTypes.oneOf(['eye', 'dashboard', 'image-upload', 'close']),
   color: PropTypes.string,
   width: PropTypes.string
 };

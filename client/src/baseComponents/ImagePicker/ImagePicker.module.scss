@@ -1,0 +1,66 @@
+@import 'Styles/base/_variables.scss';
+@import 'Styles/base/_mixins.scss';
+
+%fileContainer {
+  width: 100px;
+  height: 100px;
+  padding: 0.5rem;
+  border: dashed 1px $appGrayDarkColor;
+  border-radius: 10px;
+}
+
+%cropper {
+  max-width: 600px !important;
+
+  @include atMedium {
+    max-width: 600px !important;
+  }
+
+  @include atLarge {
+    max-width: 1000px !important;
+  }
+}
+
+.iconContainer {
+  width: 100px;
+  height: 100px;
+  padding: 0.5rem;
+  border: dashed 1px $appGrayDarkColor;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.imagePreviewContainer {
+  box-shadow: $boxShadow1;
+  padding: 1rem;
+  background-color: white;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+
+  & img {
+    border-radius: 10px;
+  }
+}
+
+.cropperContainer {
+  box-shadow: $boxShadow1;
+  z-index: 1000;
+  position: fixed;
+  @extend %cropper;
+}
+
+.reactCropper {
+  @extend %cropper;
+  background-color: red;
+}
+
+.cropper {
+  @extend %cropper;
+}
+
+.canvasContainer {
+  position: absolute;
+  visibility: hidden;
+  z-index: -10;
+}

@@ -1,0 +1,43 @@
+@import 'Styles/base/_variables';
+
+.select {
+  width: 100%;
+  border: none;
+  height: 40px;
+}
+
+.defaultSelect {
+  box-shadow: $boxShadow1;
+  border: solid 1px $appGrayBrightColor;
+  height: 40px;
+}
+
+.optionsContainer {
+  box-shadow: $boxShadow1;
+  width: 100%;
+  padding: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.option {
+  padding: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $appGrayBrightColor;
+  }
+}
+
+.searchInput {
+  outline: none;
+  box-shadow: $boxShadow1;
+  border: solid 1px $appGrayBrightColor;
+  padding: 0.65rem;
+}
+
+.placeHolder {
+  font-size: 14px;
+  color: $appGrayDarkColor;
+}

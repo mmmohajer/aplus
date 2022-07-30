@@ -9,6 +9,8 @@ import Services from 'Components/Services';
 import About from 'Components/About';
 import Testimonials from 'Components/Testimonials';
 
+import TestForm from 'Components/TestForm';
+
 import styles from './Home.module.scss';
 
 function Home() {

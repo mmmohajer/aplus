@@ -113,7 +113,11 @@ If for any reason your lical IP address is banned in your server, you need to us
 Instructions here: https://docs.docker.com/engine/install/ubuntu/ <br>
 
 **Install docker-compose in the server** <br>
-Instructions here: https://docs.docker.com/compose/install/
+Instructions comes from here: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04 <br>
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
+docker-compose --version
 
 **Add your username to the docker group** <br>
 So, you can run docker commands without the need of sudo <br>
@@ -156,5 +160,6 @@ To do so, first clear all volumes, images, and containersof docker, useing the f
 Run `docker container rm -f $(docker container ls -a -q)` <br>
 Run `docker image rm -f $(docker image ls -a -q)` <br>
 Run `docker volume prune` <br>
+Then go to nginx folder and change ownership of certbot folder and all its subfolders to USER_NAME:docker `chown -R USER_NAME:docker certbot` <br>
 Now everything is ready for your app to be served: <br>
 Run `docker-compose -f docker-compose-prod-ssl.yml up --build -d`
