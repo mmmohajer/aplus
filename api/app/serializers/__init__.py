@@ -1,0 +1,3 @@
+from app.serializers import contact_form_serializers
+
+ContactFormSerializer = contact_form_serializers.ContactFormSerializer
