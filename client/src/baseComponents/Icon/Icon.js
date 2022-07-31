@@ -60,15 +60,15 @@ Icon.propTypes = {
     'certificate',
     'quoteLeft',
     'angleLeft',
-    'angleRight'
+    'angleRight',
+    'close'
   ]),
-  type: PropTypes.oneOf(['eye', 'dashboard', 'image-upload', 'close']),
   color: PropTypes.string,
   width: PropTypes.string
 };
 
 Icon.defaultProps = {
-  type: 'dashboard',
+  type: 'close',
   color: 'black',
   width: '16px'
 };

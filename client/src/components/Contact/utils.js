@@ -16,5 +16,3 @@ export const emailValidators = [
   { type: 'required', message: 'Email is required' },
   { type: 'email', message: 'Must be a valid email address' }
 ];
-
-export const phoneValidators = [{ type: 'required', message: 'Phone number is required' }];

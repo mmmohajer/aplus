@@ -13,3 +13,4 @@ export const MICROSOFT_AUTH_TOKEN_API_ROUTE = '/api/auth/microsoft-auth/';
 export const MICROSOFT_AUTH_HANDLE_TOKEN_API_ROUTE = '/api/auth/microsoft-auth-handle-token/';
 export const FACEBOOK_AUTH_TOKEN_API_ROUTE = '/api/auth/facebook-auth/';
 export const FACEBOOK_AUTH_HANDLE_TOKEN_API_ROUTE = '/api/auth/facebook-auth-handle-token/';
+export const CONTACT_FORM_API_ROUTE = '/api/contact-form/';

@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import { useSelector } from 'react-redux';
-import { Div, Form, Label } from 'basedesign-iswad';
+import { useSelector, useDispatch } from 'react-redux';
+import { Div, Form } from 'basedesign-iswad';
 
 import TextBox from 'BaseComponents/TextBox';
 import TextArea from 'BaseComponents/TextArea';
 import Button from 'BaseComponents/Button';
 
-import { nameValidators, emailValidators, phoneValidators } from './utils';
+import useApiCalls from 'Hooks/useApiCalls';
+import { CONTACT_FORM_API_ROUTE } from 'Constants/apiRoutes';
+import { addAlertItem } from 'Utils/notifications';
+
+import { nameValidators, emailValidators } from './utils';
 import styles from './Contact.module.scss';
 
 const Contact = () => {
+  const dispatch = useDispatch();
   const language = useSelector((state) => state.language);
 
   const [name, setName] = useState('');
@@ -35,14 +40,33 @@ const Contact = () => {
       input_name: 'email',
       validators: emailValidators,
       errorMessageHandler: setEmailErrorMessage
-    },
-
-    {
-      input_name: 'phone',
-      validators: phoneValidators,
-      errorMessageHandler: setPhoneErrorMessage
     }
   ];
+
+  const [sendReq, setSendReq] = useState(false);
+  const bodyData = {
+    name,
+    email,
+    phone_number: phone,
+    message
+  };
+  const { data, error } = useApiCalls({
+    sendReq,
+    setSendReq,
+    method: 'POST',
+    url: CONTACT_FORM_API_ROUTE,
+    bodyData
+  });
+
+  useEffect(() => {
+    if (data) {
+      addAlertItem(
+        dispatch,
+        'You have successfully submitted the form, we will contact you shortly.',
+        'success'
+      );
+    }
+  }, [data]);
 
   return (
     <>
@@ -51,7 +75,7 @@ const Contact = () => {
           {language === 'en' ? 'Get an Appointment' : 'تعیین وقت ملاقات'}
         </Div>
         <Div>
-          <Form onSubmit={() => console.log('hello')} toBeValidatedFields={toBeValidatedFields}>
+          <Form onSubmit={() => setSendReq(true)} toBeValidatedFields={toBeValidatedFields}>
             <TextBox
               isRequired
               className={cx(language === 'fa' && 'text-rtl')}
@@ -79,7 +103,6 @@ const Contact = () => {
               }}
               errorMessage={emailErrorMessage}></TextBox>
             <TextBox
-              isRequired
               className={cx(language === 'fa' && 'text-rtl')}
               labelText={language === 'en' ? 'WhatsApp Number' : 'شماره واتساپ'}
               name="phone"

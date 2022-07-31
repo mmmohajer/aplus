@@ -10,7 +10,7 @@ from core.models.general import TimeStampedUUIDModel
 class ContactForm(TimeStampedUUIDModel):
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
-    phone_number = PhoneNumberField(max_length=15)
+    phone_number = models.CharField(blank=True, null=True, max_length=15)
     message = models.TextField(blank=True, null=True)
     read = models.BooleanField(default=False)
 
