@@ -20,8 +20,7 @@ ALLOWED_HOSTS.extend(
 
 SITE_ID = 1
 
-CSRF_COOKIE_SECURE = False
-CSRF_TRUSTED_ORIGINS = ['https://barezai.com/']
+CSRF_TRUSTED_ORIGINS = ['https://barezai.com/', 'https://*.barezai.com/']
 
 
 MIDDLEWARE = [
