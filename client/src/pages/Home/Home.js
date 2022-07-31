@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { Div, Paragraph } from 'basedesign-iswad';
+import { Div } from 'basedesign-iswad';
 
 import PublicRoute from 'Components/PublicRoute';
 import Introduction from 'Components/Introduction';
@@ -8,7 +8,6 @@ import Contact from 'Components/Contact';
 import Services from 'Components/Services';
 import About from 'Components/About';
 import Testimonials from 'Components/Testimonials';
-
 import TestForm from 'Components/TestForm';
 
 import styles from './Home.module.scss';

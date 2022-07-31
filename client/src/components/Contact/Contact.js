@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import { useSelector } from 'react-redux';
-import { Div, Form, Input, Label } from 'basedesign-iswad';
+import { useSelector, useDispatch } from 'react-redux';
+import { Div, Form } from 'basedesign-iswad';
 
+import TextBox from 'BaseComponents/TextBox';
+import TextArea from 'BaseComponents/TextArea';
 import Button from 'BaseComponents/Button';
 
-import { nameValidators, emailValidators, phoneValidators } from './utils';
+import useApiCalls from 'Hooks/useApiCalls';
+import { CONTACT_FORM_API_ROUTE } from 'Constants/apiRoutes';
+import { addAlertItem } from 'Utils/notifications';
+
+import { nameValidators, emailValidators } from './utils';
 import styles from './Contact.module.scss';
 
 const Contact = () => {
+  const dispatch = useDispatch();
   const language = useSelector((state) => state.language);
 
   const [name, setName] = useState('');
   const [nameErrorMessage, setNameErrorMessage] = useState('');
-  const [nameErrorIsActive, setNameErrorIsActive] = useState(false);
 
   const [email, setEmail] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
-  const [emailErrorIsActive, setEmailErrorIsActive] = useState(false);
 
   const [phone, setPhone] = useState('');
   const [phoneErrorMessage, setPhoneErrorMessage] = useState('');
-  const [phoneErrorIsActive, setPhoneErrorIsActive] = useState(false);
 
   const [message, setMessage] = useState('');
 
@@ -29,24 +33,40 @@ const Contact = () => {
     {
       input_name: 'name',
       validators: nameValidators,
-      errorMessageHandler: setNameErrorMessage,
-      errorActivateHandler: setNameErrorIsActive
+      errorMessageHandler: setNameErrorMessage
     },
 
     {
       input_name: 'email',
       validators: emailValidators,
-      errorMessageHandler: setEmailErrorMessage,
-      errorActivateHandler: setEmailErrorIsActive
-    },
-
-    {
-      input_name: 'phone',
-      validators: phoneValidators,
-      errorMessageHandler: setPhoneErrorMessage,
-      errorActivateHandler: setPhoneErrorIsActive
+      errorMessageHandler: setEmailErrorMessage
     }
   ];
+
+  const [sendReq, setSendReq] = useState(false);
+  const bodyData = {
+    name,
+    email,
+    phone_number: phone,
+    message
+  };
+  const { data, error } = useApiCalls({
+    sendReq,
+    setSendReq,
+    method: 'POST',
+    url: CONTACT_FORM_API_ROUTE,
+    bodyData
+  });
+
+  useEffect(() => {
+    if (data) {
+      addAlertItem(
+        dispatch,
+        'You have successfully submitted the form, we will contact you shortly.',
+        'success'
+      );
+    }
+  }, [data]);
 
   return (
     <>
@@ -55,84 +75,49 @@ const Contact = () => {
           {language === 'en' ? 'Get an Appointment' : 'تعیین وقت ملاقات'}
         </Div>
         <Div>
-          <Form onSubmit={() => console.log('hello')} toBeValidatedFields={toBeValidatedFields}>
-            <Div type="flex" direction="vertical">
-              <Label
-                className={cx(
-                  'label pl1 required',
-                  language === 'fa' && 'text-rlt flex flex--jc--end pr1 required-before'
-                )}>
-                {language === 'en' ? 'Name' : 'نام'}
-              </Label>
-              <Input
-                className={cx(language === 'fa' && 'text-rtl')}
-                name="name"
-                type="text"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                  setNameErrorIsActive(false);
-                  setNameErrorMessage('');
-                }}
-                errorMessage={nameErrorMessage}
-                errorIsActive={nameErrorIsActive}></Input>
-            </Div>
+          <Form onSubmit={() => setSendReq(true)} toBeValidatedFields={toBeValidatedFields}>
+            <TextBox
+              isRequired
+              className={cx(language === 'fa' && 'text-rtl')}
+              labelText={language === 'en' ? 'Name' : 'نام'}
+              name="name"
+              type="text"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
 
-            <Div type="flex" direction="vertical">
-              <Label
-                className={cx(
-                  'label pl1 required',
-                  language === 'fa' && 'text-rlt flex flex--jc--end pr1 required-before'
-                )}>
-                {language === 'en' ? 'Email' : 'ایمیل'}
-              </Label>
-              <Input
-                className={cx(language === 'fa' && 'text-rtl')}
-                name="email"
-                type="text"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setEmailErrorIsActive(false);
-                  setEmailErrorMessage('');
-                }}
-                errorMessage={emailErrorMessage}
-                errorIsActive={emailErrorIsActive}></Input>
-            </Div>
+                setNameErrorMessage('');
+              }}
+              errorMessage={nameErrorMessage}></TextBox>
+            <TextBox
+              isRequired
+              className={cx(language === 'fa' && 'text-rtl')}
+              labelText={language === 'en' ? 'Email' : 'ایمیل'}
+              name="email"
+              type="text"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
 
-            <Div type="flex" direction="vertical">
-              <Label
-                className={cx(
-                  'label pl1 required',
-                  language === 'fa' && 'text-rlt flex flex--jc--end pr1 required-before'
-                )}>
-                {language === 'en' ? 'Whatsapp Number' : 'شماره تماس واتساپ'}
-              </Label>
-              <Input
-                className={cx(language === 'fa' && 'text-rtl')}
-                name="phone"
-                type="text"
-                value={phone}
-                onChange={(e) => {
-                  setPhoneErrorIsActive(false);
-                  setPhoneErrorMessage('');
-                  setPhone(e.target.value);
-                }}
-                errorMessage={phoneErrorMessage}
-                errorIsActive={phoneErrorIsActive}></Input>
-            </Div>
-
-            <Div type="flex" direction="vertical">
-              <Label
-                className={cx('label pl1', language === 'fa' && 'text-rlt flex flex--jc--end pr1')}>
-                {language === 'en' ? 'Your Message' : 'پیام'}
-              </Label>
-              <textarea
-                className={cx('textarea', language === 'fa' && 'text-rtl')}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}></textarea>
-            </Div>
-
+                setEmailErrorMessage('');
+              }}
+              errorMessage={emailErrorMessage}></TextBox>
+            <TextBox
+              className={cx(language === 'fa' && 'text-rtl')}
+              labelText={language === 'en' ? 'WhatsApp Number' : 'شماره واتساپ'}
+              name="phone"
+              type="text"
+              value={phone}
+              onChange={(e) => {
+                setPhoneErrorMessage('');
+                setPhone(e.target.value);
+              }}
+              errorMessage={phoneErrorMessage}></TextBox>
+            <TextArea
+              className={cx('', language === 'fa' && 'text-rtl')}
+              value={message}
+              labelText={language === 'en' ? 'Message' : 'پیام'}
+              onChange={(e) => setMessage(e.target.value)}></TextArea>
             <Div type="flex" hAlign="center">
               <Button className="max-w-px-200 mt2" type="submit">
                 {language === 'en' ? 'Submit' : 'ارسال'}

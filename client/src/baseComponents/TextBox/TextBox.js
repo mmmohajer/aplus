@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
+import { useSelector } from 'react-redux';
 import { Div, Input as BaseInput, Label } from 'basedesign-iswad';
 
 import Icon from 'BaseComponents/Icon';
@@ -7,6 +8,8 @@ import Icon from 'BaseComponents/Icon';
 import styles from './TextBox.module.scss';
 
 const TextBox = ({ labelText, isRequired, className, type, ...props }) => {
+  const language = useSelector((state) => state.language);
+
   const [curType, setCurType] = useState(type);
 
   return (
@@ -14,7 +17,14 @@ const TextBox = ({ labelText, isRequired, className, type, ...props }) => {
       <Div className={cx('mainInputContainer', className)}>
         {labelText && (
           <Div className={cx('labelForInputContainer')}>
-            <Label className={cx(isRequired && 'required', 'labelForInput')}>{labelText}</Label>
+            <Label
+              className={cx(
+                isRequired && 'required',
+                'labelForInput',
+                isRequired && language === 'fa' && 'required-before'
+              )}>
+              {labelText}
+            </Label>
           </Div>
         )}
         <Div className={cx('inputFieldContainer')}>
