@@ -20,6 +20,8 @@ ALLOWED_HOSTS.extend(
 
 SITE_ID = 1
 
+CSRF_COOKIE_SECURE = False
+
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
