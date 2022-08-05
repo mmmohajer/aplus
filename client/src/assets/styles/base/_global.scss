@@ -56,15 +56,15 @@ ul {
   position: relative;
 }
 
-@font-face {
-  font-family: BLotus;
-  src: url('../fonts/BLotusBd.ttf') format('truetype');
-}
+// @font-face {
+//   font-family: BLotus;
+//   src: url('../fonts/BLotusBd.ttf') format('truetype');
+// }
 
-.farsiFont {
-  font-family: BLotus;
-  line-height: 2rem;
-}
+// .farsiFont {
+//   font-family: BLotus;
+//   line-height: 2rem;
+// }
 
 .englishFont {
   font-family: $fontFamily;

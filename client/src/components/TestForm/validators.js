@@ -2,7 +2,7 @@ export const passwordValidators = [
   { type: 'required', message: 'Password is required' },
   {
     type: 'minRequired',
-    message: 'PAssword must be at least 3 characters',
+    message: 'Password must be at least 3 characters',
     minRequired: 3
   },
   {

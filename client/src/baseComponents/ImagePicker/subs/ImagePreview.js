@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { Div, Image } from 'basedesign-iswad';
 
-import Close from 'BaseComponents/Close';
+import Close from '@/baseComponents/Close';
 
 import styles from '../ImagePicker.module.scss';
 

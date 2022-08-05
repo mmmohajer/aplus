@@ -111,3 +111,13 @@
     }
   }
 }
+
+@font-face {
+  font-family: BLotus;
+  src: url('../fonts/BLotusBd.ttf') format('truetype');
+}
+
+.farsiFont {
+  font-family: BLotus;
+  line-height: 2rem;
+}

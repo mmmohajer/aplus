@@ -3,8 +3,8 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { Div } from 'basedesign-iswad';
 
-import Icon from 'BaseComponents/Icon';
-import { COLORS } from 'Constants/vars';
+import Icon from '@/baseComponents/Icon';
+import { COLORS } from '@/constants/vars';
 
 import styles from './Info.module.scss';
 

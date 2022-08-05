@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Div, MobNav, MobNavItem } from 'basedesign-iswad';
 
-import { setActiveMenu } from 'Reducers/general/activeMenu';
+import { setActiveMenu } from '@/reducers/general/activeMenu';
 
 import styles from '../Header.module.scss';
 

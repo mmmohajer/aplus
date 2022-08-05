@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 
-import { getLocalStorage } from 'Utils/auth';
-import { TOKEN_SPACE_WORD } from 'Constants/vars';
-import { isLoading, isLoaded } from 'Reducers/general/loading';
-import { showErrorAPIAlert } from 'Utils/notifications';
+import { getLocalStorage } from '@/utils/auth';
+import { TOKEN_SPACE_WORD } from '@/constants/vars';
+import { isLoading, isLoaded } from '@/reducers/general/loading';
+import { showErrorAPIAlert } from '@/utils/notifications';
 
 const useApiCalls = ({
   sendReq,

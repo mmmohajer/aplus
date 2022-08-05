@@ -1,7 +1,7 @@
 import cookie from 'js-cookie';
 
-import { authenticated } from 'Services/auth';
-import { addAlertItem } from 'Utils/notifications';
+import { authenticated } from '@/services/auth';
+import { addAlertItem } from '@/utils/notifications';
 
 // set cookie
 export const setCookie = (key, value) => {

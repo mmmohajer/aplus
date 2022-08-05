@@ -1,15 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
-import { Div, Text, Image, Row, Column } from 'basedesign-iswad';
+import { Div, Text, Row, Column } from 'basedesign-iswad';
+import Image from 'next/image';
 
-import Button from 'BaseComponents/Button';
-import Icon from 'BaseComponents/Icon';
+import Button from '@/baseComponents/Button';
+import Icon from '@/baseComponents/Icon';
 import styles from './Introduction.module.scss';
 import { CERTIFICATES } from './constants';
 import { COLORS } from '../../constants/vars';
 
-import IntroductionImage from 'Images/js-Images/general/introduction.png';
+import IntroductionImage from '@/images/js-Images/general/introduction.png';
 
 const Introduction = () => {
   const language = useSelector((state) => state.language);
@@ -84,10 +85,9 @@ const Introduction = () => {
           </Column>
 
           <Column xs={12} sm={12} md={6} lg={6} className={cx()}>
-            <Image
-              src={IntroductionImage}
-              className={cx('show-flex-in-md-lg', styles.introductionImage)}
-            />
+            <Div className={cx('show-flex-in-md-lg', styles.introductionImage)}>
+              <Image src={IntroductionImage} />
+            </Div>
           </Column>
         </Row>
       </Div>

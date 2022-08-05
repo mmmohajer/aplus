@@ -3,9 +3,9 @@ import cx from 'classnames';
 import { useDispatch } from 'react-redux';
 import { Form, Label, Input, Div, Button } from 'basedesign-iswad';
 
-import useApiCalls from 'Hooks/useApiCalls';
-import { REGISTER_API_ROUTE, RESEND_ACTIVATE_EMAIL_API_ROUTE } from 'Constants/apiRoutes';
-import { addAlertItem } from 'Utils/notifications';
+import useApiCalls from '@/hooks/useApiCalls';
+import { REGISTER_API_ROUTE, RESEND_ACTIVATE_EMAIL_API_ROUTE } from '@/constants/apiRoutes';
+import { addAlertItem } from '@/utils/notifications';
 
 import styles from './Register.module.scss';
 
@@ -109,8 +109,7 @@ const Register = () => {
       <Form
         className="textWhite py1"
         toBeValidatedFields={toBeValidatedFields}
-        onSubmit={() => setSendRegisterReq(true)}
-      >
+        onSubmit={() => setSendRegisterReq(true)}>
         <Label className="textBlack" htmlFor="sample">
           First Name
         </Label>

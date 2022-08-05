@@ -1,7 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
-import { Div, Card, CardHeader, CardBody, Image, Paragraph } from 'basedesign-iswad';
+import { Div, Card, CardHeader, CardBody, Paragraph } from 'basedesign-iswad';
+import Image from 'next/image';
 
 import styles from './ServiceCard.module.scss';
 
@@ -12,8 +13,8 @@ const ServiceCard = ({ src, title, text, ...props }) => {
     <>
       <Card className={cx('w-px-300 pb2', language === 'fa' && 'text-rtl', styles.card)} {...props}>
         <CardHeader>
-          <Div>
-            <Image src={src} className={cx(styles.cardImg)} />
+          <Div className={cx(styles.cardImg)}>
+            <Image src={src} />
           </Div>
         </CardHeader>
         <CardBody className="px1 flex flex--gr--1 flex--dir--col flex--jc--between">

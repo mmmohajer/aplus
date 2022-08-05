@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { Div, Card, CardBody, CardHeader, Paragraph, Image } from 'basedesign-iswad';
 
-import Icon from 'BaseComponents/Icon';
+import Icon from '@/baseComponents/Icon';
 import { COLORS } from '../../constants/vars';
 
 import styles from './TestimonialCard.module.scss';

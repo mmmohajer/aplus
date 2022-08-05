@@ -1,12 +1,12 @@
-import FamilyImage from 'Images/js-Images/general/family-immigration.jpg';
-import Tourist from 'Images/js-Images/general/tourist.jpg';
-import Investment from 'Images/js-Images/general/investment.jpg';
-import SelfEmployment from 'Images/js-Images/general/self-employment.jpg';
-import SkilledWorker from 'Images/js-Images/general/skillworker.jpeg';
-import Refugee from 'Images/js-Images/general/refugee.jpg';
-import ProfessionalTranslation from 'Images/js-Images/general/professional-translation.jpg';
-import Invitation from 'Images/js-Images/general/invitation.jpg';
-import Transaltion from 'Images/js-Images/general/translation.jpg';
+import FamilyImage from '@/images/js-Images/general/family-immigration.jpg';
+import Tourist from '@/images/js-Images/general/tourist.jpg';
+import Investment from '@/images/js-Images/general/investment.jpg';
+import SelfEmployment from '@/images/js-Images/general/self-employment.jpg';
+import SkilledWorker from '@/images/js-Images/general/skillworker.jpeg';
+import Refugee from '@/images/js-Images/general/refugee.jpg';
+import ProfessionalTranslation from '@/images/js-Images/general/professional-translation.jpg';
+import Invitation from '@/images/js-Images/general/invitation.jpg';
+import Transaltion from '@/images/js-Images/general/translation.jpg';
 
 export const ITEMS = [
   {

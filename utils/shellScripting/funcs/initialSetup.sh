@@ -10,8 +10,7 @@ initialSetupInMAcOrLinux() {
     cp "config/envFiles/django/prod/.env.sample" "config/envFiles/django/prod/.env"
     cp "config/envFiles/postgres/develop/.env.sample" "config/envFiles/postgres/develop/.env"
     cp "config/envFiles/postgres/prod/.env.sample" "config/envFiles/postgres/prod/.env"
-    cp "client/config/develop/.env.sample" "client/config/develop/.env"
-    cp "client/config/prod/.env.sample" "client/config/prod/.env"
+    cp "client/next.config.sample.js" "client/next.config.js"
     cp "api/.env.sample" "api/.env"
     echo "All environment variables have been copied"
     mkdir -p "api/vol/media"
@@ -29,8 +28,7 @@ initialSetupInWindows() {
     cp "config/envFiles/django/prod/.env.sample" "config/envFiles/django/prod/.env"
     cp "config/envFiles/postgres/develop/.env.sample" "config/envFiles/postgres/develop/.env"
     cp "config/envFiles/postgres/prod/.env.sample" "config/envFiles/postgres/prod/.env"
-    cp "client/config/develop/.env.sample" "client/config/develop/.env"
-    cp "client/config/prod/.env.sample" "client/config/prod/.env"
+    cp "client/next.config.sample.js" "client/next.config.js"
     cp "api/.env.sample" "api/.env"
     echo "All environment variables have been copied" 
 }
@@ -39,5 +37,6 @@ initialSetupInServer() {
     cp ".env.sample" ".env"
     cp "config/envFiles/django/prod/.env.sample" "config/envFiles/django/prod/.env"
     cp "config/envFiles/postgres/prod/.env.sample" "config/envFiles/postgres/prod/.env"
+    cp "client/next.config.sample.js" "client/next.config.js"
     echo "All environment variables have been copied"
 }

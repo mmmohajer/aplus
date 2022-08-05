@@ -13,11 +13,11 @@ import {
   faAngleLeft
 } from '@fortawesome/free-solid-svg-icons';
 
-import Dashboard from 'Images/js-images/icons/svg/dashboard.svg';
-import Instagram from 'Images/js-images/icons/svg/instagram.svg';
-import Location from 'Images/js-images/icons/svg/location.svg';
-import Phone from 'Images/js-images/icons/svg/phone.svg';
-import Mail from 'Images/js-images/icons/svg/mail.svg';
+import Dashboard from '@/images/js-Images/icons/svg/dashboard.svg';
+import Instagram from '@/images/js-Images/icons/svg/instagram.svg';
+import Location from '@/images/js-Images/icons/svg/location.svg';
+import Phone from '@/images/js-Images/icons/svg/phone.svg';
+import Mail from '@/images/js-Images/icons/svg/mail.svg';
 
 function Icon({ type, color, width, scale }) {
   let iconTypes = {

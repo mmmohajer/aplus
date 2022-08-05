@@ -3,18 +3,14 @@ import cx from 'classnames';
 import dayjs from 'dayjs';
 import { Div, Form } from 'basedesign-iswad';
 
-import TextBox from 'BaseComponents/TextBox';
-import Select from 'BaseComponents/Select';
-import DatePicker from 'BaseComponents/DatePicker';
-import ImagePicker from 'BaseComponents/ImagePicker';
-import Button from 'BaseComponents/Button';
+import TextBox from '@/baseComponents/TextBox';
+import Select from '@/baseComponents/Select';
+import DatePicker from '@/baseComponents/DatePicker';
+import ImagePicker from '@/baseComponents/ImagePicker';
+import TextArea from '@/baseComponents/TextArea';
+import Button from '@/baseComponents/Button';
 
-import {
-  passwordValidators,
-  provniceValidators,
-  birthDateValidators,
-  profilePhotoValidators
-} from './validators';
+import { passwordValidators } from './validators';
 
 import { PROVINCE_CHOICES } from './constants';
 
@@ -25,11 +21,13 @@ const TestForm = () => {
   const [province, setProvince] = useState('');
   const [birthDate, setBirthDate] = useState(new Date());
   const [profilePhoto, setProfilePhoto] = useState('');
+  const [message, setMessage] = useState('');
 
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [provinceErrorMessage, setProvinceErrorMessage] = useState('');
   const [birthDateErrorMessage, setBirthDateErrorMessage] = useState('');
   const [profilePhotoErrorMessage, setProfilePhotoErrorMessage] = useState('');
+  const [messageErrorMessage, setMessageErrorMessage] = useState('');
 
   const toBeValidatedFields = [
     {
@@ -55,12 +53,22 @@ const TestForm = () => {
       setProfilePhotoErrorMessage('You must pick a profile photo');
       validated = false;
     }
+
+    if (!message) {
+      setMessageErrorMessage('You must send a message to us!');
+      validated = false;
+    }
+
     return validated;
   };
 
   const submitHandler = (e) => {
     if (customValidations()) {
-      console.log('Hello');
+      console.log(password);
+      console.log(province);
+      console.log(birthDate);
+      console.log(profilePhoto);
+      console.log(message);
     }
   };
 
@@ -75,10 +83,12 @@ const TestForm = () => {
           isRequired
           type="password"
           labelText="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          val={password}
+          setVal={setPassword}
           errorMessage={passwordErrorMessage}
+          errorHandler={setPasswordErrorMessage}
           name="password"
+          id="passwordFieldHomePage"
         />
         <Select
           options={PROVINCE_CHOICES}
@@ -90,6 +100,7 @@ const TestForm = () => {
           isRequired
           errorMessage={provinceErrorMessage}
           errorHandler={setProvinceErrorMessage}
+          id="provinceFieldHomePAge"
         />
         <DatePicker
           labelText="Birth Date"
@@ -106,6 +117,16 @@ const TestForm = () => {
           setFile={setProfilePhoto}
           errorMessage={profilePhotoErrorMessage}
           errorHandler={setProfilePhotoErrorMessage}
+          id="profilePhotoFieldHomePage"
+        />
+        <TextArea
+          isRequired
+          labelText="Message"
+          val={message}
+          setVal={setMessage}
+          errorMessage={messageErrorMessage}
+          errorHandler={setMessageErrorMessage}
+          id="messageFieldHomePage"
         />
         <Button type="submit" id="testFormSubmit">
           Submit

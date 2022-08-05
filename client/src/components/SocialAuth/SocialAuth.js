@@ -1,11 +1,11 @@
 import React, { useState, useEffect, Children } from 'react';
 import cx from 'classnames';
-import { Div } from 'basedesign-iswad';
-import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Div } from 'basedesign-iswad';
+import { useRouter } from 'next/router';
 
-import useApiCalls from 'Hooks/useApiCalls';
-import { loginUser } from 'Utils/auth';
+import useApiCalls from '@/hooks/useApiCalls';
+import { loginUser } from '@/utils/auth';
 
 import styles from './SocialAuth.module.scss';
 
@@ -16,7 +16,7 @@ const SocialAuth = ({
   children
 }) => {
   const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
+  const router = useRouter();
 
   const [code, setCode] = useState('');
   const [sendSocialAuthReq, setSendSocialAuthReq] = useState(false);
@@ -25,10 +25,10 @@ const SocialAuth = ({
   const [tokenId, setTokenId] = useState('');
 
   useEffect(() => {
-    if (searchParams?.get('code')) {
-      setCode(searchParams.get('code'));
+    if (router?.query?.code) {
+      setCode(router.query.code);
     }
-  }, [searchParams]);
+  }, [router]);
 
   const bodyData = { code };
 

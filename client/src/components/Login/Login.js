@@ -3,10 +3,10 @@ import cx from 'classnames';
 import { useDispatch } from 'react-redux';
 import { Form, Label, Input } from 'basedesign-iswad';
 
-import useApiCalls from 'Hooks/useApiCalls';
+import useApiCalls from '@/hooks/useApiCalls';
 import { emailValidators, passwordValidators } from './utils';
-import { loginUser } from 'Utils/auth';
-import { LOGIN_API_ROUTE } from 'Constants/apiRoutes';
+import { loginUser } from '@/utils/auth';
+import { LOGIN_API_ROUTE } from '@/constants/apiRoutes';
 
 import styles from './Login.module.scss';
 

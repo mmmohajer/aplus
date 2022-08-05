@@ -3,10 +3,10 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { Div, Row, Column, Input, Form, Button } from 'basedesign-iswad';
 
-import Info from 'Components/Info';
+import Info from '@/components/Info';
 
 import { INFORMATION } from './constants';
-import { MENU_ITEMS } from 'Constants/menuItems';
+import { MENU_ITEMS } from '@/constants/menuItems';
 
 import styles from './Footer.module.scss';
 

@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { Div, Image, HamburgerIcon, Text } from 'basedesign-iswad';
+import { Div, HamburgerIcon, Text } from 'basedesign-iswad';
+import Image from 'next/image';
 
-import { LangToFarsi, langToEnglish } from 'Reducers/general/language';
+import { LangToFarsi, langToEnglish } from '@/reducers/general/language';
 import DesktopNav from './subs/DesktopNav';
 import MobileNav from './subs/MobileNav';
 
 import styles from './Header.module.scss';
 import { HAMBURGER_CONFIG } from './constants';
-import { MENU_ITEMS } from 'Constants/menuItems';
+import { MENU_ITEMS } from '@/constants/menuItems';
 
-import Logo from 'Images/js-Images/general/Logo-Modified.png';
-
-const MENUES = ['Home', 'About Us', 'Services', 'Contact Us'];
-const SUB_MENUES = {
-  'About Us': ['Team', 'Support', 'Careers'],
-  Services: ['Software Development', 'App Development', 'MVP Development', 'Web Design']
-};
+import Logo from '@/images/js-Images/general/Logo-Modified.png';
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const [mobMenuIsActive, setMobMenuIsActive] = useState(false);
   const [iconToggler, setIconToggler] = useState(false);
+  const [showHamberIcon, setShowHamberIcon] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setShowHamberIcon(true);
+    }
+  }, []);
 
   return (
     <>
@@ -66,12 +68,16 @@ const Header = () => {
               'w-per-100 flex flex--jc--between flex--ai--center pl2 pr2 pos-rel'
             )}>
             <Div className="z-100000">
-              <HamburgerIcon
-                cssConfig={HAMBURGER_CONFIG}
-                onClick={() => setMobMenuIsActive(!mobMenuIsActive)}
-                iconToggler={iconToggler}
-                setIconToggler={setIconToggler}
-              />
+              {showHamberIcon ? (
+                <HamburgerIcon
+                  cssConfig={HAMBURGER_CONFIG}
+                  onClick={() => setMobMenuIsActive(!mobMenuIsActive)}
+                  iconToggler={iconToggler}
+                  setIconToggler={setIconToggler}
+                />
+              ) : (
+                ''
+              )}
             </Div>
             <Div
               className={cx(

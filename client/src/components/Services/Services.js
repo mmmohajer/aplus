@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { Div, SwipableSlider, SwipableSliderItem, Button } from 'basedesign-iswad';
 
-import ServiceCard from 'Components/ServiceCard';
+import ServiceCard from '@/components/ServiceCard';
 
 import { ITEMS } from './constants';
 import styles from './Services.module.scss';

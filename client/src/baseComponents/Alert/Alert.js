@@ -3,10 +3,10 @@ import cx from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Div, Alert as BaseAlert, AlertItem } from 'basedesign-iswad';
 
-import Close from 'BaseComponents/Close';
+import Close from '@/baseComponents/Close';
 import styles from './Alert.module.scss';
 
-import { removeAlertItem } from 'Utils/notifications';
+import { removeAlertItem } from '@/utils/notifications';
 
 const Alert = () => {
   const dispatch = useDispatch();

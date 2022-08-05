@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import { Div, SwipableSlider, SwipableSliderItem } from 'basedesign-iswad';
 
-import TestimonialCard from 'Components/TestimonialCard';
+import TestimonialCard from '@/components/TestimonialCard';
 
 import styles from './Testimonials.module.scss';
 import { TESTIMONIALS } from './constants';

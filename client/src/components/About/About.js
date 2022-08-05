@@ -1,11 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
-import { Column, Div, Row, Image, Text, Paragraph, Heading } from 'basedesign-iswad';
+import { Column, Div, Row, Text, Paragraph, Heading } from 'basedesign-iswad';
+import Image from 'next/image';
 
 import { aboutText } from './constants';
 
-import AboutImage from 'Images/js-Images/general/behzad-modified-2.jpg';
+import AboutImage from '@/images/js-Images/general/behzad-modified-2.jpg';
 import styles from './About.module.scss';
 
 const About = () => {
@@ -24,8 +25,8 @@ const About = () => {
             md={12}
             lg={6}
             className={cx('flex flex--dir--col flex--ai--center flex--jc--center mb4')}>
-            <Div>
-              <Image src={AboutImage} className={cx(styles.aboutImage)} />
+            <Div className={cx(styles.aboutImage)}>
+              <Image src={AboutImage} />
             </Div>
             <Heading type={1} className="h1 mt1">
               {language === 'en' ? 'Behzad A. Rezai' : 'بهزاد افخم رضایی'}

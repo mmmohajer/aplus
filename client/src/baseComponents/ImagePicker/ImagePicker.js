@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import { Div, Label, Input } from 'basedesign-iswad';
 
-import { COLORS } from 'Constants/vars';
+import { COLORS } from '@/constants/vars';
 
-import Icon from 'BaseComponents/Icon';
+import Icon from '@/baseComponents/Icon';
 import ImagePreview from './subs/ImagePreview';
 import Cropper from './subs/Cropper';
 

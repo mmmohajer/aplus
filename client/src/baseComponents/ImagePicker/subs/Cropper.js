@@ -3,7 +3,7 @@ import cx from 'classnames';
 import ReactCrop from 'react-image-crop';
 import { Div, Image as BaseImage } from 'basedesign-iswad';
 
-import Button from 'BaseComponents/Button';
+import Button from '@/baseComponents/Button';
 
 import 'react-image-crop/dist/ReactCrop.css';
 

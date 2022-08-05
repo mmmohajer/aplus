@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useDispatch } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import { Form, Input } from 'basedesign-iswad';
+import { useRouter } from 'next/router';
 
 import { emailValidators, passwordValidators } from './utils';
-import useApiCalls from 'Hooks/useApiCalls';
-import { SEND_RESET_PASSWORD_EMAIL_API_ROUTE, PASSWORD_SET_API_ROUTE } from 'Constants/apiRoutes';
-import { addAlertItem } from 'Utils/notifications';
+import useApiCalls from '@/hooks/useApiCalls';
+import { SEND_RESET_PASSWORD_EMAIL_API_ROUTE, PASSWORD_SET_API_ROUTE } from '@/constants/apiRoutes';
+import { addAlertItem } from '@/utils/notifications';
 
 import styles from './ResetPassword.module.scss';
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
+  const router = useRouter();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -63,11 +63,11 @@ const ResetPassword = () => {
   }, [data]);
 
   useEffect(() => {
-    if (searchParams?.get('token')) {
-      const localToken = searchParams.get('token');
+    if (router?.query?.token) {
+      const localToken = router.query.token;
       setToken(localToken);
     }
-  }, [searchParams]);
+  }, [router]);
 
   useEffect(() => {
     if (token) {
@@ -111,8 +111,7 @@ const ResetPassword = () => {
         <Form
           className="textWhite py1"
           toBeValidatedFields={toBeValidatedFields}
-          onSubmit={() => setSendResetEmailReq(true)}
-        >
+          onSubmit={() => setSendResetEmailReq(true)}>
           <Input
             type="text"
             name="email"
@@ -132,8 +131,7 @@ const ResetPassword = () => {
         <Form
           className="textWhite py1"
           toBeValidatedFields={toBeValidatedResetFields}
-          onSubmit={() => setSendPasswordSetReq(true)}
-        >
+          onSubmit={() => setSendPasswordSetReq(true)}>
           <Input
             type="password"
             name="password"

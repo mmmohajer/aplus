@@ -3,13 +3,13 @@ import cx from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Div, Form } from 'basedesign-iswad';
 
-import TextBox from 'BaseComponents/TextBox';
-import TextArea from 'BaseComponents/TextArea';
-import Button from 'BaseComponents/Button';
+import TextBox from '@/baseComponents/TextBox';
+import TextArea from '@/baseComponents/TextArea';
+import Button from '@/baseComponents/Button';
 
-import useApiCalls from 'Hooks/useApiCalls';
-import { CONTACT_FORM_API_ROUTE } from 'Constants/apiRoutes';
-import { addAlertItem } from 'Utils/notifications';
+import useApiCalls from '@/hooks/useApiCalls';
+import { CONTACT_FORM_API_ROUTE } from '@/constants/apiRoutes';
+import { addAlertItem } from '@/utils/notifications';
 
 import { nameValidators, emailValidators } from './utils';
 import styles from './Contact.module.scss';

@@ -1,7 +1,7 @@
 import {
   authenticated as authenticatedReducer,
   notAuthenticated as notAuthenticatedReducer
-} from 'Reducers/apiCalls/isAuthenticated';
+} from '@/reducers/apiCalls/isAuthenticated';
 
 export const authenticated = (dispatch) => {
   dispatch(authenticatedReducer());
