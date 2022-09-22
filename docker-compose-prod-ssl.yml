@@ -20,12 +20,14 @@ services:
 
   certbot:
     image: certbot/certbot
+    restart: always
     volumes:
       - ./nginx/certbot/conf:/etc/letsencrypt
       - ./nginx/certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   client:
+    restart: always
     build:
       dockerfile: Dockerfile
       context: ./client
@@ -53,6 +55,7 @@ services:
       - db
 
   celery:
+    restart: always
     build:
       dockerfile: Dockerfile
       context: ./api
@@ -66,6 +69,7 @@ services:
       - redis
 
   celery-beat:
+    restart: always
     build:
       dockerfile: Dockerfile
       context: ./api
@@ -79,6 +83,7 @@ services:
       - redis
 
   celery-flower:
+    restart: always
     build:
       dockerfile: Dockerfile
       context: ./api
