@@ -7,7 +7,7 @@ fi
 
 domains=(barezai.com www.barezai.com)
 rsa_key_size=4096
-data_path="./nginx/certbot"
+data_path="/var/www/app/nginx/certbot"
 email="mmmohajer70@gmail.com" # Adding a valid address is strongly recommended
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
 
@@ -82,3 +82,21 @@ echo
 
 echo "### Reloading nginx ..."
 docker-compose -f /var/www/app/docker-compose-createSSL.yml exec nginx nginx -s reload
+
+echo "Create a log"
+echo "SSL Certificate updated successfully on: $(date)" >> /home/mmmohajer70/cron_commands.log
+
+echo "Changing the ownership of the certbot folder"
+chown -R mmmohajer70:docker /var/www/app/nginx/certbot
+
+echo "Create a log"
+echo "Ownership of the certbot folder changed successfully on: $(date)" >> /home/mmmohajer70/cron_commands.log
+
+echo "Restarting the app"
+docker container rm -f $(docker container ls -a -q)
+docker image rm -f $(docker image ls -a -q)
+docker-compose -f docker-compose-prod-ssl.yml down
+docker-compose -f docker-compose-prod-ssl.yml up --build -d && docker volume prune -f
+
+echo "Create a log"
+echo "App restarted successfuly on: $(date)" >> /home/mmmohajer70/cron_commands.log
