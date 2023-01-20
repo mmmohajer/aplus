@@ -29,7 +29,7 @@ function Home() {
           </Div>
         </Div>
 
-        <Testimonials />
+        {/* <Testimonials /> */}
       </Seo>
     </PublicRoute>
   );

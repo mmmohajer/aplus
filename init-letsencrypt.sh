@@ -95,8 +95,8 @@ echo "Ownership of the certbot folder changed successfully on: $(date)" >> /home
 echo "Restarting the app"
 docker container rm -f $(docker container ls -a -q)
 docker image rm -f $(docker image ls -a -q)
-docker-compose -f docker-compose-prod-ssl.yml down
-docker-compose -f docker-compose-prod-ssl.yml up --build -d && docker volume prune -f
+docker-compose -f /var/www/app/docker-compose-prod-ssl.yml down
+docker-compose -f /var/www/app/docker-compose-prod-ssl.yml up --build -d && docker volume prune -f
 
 echo "Create a log"
 echo "App restarted successfuly on: $(date)" >> /home/mmmohajer70/cron_commands.log
